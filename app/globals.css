@@ -130,13 +130,18 @@ nav a:hover {
   z-index: 2;
 }
 
-.eyebrow,
 .kicker {
   color: #307bc9;
-  font-size: 11px;
-  font-weight: 750;
-  letter-spacing: 0.19em;
-  margin: 0 0 22px;
+  border-left: 3px solid var(--blue);
+  display: inline-flex;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  line-height: 1.45;
+  margin: 0 0 28px;
+  min-height: 30px;
+  padding: 5px 0 5px 13px;
+  width: fit-content;
 }
 
 h1,
@@ -219,16 +224,17 @@ h2 em {
 
 .hero-facts dt {
   color: #8b97aa;
-  font-size: 10px;
-  font-weight: 700;
+  font-size: 11px;
+  font-weight: 800;
   letter-spacing: 0.12em;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   text-transform: uppercase;
 }
 
 .hero-facts dd {
-  font-size: 12px;
-  font-weight: 650;
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.35;
   margin: 0;
 }
 
@@ -309,8 +315,8 @@ h2 em {
 .section-label {
   align-items: center;
   display: flex;
-  gap: 12px;
-  margin-bottom: 70px;
+  gap: 17px;
+  margin-bottom: 82px;
 }
 
 .section-label span {
@@ -319,17 +325,19 @@ h2 em {
   border-radius: 50%;
   color: #fff;
   display: flex;
-  font-size: 10px;
+  flex: 0 0 auto;
+  font-size: 13px;
   font-weight: 800;
-  height: 28px;
+  height: 44px;
   justify-content: center;
-  width: 28px;
+  width: 44px;
 }
 
 .section-label p {
-  font-size: 11px;
-  font-weight: 750;
-  letter-spacing: 0.16em;
+  font-size: 15px;
+  font-weight: 800;
+  letter-spacing: 0.13em;
+  line-height: 1;
   margin: 0;
   text-transform: uppercase;
 }
@@ -577,13 +585,17 @@ h2 {
 
 .journey-line span {
   display: block;
-  font-size: 13px;
-  font-weight: 750;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
 }
 
 .journey-line small {
   color: #8c98a9;
-  font-size: 10px;
+  display: block;
+  font-size: 11px;
+  margin-top: 6px;
 }
 
 .journey-line b {
@@ -1093,7 +1105,25 @@ footer p:last-child {
   }
 
   .section-label {
-    margin-bottom: 52px;
+    gap: 13px;
+    margin-bottom: 58px;
+  }
+
+  .section-label span {
+    font-size: 11px;
+    height: 38px;
+    width: 38px;
+  }
+
+  .section-label p {
+    font-size: 13px;
+    letter-spacing: 0.11em;
+  }
+
+  .kicker {
+    font-size: 11px;
+    min-height: 28px;
+    padding-left: 11px;
   }
 
   .intro-grid {

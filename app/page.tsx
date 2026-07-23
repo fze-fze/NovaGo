@@ -69,7 +69,6 @@ export default function Home() {
         <div className="orb orb-one" />
         <div className="orb orb-two" />
         <div className="hero-copy">
-          <p className="eyebrow">NUS CAMPUS SUPER-APP · UX CASE STUDY</p>
           <h1>
             A softer start
             <br />
@@ -90,15 +89,15 @@ export default function Home() {
           </div>
           <dl className="hero-facts">
             <div>
-              <dt>Audience</dt>
+              <dt>Target User</dt>
               <dd>New to NUS</dd>
             </div>
             <div>
               <dt>Focus</dt>
-              <dd>First weeks → first semester</dd>
+              <dd>A short stay</dd>
             </div>
             <div>
-              <dt>Format</dt>
+              <dt>Advantage</dt>
               <dd>Connected service ecosystem</dd>
             </div>
           </dl>
