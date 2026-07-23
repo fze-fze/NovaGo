@@ -74,7 +74,7 @@ export default function Home() {
             <br />
             to <span>campus life.</span>
           </h1>
-          <p className="hero-lede">
+          <p className="hero-lede lead">
             NovaGo connects the essential moments of a newcomer&apos;s first
             weeks—from finding the next step to navigating campus, paying with
             confidence, getting everyday items, and asking for help.
@@ -133,7 +133,7 @@ export default function Home() {
           <p>Introduction</p>
         </div>
         <div className="intro-heading">
-          <p className="kicker">THE OPPORTUNITY</p>
+          <p className="section-tag">THE OPPORTUNITY</p>
           <h2>
             Starting university in a new country is not{" "}
             <em>a single task.</em>
@@ -141,8 +141,8 @@ export default function Home() {
         </div>
         <div className="intro-grid">
           <div className="problem-card">
-            <p className="card-label">THE FRAGMENTED EXPERIENCE</p>
-            <p className="large-quote">
+            <p className="subsection-label">THE FRAGMENTED EXPERIENCE</p>
+            <p className="large-quote lead">
               “A deadline, an unfamiliar building, a payment question, a
               temporary item, and a ‘basic’ question can all happen on the same
               day.”
@@ -184,9 +184,9 @@ export default function Home() {
           <p>User Research</p>
         </div>
         <div className="research-heading">
-          <p className="kicker">FRAMING THE RESEARCH</p>
+          <p className="section-tag">FRAMING THE RESEARCH</p>
           <h2>From feature ideas to questions worth testing.</h2>
-          <p>
+          <p className="lead">
             We began with five team proposals. Instead of presenting product
             assumptions as user findings, we reframed them into three initial
             research themes and a traceable evidence plan.
@@ -240,13 +240,13 @@ export default function Home() {
           <p>Ideation</p>
         </div>
         <div className="ideation-heading">
-          <p className="kicker">CONCEPT SYNTHESIS</p>
+          <p className="section-tag">CONCEPT SYNTHESIS</p>
           <h2>
             Five starting points.
             <br />
             <em>One newcomer journey.</em>
           </h2>
-          <p>
+          <p className="lead">
             Each team member brought a different view of early campus life. We
             kept the strongest contribution from each, then used the
             newcomer&apos;s journey as the organising logic.
@@ -284,8 +284,8 @@ export default function Home() {
           </div>
         </div>
         <div className="hmw">
-          <span>HOW MIGHT WE</span>
-          <p>
+          <span className="subsection-label">HOW MIGHT WE</span>
+          <p className="lead">
             Help a student who is new to NUS understand and complete essential
             campus tasks without repeatedly searching across disconnected
             sources?
@@ -305,10 +305,10 @@ export default function Home() {
         </div>
         <div className="prototype-top">
           <div>
-            <p className="kicker">EXPERIENCE ARCHITECTURE</p>
+            <p className="section-tag">EXPERIENCE ARCHITECTURE</p>
             <h2>Design the handoffs, not just the home screen.</h2>
           </div>
-          <p>
+          <p className="lead">
             The core prototype flow connects arrival context to a personalised
             dashboard, a relevant service, and a clear next step. That
             continuity is the product&apos;s central interaction idea.
@@ -333,7 +333,7 @@ export default function Home() {
             </div>
           </div>
           <div className="visual-system">
-            <p className="card-label">VISUAL SYSTEM</p>
+            <p className="subsection-label">VISUAL SYSTEM</p>
             <h3>Calm enough to reassure. Bright enough to invite.</h3>
             <p>
               Deep navy creates clarity; luminous blue signals action; soft
@@ -364,9 +364,9 @@ export default function Home() {
         </div>
         <div className="evaluation-grid">
           <div>
-            <p className="kicker">EVALUATION FRAMEWORK</p>
+            <p className="section-tag">EVALUATION FRAMEWORK</p>
             <h2>Test whether “connected” actually feels simpler.</h2>
-            <p>
+            <p className="lead">
               The next study should test task-first comprehension,
               cross-service continuity, and trust—not visual preference alone.
               This framework records the plan without inventing outcomes.
@@ -403,13 +403,13 @@ export default function Home() {
           <p>Final Prototype</p>
         </div>
         <div className="final-heading">
-          <p className="kicker">HIGH-FIDELITY DIRECTION</p>
+          <p className="section-tag">HIGH-FIDELITY DIRECTION</p>
           <h2>
             Your campus,
             <br />
             <em>connected.</em>
           </h2>
-          <p>
+          <p className="lead">
             The current high-fidelity direction pairs a low-friction entry
             experience with a single dashboard for five connected services,
             daily context, and an approachable AI companion.
@@ -420,7 +420,7 @@ export default function Home() {
             <img src="/images/novago-login.png" alt="Final NovaGo login prototype" />
           </div>
           <div className="final-copy">
-            <p className="card-label">THE CONNECTING LAYER</p>
+            <p className="subsection-label">THE CONNECTING LAYER</p>
             <h3>One profile. One campus context. One clear next step.</h3>
             <p>
               Academic Hub clarifies what to do; Commute gets students there;
@@ -443,11 +443,11 @@ export default function Home() {
         </div>
         <div className="final-details">
           <div>
-            <p className="kicker">THE PRODUCT PROMISE</p>
+            <p className="section-tag">THE PRODUCT PROMISE</p>
             <h2>Arrive curious.<br />Leave confident.</h2>
           </div>
           <div>
-            <p>
+            <p className="lead">
               NovaGo brings the first week together—safely, simply, and gently.
             </p>
             <a className="button button-primary" href="#top">
