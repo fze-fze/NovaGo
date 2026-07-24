@@ -70,9 +70,9 @@ export default function Home() {
         <div className="orb orb-two" />
         <div className="hero-copy">
           <h1>
-            A softer start
+            A super app for
             <br />
-            to <span>campus life.</span>
+            <span>your new campus life.</span>
           </h1>
           <p className="hero-lede lead">
             NovaGo connects the essential moments of a newcomer&apos;s first
