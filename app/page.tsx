@@ -48,6 +48,16 @@ const processSteps = [
   ["04", "Evaluate", "Test clarity, confidence, trust, and continuity."],
 ];
 
+// To add a photo, drop the file in `public/images/team/` and set `photo`,
+// e.g. photo: "/images/team/settly.jpg". Empty keeps the colour placeholder.
+const teamMembers = [
+  { name: "Member name", concept: "Settly", focus: "Arrival", className: "blue", photo: "" },
+  { name: "Member name", concept: "EZPAY", focus: "Payment", className: "violet", photo: "" },
+  { name: "Member name", concept: "BorrowNest", focus: "Access", className: "mint", photo: "" },
+  { name: "Member name", concept: "NUS Nexus", focus: "Community", className: "orange", photo: "" },
+  { name: "Member name", concept: "UniFlow", focus: "Study", className: "pink", photo: "" },
+];
+
 export default function Home() {
   return (
     <main>
@@ -59,6 +69,7 @@ export default function Home() {
           <a href="#research">Research</a>
           <a href="#ideation">Ideation</a>
           <a href="#prototype">Prototype</a>
+          <a href="#team">Design Team</a>
           <a className="nav-cta" href="#final">
             Final prototype
           </a>
@@ -455,6 +466,38 @@ export default function Home() {
               Back to the beginning <span aria-hidden="true">↑</span>
             </a>
           </div>
+        </div>
+      </section>
+
+      <section className="team section" id="team">
+        <div className="section-label">
+          <span>07</span>
+          <p>Design Team</p>
+        </div>
+        <div className="team-heading">
+          <h2>
+            Five perspectives,
+            <br />
+            <em>one product.</em>
+          </h2>
+          <p className="lead">
+            NovaGo began as five independent concepts. Each member owned one
+            early campus need and carried it into the connected experience.
+          </p>
+        </div>
+        <div className="team-grid">
+          {teamMembers.map((member) => (
+            <article key={member.concept}>
+              <div className={`avatar ${member.className}`}>
+                {member.photo ? (
+                  <img src={member.photo} alt={member.name} />
+                ) : null}
+              </div>
+              <h3>{member.name}</h3>
+              <p>{member.focus}</p>
+              <span>{member.concept}</span>
+            </article>
+          ))}
         </div>
       </section>
 
