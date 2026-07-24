@@ -133,7 +133,6 @@ export default function Home() {
           <p>Introduction</p>
         </div>
         <div className="intro-heading">
-          <p className="section-tag">THE OPPORTUNITY</p>
           <h2>
             Starting university in a new country is not{" "}
             <em>a single task.</em>
@@ -184,8 +183,11 @@ export default function Home() {
           <p>User Research</p>
         </div>
         <div className="research-heading">
-          <p className="section-tag">FRAMING THE RESEARCH</p>
-          <h2>From feature ideas to questions worth testing.</h2>
+          <h2>
+            From feature ideas to
+            <br />
+            questions worth testing.
+          </h2>
           <p className="lead">
             We began with five team proposals. Instead of presenting product
             assumptions as user findings, we reframed them into three initial
@@ -240,7 +242,6 @@ export default function Home() {
           <p>Ideation</p>
         </div>
         <div className="ideation-heading">
-          <p className="section-tag">CONCEPT SYNTHESIS</p>
           <h2>
             Five starting points.
             <br />
@@ -305,8 +306,11 @@ export default function Home() {
         </div>
         <div className="prototype-top">
           <div>
-            <p className="section-tag">EXPERIENCE ARCHITECTURE</p>
-            <h2>Design the handoffs, not just the home screen.</h2>
+            <h2>
+              Design the handoffs,
+              <br />
+              not just the home screen.
+            </h2>
           </div>
           <p className="lead">
             The core prototype flow connects arrival context to a personalised
@@ -364,7 +368,6 @@ export default function Home() {
         </div>
         <div className="evaluation-grid">
           <div>
-            <p className="section-tag">EVALUATION FRAMEWORK</p>
             <h2>Test whether “connected” actually feels simpler.</h2>
             <p className="lead">
               The next study should test task-first comprehension,
@@ -403,7 +406,6 @@ export default function Home() {
           <p>Final Prototype</p>
         </div>
         <div className="final-heading">
-          <p className="section-tag">HIGH-FIDELITY DIRECTION</p>
           <h2>
             Your campus,
             <br />
@@ -443,7 +445,6 @@ export default function Home() {
         </div>
         <div className="final-details">
           <div>
-            <p className="section-tag">THE PRODUCT PROMISE</p>
             <h2>Arrive curious.<br />Leave confident.</h2>
           </div>
           <div>

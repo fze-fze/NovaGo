@@ -1,6 +1,20 @@
 import type { Metadata } from "next";
 import { headers } from "next/headers";
+import { Fraunces, Inter } from "next/font/google";
 import "./globals.css";
+
+const serif = Fraunces({
+  subsets: ["latin"],
+  axes: ["SOFT", "opsz"],
+  variable: "--font-serif",
+  display: "swap",
+});
+
+const sans = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+  display: "swap",
+});
 
 export async function generateMetadata(): Promise<Metadata> {
   const requestHeaders = await headers();
@@ -37,7 +51,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${serif.variable} ${sans.variable}`}>
       <body>{children}</body>
     </html>
   );
