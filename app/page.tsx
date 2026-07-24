@@ -169,8 +169,8 @@ export default function Home() {
             <p>
               Our team identified these moments as one connected onboarding
               journey, not five unrelated features. NovaGo is a focused
-              super-app concept that helps newcomers move from arrival to
-              greater independence.
+              super app that helps newcomers move from arrival to greater
+              independence.
             </p>
             <p>
               Its value is not simply placing services on one screen. It uses
@@ -447,7 +447,7 @@ export default function Home() {
           <h2>
             Five ideas,
             <br />
-            <em>one product.</em>
+            <em>one super app.</em>
           </h2>
           <p className="lead">
             NovaGo began as five independent concepts. Each member owned one
@@ -488,8 +488,8 @@ export default function Home() {
         <a className="wordmark footer-mark" href="#top">
           Nova<span>Go</span>
         </a>
-        <p>NUS campus super-app · UX portfolio</p>
-        <p>Designed for a softer start to campus life.</p>
+        <p>NUS campus super app · UX portfolio</p>
+        <p>A super app for your new campus life.</p>
       </footer>
     </main>
   );
