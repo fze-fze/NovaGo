@@ -264,37 +264,6 @@ export default function Home() {
             newcomer&apos;s journey as the organising logic.
           </p>
         </div>
-        <div className="journey-line" aria-label="Five concepts integrated into NovaGo">
-          <div>
-            <span>Settly</span>
-            <small>Arrival</small>
-          </div>
-          <b>+</b>
-          <div>
-            <span>EZPAY</span>
-            <small>Payment</small>
-          </div>
-          <b>+</b>
-          <div>
-            <span>BorrowNest</span>
-            <small>Access</small>
-          </div>
-          <b>+</b>
-          <div>
-            <span>NUS Nexus</span>
-            <small>Community</small>
-          </div>
-          <b>+</b>
-          <div>
-            <span>UniFlow</span>
-            <small>Study</small>
-          </div>
-          <b className="equals">→</b>
-          <div className="nova-result">
-            <span>NovaGo</span>
-            <small>One journey</small>
-          </div>
-        </div>
         <div className="hmw">
           <span className="subsection-label">HOW MIGHT WE</span>
           <p className="lead">
@@ -476,7 +445,7 @@ export default function Home() {
         </div>
         <div className="team-heading">
           <h2>
-            Five perspectives,
+            Five ideas,
             <br />
             <em>one product.</em>
           </h2>
@@ -485,7 +454,10 @@ export default function Home() {
             early campus need and carried it into the connected experience.
           </p>
         </div>
-        <div className="team-grid">
+        <div
+          className="team-grid"
+          aria-label="Five concepts integrated into NovaGo"
+        >
           {teamMembers.map((member) => (
             <article key={member.concept}>
               <div className={`avatar ${member.className}`}>
@@ -494,10 +466,21 @@ export default function Home() {
                 ) : null}
               </div>
               <h3>{member.name}</h3>
-              <p>{member.focus}</p>
-              <span>{member.concept}</span>
+              <div className="team-concept">
+                <span>{member.concept}</span>
+                <small>{member.focus}</small>
+              </div>
             </article>
           ))}
+        </div>
+        <div className="team-result">
+          <span className="team-arrow" aria-hidden="true">
+            ↓
+          </span>
+          <div className="nova-result">
+            <span>NovaGo</span>
+            <small>One journey</small>
+          </div>
         </div>
       </section>
 

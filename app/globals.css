@@ -635,64 +635,6 @@ h2 {
   padding-top: 12px;
 }
 
-.journey-line {
-  align-items: center;
-  background: #f5f8fc;
-  border-radius: 28px;
-  display: flex;
-  gap: 17px;
-  justify-content: space-between;
-  margin: 70px 0;
-  overflow-x: auto;
-  padding: 27px;
-}
-
-.journey-line div {
-  flex: 0 0 auto;
-}
-
-.journey-line span {
-  display: block;
-  color: var(--color-heading);
-  font-size: var(--font-h3);
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  line-height: 1.2;
-}
-
-.journey-line small {
-  color: var(--color-caption);
-  display: block;
-  font-size: var(--font-label);
-  margin-top: 6px;
-}
-
-.journey-line b {
-  color: var(--color-caption);
-  font-size: var(--font-h3);
-  font-weight: 700;
-}
-
-.journey-line .equals {
-  color: var(--color-caption);
-  font-size: var(--font-h3);
-}
-
-.journey-line .nova-result {
-  background: var(--color-heading);
-  border-radius: 18px;
-  color: #fff;
-  padding: 16px 22px;
-}
-
-.journey-line .nova-result span {
-  color: #fff;
-}
-
-.journey-line .nova-result small {
-  color: rgba(255, 255, 255, 0.72);
-}
-
 .hmw {
   display: grid;
   gap: 6vw;
@@ -1080,22 +1022,70 @@ h2 {
 
 .team-grid h3 {
   font-size: var(--font-h3);
-  margin-bottom: 6px;
+  margin-bottom: 0;
 }
 
-.team-grid p {
-  color: var(--color-body);
+/* Each member's original concept, carried over from the ideation phase. */
+.team-concept {
+  border-top: 1px solid var(--line);
+  margin-top: 14px;
+  padding-top: 14px;
+}
+
+.team-concept span {
+  color: var(--color-heading);
+  display: block;
   font-size: var(--font-body);
-  line-height: var(--line-body);
-  margin-bottom: 9px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
 }
 
-.team-grid span {
+.team-concept small {
   color: var(--color-caption);
+  display: block;
   font-size: var(--font-label);
   font-weight: 700;
   letter-spacing: 0.12em;
+  margin-top: 5px;
   text-transform: uppercase;
+}
+
+.team-result {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 58px;
+}
+
+.team-arrow {
+  color: var(--color-caption);
+  font-size: var(--font-h3);
+  line-height: 1;
+}
+
+.nova-result {
+  background: var(--color-heading);
+  border-radius: 18px;
+  padding: 16px 26px;
+  text-align: center;
+}
+
+.nova-result span {
+  color: #fff;
+  display: block;
+  font-size: var(--font-h3);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+}
+
+.nova-result small {
+  color: rgba(255, 255, 255, 0.72);
+  display: block;
+  font-size: var(--font-label);
+  margin-top: 5px;
 }
 
 footer {
@@ -1317,10 +1307,6 @@ footer p:last-child {
     gap: 32px;
     grid-template-columns: 1fr;
     margin: 75px 0;
-  }
-
-  .journey-line {
-    justify-content: flex-start;
   }
 
   .flow-row {
