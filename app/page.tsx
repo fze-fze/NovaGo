@@ -66,10 +66,9 @@ export default function Home() {
           Nova<span>Go</span>
         </a>
         <nav aria-label="Case study sections">
-          <a href="#team">Design Team</a>
+          <a href="#team">Team</a>
           <a href="#research">Research</a>
           <a href="#ideation">Ideation</a>
-          <a href="#prototype">Prototype</a>
           <a className="nav-cta" href="#final">
             Final prototype
           </a>
@@ -109,7 +108,7 @@ export default function Home() {
             </div>
             <div>
               <dt>Advantage</dt>
-              <dd>Connected service ecosystem</dd>
+              <dd>Connected ecosystem</dd>
             </div>
           </dl>
         </div>
@@ -489,7 +488,7 @@ export default function Home() {
           Nova<span>Go</span>
         </a>
         <p>Portfolio of NovaGo</p>
-        <p>A super app for your new campus life.</p>
+        <p>A well-designed super app</p>
       </footer>
     </main>
   );
