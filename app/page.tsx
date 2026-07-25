@@ -66,10 +66,10 @@ export default function Home() {
           Nova<span>Go</span>
         </a>
         <nav aria-label="Case study sections">
+          <a href="#team">Design Team</a>
           <a href="#research">Research</a>
           <a href="#ideation">Ideation</a>
           <a href="#prototype">Prototype</a>
-          <a href="#team">Design Team</a>
           <a className="nav-cta" href="#final">
             Final prototype
           </a>
@@ -188,9 +188,55 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="team section" id="team">
+        <div className="section-label">
+          <span>02</span>
+          <p>Design Team</p>
+        </div>
+        <div className="team-heading">
+          <h2>
+            Five ideas,
+            <br />
+            <em>one super app.</em>
+          </h2>
+          <p className="lead">
+            NovaGo began as five independent concepts. Each member owned one
+            early campus need and carried it into the connected experience.
+          </p>
+        </div>
+        <div
+          className="team-grid"
+          aria-label="Five concepts integrated into NovaGo"
+        >
+          {teamMembers.map((member) => (
+            <article key={member.concept}>
+              <div className={`avatar ${member.className}`}>
+                {member.photo ? (
+                  <img src={member.photo} alt={member.name} />
+                ) : null}
+              </div>
+              <h3>{member.name}</h3>
+              <div className="team-concept">
+                <span>{member.concept}</span>
+                <small>{member.focus}</small>
+              </div>
+            </article>
+          ))}
+        </div>
+        <div className="team-result">
+          <span className="team-arrow" aria-hidden="true">
+            ↓
+          </span>
+          <div className="nova-result">
+            <span>NovaGo</span>
+            <small>One journey</small>
+          </div>
+        </div>
+      </section>
+
       <section className="research section" id="research">
         <div className="section-label light">
-          <span>02</span>
+          <span>03</span>
           <p>User Research</p>
         </div>
         <div className="research-heading">
@@ -249,7 +295,7 @@ export default function Home() {
 
       <section className="ideation section" id="ideation">
         <div className="section-label">
-          <span>03</span>
+          <span>04</span>
           <p>Ideation</p>
         </div>
         <div className="ideation-heading">
@@ -281,7 +327,7 @@ export default function Home() {
 
       <section className="prototype section" id="prototype">
         <div className="section-label">
-          <span>04</span>
+          <span>05</span>
           <p>Prototyping</p>
         </div>
         <div className="prototype-top">
@@ -343,7 +389,7 @@ export default function Home() {
 
       <section className="evaluation section" id="evaluation">
         <div className="section-label light">
-          <span>05</span>
+          <span>06</span>
           <p>Evaluation</p>
         </div>
         <div className="evaluation-grid">
@@ -382,7 +428,7 @@ export default function Home() {
 
       <section className="final section" id="final">
         <div className="section-label">
-          <span>06</span>
+          <span>07</span>
           <p>Final Prototype</p>
         </div>
         <div className="final-heading">
@@ -438,57 +484,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="team section" id="team">
-        <div className="section-label">
-          <span>07</span>
-          <p>Design Team</p>
-        </div>
-        <div className="team-heading">
-          <h2>
-            Five ideas,
-            <br />
-            <em>one super app.</em>
-          </h2>
-          <p className="lead">
-            NovaGo began as five independent concepts. Each member owned one
-            early campus need and carried it into the connected experience.
-          </p>
-        </div>
-        <div
-          className="team-grid"
-          aria-label="Five concepts integrated into NovaGo"
-        >
-          {teamMembers.map((member) => (
-            <article key={member.concept}>
-              <div className={`avatar ${member.className}`}>
-                {member.photo ? (
-                  <img src={member.photo} alt={member.name} />
-                ) : null}
-              </div>
-              <h3>{member.name}</h3>
-              <div className="team-concept">
-                <span>{member.concept}</span>
-                <small>{member.focus}</small>
-              </div>
-            </article>
-          ))}
-        </div>
-        <div className="team-result">
-          <span className="team-arrow" aria-hidden="true">
-            ↓
-          </span>
-          <div className="nova-result">
-            <span>NovaGo</span>
-            <small>One journey</small>
-          </div>
-        </div>
-      </section>
-
       <footer>
         <a className="wordmark footer-mark" href="#top">
           Nova<span>Go</span>
         </a>
-        <p>NUS campus super app · UX portfolio</p>
+        <p>Portfolio of NovaGo</p>
         <p>A super app for your new campus life.</p>
       </footer>
     </main>
