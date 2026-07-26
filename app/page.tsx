@@ -41,6 +41,84 @@ const services = [
   },
 ];
 
+// Drop the generated convergence illustration in `public/images/` and set this
+// path to replace the built-in fragment cards, e.g. "/images/intro-scatter.png".
+// Empty keeps the CSS + SVG version.
+const introIllustration = "";
+
+const fragmentSources = [
+  {
+    label: "University pages",
+    className: "orange",
+    icon: (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="3" y="5" width="18" height="16" rx="3" />
+        <path d="M3 10h18M8 3v4M16 3v4" />
+        <rect x="7" y="13" width="4" height="4" rx="1" className="solid" />
+      </svg>
+    ),
+  },
+  {
+    label: "Group chats",
+    className: "pink",
+    icon: (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 7a3 3 0 0 1 3-3h7a3 3 0 0 1 3 3v3a3 3 0 0 1-3 3H8l-5 3z" />
+        <path d="M10 16a3 3 0 0 0 3 3h3l4 3v-3a3 3 0 0 0 2-3v-2a3 3 0 0 0-3-3" />
+      </svg>
+    ),
+  },
+  {
+    label: "Maps",
+    className: "mint",
+    icon: (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M12 21s7-6.1 7-11a7 7 0 1 0-14 0c0 4.9 7 11 7 11z" />
+        <circle cx="12" cy="10" r="2.4" className="solid" />
+      </svg>
+    ),
+  },
+  {
+    label: "Payment tools",
+    className: "blue",
+    icon: (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <rect x="2" y="5" width="20" height="14" rx="3" />
+        <path d="M2 10h20" />
+        <rect x="5" y="13" width="5" height="3" rx="1" className="solid" />
+      </svg>
+    ),
+  },
+  {
+    label: "Marketplaces",
+    className: "violet",
+    icon: (
+      <svg viewBox="0 0 24 24" aria-hidden="true">
+        <path d="M3 11.5V5a2 2 0 0 1 2-2h6.5L21 12.5 12.5 21z" />
+        <circle cx="7.5" cy="7.5" r="1.6" className="solid" />
+      </svg>
+    ),
+  },
+];
+
+const introClaims = [
+  [
+    "01",
+    "Context, not co-location",
+    "Current task, campus location, and stage of arrival decide what surfaces first.",
+  ],
+  [
+    "02",
+    "Task-first, not feature-first",
+    "Organised around what a student needs to finish—not a cabinet of five apps.",
+  ],
+  [
+    "03",
+    "A layer, not a replacement",
+    "Guidance and coordination on top of official systems, with the handoff made visible.",
+  ],
+];
+
 const processSteps = [
   ["01", "Frame", "Turn five product ideas into assumptions to test."],
   ["02", "Connect", "Map each service to one newcomer journey."],
@@ -48,14 +126,14 @@ const processSteps = [
   ["04", "Evaluate", "Test clarity, confidence, trust, and continuity."],
 ];
 
-// To add a photo, drop the file in `public/images/team/` and set `photo`,
-// e.g. photo: "/images/team/settly.jpg". Empty keeps the colour placeholder.
+// Photos live in `public/images/team/`. Clearing `photo` falls back to the
+// colour placeholder.
 const teamMembers = [
-  { name: "Member name", concept: "Settly", focus: "Arrival", className: "blue", photo: "" },
-  { name: "Member name", concept: "EZPAY", focus: "Payment", className: "violet", photo: "" },
-  { name: "Member name", concept: "BorrowNest", focus: "Access", className: "mint", photo: "" },
-  { name: "Member name", concept: "NUS Nexus", focus: "Community", className: "orange", photo: "" },
-  { name: "Member name", concept: "UniFlow", focus: "Study", className: "pink", photo: "" },
+  { name: "Huang Molin", concept: "Settly", focus: "Arrival", className: "blue", photo: "/images/team/huang-molin.jpg" },
+  { name: "Cao Yuchen", concept: "EZPAY", focus: "Payment", className: "violet", photo: "/images/team/cao-yuchen.jpg" },
+  { name: "Fan Zeen", concept: "BorrowNest", focus: "Access", className: "mint", photo: "/images/team/fan-zeen.jpg" },
+  { name: "Wang Huaiyin", concept: "NUS Nexus", focus: "Community", className: "orange", photo: "/images/team/wang-huaiyin.jpg" },
+  { name: "Duan Xurui", concept: "UniFlow", focus: "Study", className: "pink", photo: "/images/team/duan-xurui.jpg" },
 ];
 
 export default function Home() {
@@ -142,48 +220,110 @@ export default function Home() {
           <span>01</span>
           <p>Introduction</p>
         </div>
-        <div className="intro-heading">
-          <h2>
-            Starting university in a new country is not{" "}
-            <em>a single task.</em>
-          </h2>
-        </div>
-        <div className="intro-grid">
-          <div className="problem-card">
-            <p className="subsection-label">THE FRAGMENTED EXPERIENCE</p>
-            <p className="large-quote lead">
-              “A deadline, an unfamiliar building, a payment question, a
-              temporary item, and a ‘basic’ question can all happen on the same
-              day.”
-            </p>
-            <div className="fragment-pills">
-              <span>University pages</span>
-              <span>Group chats</span>
-              <span>Maps</span>
-              <span>Payment tools</span>
-              <span>Marketplaces</span>
+        <h2>
+          Starting university in a new country
+          <br />
+          is not <em>a single task.</em>
+        </h2>
+
+        <div className="intro-band">
+          <div className="intro-stage">
+            <div className="intro-fragments">
+              {introIllustration ? (
+                <img
+                  className="intro-illustration"
+                  src={introIllustration}
+                  alt="Five disconnected campus tools drifting apart"
+                />
+              ) : (
+                fragmentSources.map((fragment, index) => (
+                  <div
+                    key={fragment.label}
+                    className={`fragment-card f${index + 1} ${fragment.className}`}
+                  >
+                    <span className="fragment-icon">{fragment.icon}</span>
+                    <p>{fragment.label}</p>
+                  </div>
+                ))
+              )}
             </div>
-          </div>
-          <div className="solution-copy">
-            <p>
-              Our team identified these moments as one connected onboarding
-              journey, not five unrelated features. NovaGo is a focused
-              super app that helps newcomers move from arrival to greater
-              independence.
-            </p>
-            <p>
-              Its value is not simply placing services on one screen. It uses
-              the student&apos;s current task, campus context, and stage of
-              arrival to surface the right information—and the next action.
-            </p>
-            <div className="scope-note">
-              <strong>Design boundary</strong>
+
+            {/* Same 1000x660 coordinate space as the % card positions in CSS.
+                Each arc starts inside its own card and ends on the student's
+                torso, so the lines are absorbed by the figure rather than
+                meeting at a visible point in mid-air. */}
+            <svg
+              className="intro-arcs"
+              viewBox="0 0 1000 660"
+              preserveAspectRatio="none"
+              aria-hidden="true"
+            >
+              <defs>
+                <linearGradient id="arcFade" x1="0" x2="1" y1="0" y2="0">
+                  <stop offset="0" stopColor="#8db4ff" stopOpacity="0.55" />
+                  <stop offset="1" stopColor="#185fa5" stopOpacity="0.95" />
+                </linearGradient>
+              </defs>
+              {[
+                "M150 85 Q500 180 817 415",
+                "M310 203 Q570 280 817 415",
+                "M110 383 Q480 430 817 415",
+                "M450 103 Q650 225 817 415",
+                "M350 517 Q600 530 817 415",
+              ].map((d) => (
+                <path
+                  key={d}
+                  d={d}
+                  fill="none"
+                  stroke="url(#arcFade)"
+                  strokeWidth="1"
+                  vectorEffect="non-scaling-stroke"
+                />
+              ))}
+            </svg>
+            {/* The student's inner monologue — a thought bubble trailing down
+                to the figure below. */}
+            <blockquote className="intro-thought">
               <p>
-                NovaGo is a guidance and coordination layer. It connects to
-                official systems instead of pretending to replace them.
+                A deadline, an unfamiliar building, a payment question, a
+                temporary item, and a ‘basic’ question can all happen on the
+                same day.
               </p>
+            </blockquote>
+
+            <div className="intro-converge">
+              <img
+                className="intro-focal"
+                src="/images/novago-arrival.png"
+                alt="A newly arrived student standing alone with a suitcase, head down over their phone"
+              />
             </div>
+
+            <p className="subsection-label stage-label stage-label-left">
+              The fragmented experience
+            </p>
+            <p className="subsection-label stage-label stage-label-right">
+              All on the same day
+            </p>
           </div>
+        </div>
+
+        <div className="intro-claims">
+          {introClaims.map(([number, title, copy]) => (
+            <article key={number}>
+              <span>{number}</span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </article>
+          ))}
+        </div>
+
+        <div className="scope-note">
+          <strong>Design boundary</strong>
+          <p>
+            NovaGo is a guidance and coordination layer. It connects to official
+            systems instead of pretending to replace them.
+          </p>
         </div>
       </section>
 
@@ -211,7 +351,10 @@ export default function Home() {
             <article key={member.concept}>
               <div className={`avatar ${member.className}`}>
                 {member.photo ? (
-                  <img src={member.photo} alt={member.name} />
+                  <img
+                    src={member.photo}
+                    alt={`${member.name}, who created ${member.concept}`}
+                  />
                 ) : null}
               </div>
               <h3>{member.name}</h3>
@@ -226,10 +369,10 @@ export default function Home() {
           <span className="team-arrow" aria-hidden="true">
             ↓
           </span>
-          <div className="nova-result">
-            <span>NovaGo</span>
-            <small>One journey</small>
-          </div>
+          <p className="wordmark team-logo">
+            Nova<span>Go</span>
+          </p>
+          <small>One journey</small>
         </div>
       </section>
 

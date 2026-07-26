@@ -28,6 +28,9 @@
   --blue: var(--color-accent);
   --blue-deep: var(--color-heading);
   --cloud: #f4f8fd;
+  /* Single page-wide base. Light sections stay transparent and sit on this,
+     so there is no seam anywhere between them. */
+  --wash: #f3f8fd;
   --line: rgba(11, 27, 58, 0.12);
 }
 
@@ -41,7 +44,7 @@ html {
 
 body {
   margin: 0;
-  background: #fff;
+  background: var(--wash);
   color: var(--color-body);
   font-family: var(--sans);
   font-size: var(--font-body);
@@ -62,6 +65,18 @@ a:hover {
 img {
   display: block;
   max-width: 100%;
+}
+
+/* One atmosphere layer for the whole document, so the pale blue drifts instead
+   of sitting flat. Positions are % of the full page height. Every light section
+   is transparent and composites onto this. */
+main {
+  background:
+    radial-gradient(1400px 900px at 14% 2%, rgba(87, 182, 255, 0.16), transparent 65%),
+    radial-gradient(1200px 800px at 88% 7%, rgba(122, 224, 214, 0.15), transparent 65%),
+    radial-gradient(1300px 900px at 88% 30%, rgba(87, 182, 255, 0.11), transparent 65%),
+    radial-gradient(1200px 800px at 10% 62%, rgba(122, 224, 214, 0.11), transparent 65%),
+    radial-gradient(1400px 900px at 82% 88%, rgba(87, 182, 255, 0.13), transparent 65%);
 }
 
 .site-header {
@@ -120,10 +135,10 @@ nav a:hover {
 }
 
 .hero {
+  /* Local character only — no solid base, so it dissolves into the page wash. */
   background:
-    radial-gradient(circle at 18% 18%, rgba(87, 182, 255, 0.16), transparent 28%),
-    radial-gradient(circle at 83% 18%, rgba(122, 224, 214, 0.17), transparent 26%),
-    linear-gradient(180deg, #fbfdff 0%, #f4f9ff 100%);
+    radial-gradient(circle at 18% 18%, rgba(255, 255, 255, 0.55), transparent 32%),
+    radial-gradient(circle at 83% 18%, rgba(122, 224, 214, 0.14), transparent 26%);
   display: grid;
   grid-template-columns: 0.95fr 1.05fr;
   min-height: 810px;
@@ -421,60 +436,260 @@ h2 {
   line-height: 1.08;
 }
 
-.intro-heading {
-  max-width: 950px;
-}
+/* --- 01 Introduction ---------------------------------------------------- */
 
-.intro-grid {
-  align-items: start;
-  display: grid;
-  gap: 8vw;
-  grid-template-columns: 1.15fr 0.85fr;
-  margin-top: 78px;
-}
-
-.problem-card {
+/* The one panel that still reads as distinct. A white veil lifts the stage,
+   but it fades to nothing top and bottom so the panel has no edges — and the
+   blue ellipse is centred, so it can never be clipped by the band either. */
+.intro-band {
   background:
-    radial-gradient(circle at 80% 10%, rgba(81, 175, 255, 0.18), transparent 32%),
-    #f6f9fd;
-  border-radius: 34px;
-  padding: 54px;
+    radial-gradient(900px 520px at 50% 50%, rgba(87, 182, 255, 0.1), transparent 70%),
+    linear-gradient(
+      180deg,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.6) 16%,
+      rgba(255, 255, 255, 0.6) 84%,
+      rgba(255, 255, 255, 0) 100%
+    );
+  margin: 88px -7vw 0;
+  overflow: hidden;
+  padding: 86px 7vw 74px;
 }
 
-.large-quote {
-  color: var(--color-body);
-  font-size: var(--font-lead);
+/* The student's thought bubble — anchored above the figure, trailing dots
+   stepping down toward their head. */
+.intro-thought {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 28px;
+  box-shadow: 0 20px 44px rgba(49, 84, 125, 0.14);
+  margin: 0;
+  padding: 26px 30px;
+  position: absolute;
+  right: 1%;
+  top: 0;
+  width: clamp(270px, 34%, 400px);
+  z-index: 2;
+}
+
+.intro-thought p {
+  color: var(--color-heading);
+  font-family: var(--serif);
+  font-size: 19px;
+  font-style: italic;
   font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: var(--line-lead);
-  margin: 40px 0 52px;
+  letter-spacing: -0.01em;
+  line-height: 1.5;
+  margin: 0;
 }
 
-.fragment-pills {
+.intro-thought::before,
+.intro-thought::after {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  box-shadow: 0 10px 22px rgba(49, 84, 125, 0.12);
+  content: "";
+  position: absolute;
+}
+
+/* The head sits ~60% of the bubble's width in from its right edge, so the
+   trail has to step down AND well to the left to point at it. */
+.intro-thought::before {
+  bottom: -24px;
+  height: 15px;
+  right: 52%;
+  width: 15px;
+}
+
+.intro-thought::after {
+  bottom: -42px;
+  height: 8px;
+  right: 59%;
+  width: 8px;
+}
+
+/* The stage is one 1000x660 coordinate space shared by the cards (positioned
+   in %) and the arc SVG (same viewBox), so the lines stay glued to the cards. */
+.intro-stage {
+  /* Shared by the focal slot and its caption so the two always line up. */
+  --focal-w: clamp(280px, 30%, 370px);
+  height: 660px;
+  margin-inline: auto;
+  max-width: 1320px;
+  position: relative;
+}
+
+.intro-fragments {
+  inset: 0;
+  position: absolute;
+}
+
+.intro-illustration {
+  height: 100%;
+  object-fit: contain;
+  object-position: left center;
+  width: 100%;
+}
+
+.fragment-card {
+  align-items: center;
+  backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 22px;
+  box-shadow: 0 20px 44px rgba(49, 84, 125, 0.14);
   display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
+  gap: 13px;
+  padding: 16px 20px;
+  position: absolute;
+  z-index: 1;
 }
 
-.fragment-pills span {
-  background: #fff;
-  border: 1px solid rgba(37, 76, 126, 0.09);
-  border-radius: 999px;
-  color: var(--color-caption);
-  font-size: var(--font-label);
-  padding: 10px 14px;
+.fragment-card p {
+  color: var(--color-heading);
+  font-size: 14.5px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  margin: 0;
+  white-space: nowrap;
 }
 
-.solution-copy {
+.fragment-icon {
+  align-items: center;
+  border-radius: 12px;
+  display: flex;
+  flex: 0 0 auto;
+  height: 38px;
+  justify-content: center;
+  width: 38px;
+}
+
+.fragment-icon svg {
+  fill: none;
+  height: 21px;
+  stroke: var(--color-heading);
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.6;
+  width: 21px;
+}
+
+.fragment-icon svg .solid {
+  fill: currentColor;
+  stroke: none;
+}
+
+.fragment-card.orange .fragment-icon { background: rgba(243, 167, 57, 0.16); color: #c97c12; }
+.fragment-card.pink .fragment-icon { background: rgba(243, 154, 203, 0.18); color: #c9558f; }
+.fragment-card.mint .fragment-icon { background: rgba(105, 217, 206, 0.18); color: #1d8b81; }
+.fragment-card.blue .fragment-icon { background: rgba(47, 140, 255, 0.14); color: var(--color-accent); }
+.fragment-card.violet .fragment-icon { background: rgba(166, 124, 255, 0.16); color: #7346d1; }
+
+.fragment-card.f1 { left: 1%; rotate: -9deg; top: 5%; }
+.fragment-card.f2 { left: 20%; rotate: 6deg; top: 24%; animation-delay: -1.6s; }
+.fragment-card.f3 { left: 3%; rotate: -4deg; top: 52%; animation-delay: -3.2s; }
+.fragment-card.f4 { left: 35%; rotate: 8deg; top: 9%; animation-delay: -4.8s; }
+.fragment-card.f5 { left: 25%; rotate: -7deg; top: 72%; animation-delay: -6.4s; }
+
+/* Depth: the far pair sits back and reads lighter. */
+.fragment-card.f4,
+.fragment-card.f5 {
+  opacity: 0.72;
+  scale: 0.9;
+}
+
+/* Explicit 100%/100%: an absolutely positioned SVG is a replaced element, so
+   `inset: 0` alone leaves it at its intrinsic viewBox height and the arcs
+   detach from the node at every size but one. */
+.intro-arcs {
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 0;
+}
+
+/* Scales with the stage, so the point the arcs aim at stays on the figure
+   (~82% across, ~46% down) at every width. */
+.intro-converge {
+  position: absolute;
+  right: 2%;
+  top: 62%;
+  transform: translateY(-50%);
+  width: var(--focal-w);
+  z-index: 2;
+}
+
+/* Soft spotlight behind the student. */
+.intro-converge::before {
+  aspect-ratio: 1;
+  border: 1px solid rgba(48, 139, 255, 0.18);
+  border-radius: 50%;
+  content: "";
+  left: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 130%;
+}
+
+.intro-focal {
+  height: auto;
+  position: relative;
+  width: 100%;
+}
+
+.stage-label {
+  bottom: 0;
+  margin: 0;
+  position: absolute;
+  z-index: 3;
+}
+
+.stage-label-left { left: 0; }
+
+/* Same width and right offset as the focal slot, centred under it. */
+.stage-label-right {
+  color: var(--color-heading);
+  right: 2%;
+  text-align: center;
+  width: var(--focal-w);
+}
+
+.intro-claims {
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 35px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 78px;
+  padding-top: 36px;
+}
+
+.intro-claims article > span {
+  color: var(--color-accent);
+  font-family: var(--serif);
+  font-size: 30px;
+  line-height: 1;
+}
+
+.intro-claims h3 {
+  font-size: var(--font-h3);
+  margin: 20px 0 10px;
+}
+
+.intro-claims p {
   color: var(--color-body);
   font-size: var(--font-body);
   line-height: var(--line-body);
-  padding-top: 20px;
+  margin: 0;
 }
 
 .scope-note {
   border-left: 2px solid var(--color-heading);
-  margin-top: 42px;
+  margin-top: 52px;
+  max-width: 70ch;
   padding-left: 23px;
 }
 
@@ -681,10 +896,6 @@ h2 {
   line-height: var(--line-body);
 }
 
-.prototype {
-  background: #f3f8fd;
-}
-
 .prototype-top,
 .evaluation-grid {
   display: grid;
@@ -841,9 +1052,8 @@ h2 {
 
 .final {
   background:
-    radial-gradient(circle at 20% 45%, rgba(74, 170, 255, 0.15), transparent 24%),
-    radial-gradient(circle at 80% 50%, rgba(132, 224, 213, 0.16), transparent 25%),
-    #fbfdff;
+    radial-gradient(circle at 20% 45%, rgba(74, 170, 255, 0.14), transparent 24%),
+    radial-gradient(circle at 80% 50%, rgba(132, 224, 213, 0.15), transparent 25%);
   overflow: hidden;
 }
 
@@ -966,10 +1176,6 @@ h2 {
   margin-top: 18px;
 }
 
-.team {
-  background: #f3f8fd;
-}
-
 .team-heading {
   display: grid;
   gap: 5vw;
@@ -1055,7 +1261,7 @@ h2 {
   align-items: center;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
   margin-top: 58px;
 }
 
@@ -1065,32 +1271,24 @@ h2 {
   line-height: 1;
 }
 
-.nova-result {
-  background: var(--color-heading);
-  border-radius: 18px;
-  padding: 16px 26px;
-  text-align: center;
+/* The convergence payoff: the five concepts resolve into the NovaGo mark. */
+.team-logo {
+  font-size: 46px;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  margin: 6px 0 0;
 }
 
-.nova-result span {
-  color: #fff;
-  display: block;
-  font-size: var(--font-h3);
-  font-weight: 700;
-  letter-spacing: -0.01em;
-  line-height: 1.2;
-}
-
-.nova-result small {
-  color: rgba(255, 255, 255, 0.72);
-  display: block;
+.team-result small {
+  color: var(--color-caption);
   font-size: var(--font-label);
-  margin-top: 5px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
 footer {
   align-items: center;
-  background: #f3f7fb;
   border-top: 1px solid var(--line);
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
@@ -1129,7 +1327,6 @@ footer p:last-child {
 
   .phone-login { left: 15%; }
   .phone-home { right: 15%; }
-  .intro-grid,
   .research-heading,
   .ideation-heading,
   .prototype-top,
@@ -1161,6 +1358,64 @@ footer p:last-child {
     margin: 0 auto;
     max-width: 570px;
     width: 100%;
+  }
+
+  /* Stack the convergence stage: fragments above, one screen below. */
+  .intro-stage {
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+    height: auto;
+  }
+
+  .intro-arcs,
+  .intro-converge::before {
+    display: none;
+  }
+
+  .intro-fragments {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    justify-content: center;
+    order: 2;
+    position: static;
+    width: 100%;
+  }
+
+  .fragment-card {
+    opacity: 1;
+    position: static;
+    rotate: none;
+    scale: 1;
+  }
+
+  .intro-converge {
+    margin: 0 auto;
+    order: 1;
+    position: static;
+    transform: none;
+  }
+
+  /* Stacked: bubble sits right above the figure, dots pointing down to it. */
+  .intro-thought {
+    margin: 0 auto 30px;
+    order: 0;
+    position: static;
+    width: min(100%, 480px);
+  }
+
+  .stage-label {
+    position: static;
+    text-align: center;
+    width: auto;
+  }
+
+  .stage-label-left { order: 3; }
+  .stage-label-right { order: -1; }
+
+  .intro-claims {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1258,17 +1513,26 @@ footer p:last-child {
   }
 
 
-  .intro-grid {
-    margin-top: 50px;
+  .intro-band {
+    margin: 52px -22px 0;
+    padding: 52px 22px 46px;
   }
 
-  .problem-card {
-    border-radius: 25px;
-    padding: 28px;
+  .intro-thought {
+    border-radius: 22px;
+    padding: 20px 22px;
   }
 
-  .large-quote {
-    font-size: var(--font-lead);
+  .intro-thought p {
+    font-size: 17px;
+  }
+
+  .intro-stage {
+    --focal-w: 260px;
+  }
+
+  .intro-claims {
+    margin-top: 56px;
   }
 
   .theme-grid,
@@ -1376,5 +1640,9 @@ footer p:last-child {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .intro-node::after {
+    animation: none;
   }
 }
