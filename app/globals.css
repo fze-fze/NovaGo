@@ -231,7 +231,11 @@ h1 {
   margin-bottom: 24px;
 }
 
+/* The accented second line of a two-line title. `font-style: normal` is what
+   stops <em> rendering italic — the emphasis is carried by colour instead. */
 h1 span,
+h1 em,
+h2 span,
 h2 em {
   color: var(--color-accent);
   font-style: normal;
