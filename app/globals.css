@@ -746,23 +746,31 @@ h2 {
 }
 
 
-/* --- 04 Define ---------------------------------------------------------- */
+/* --- 04 Define & Ideation ----------------------------------------------- */
 
-/* The three chapters that open with a headline beside a lede share this
-   split; `define-heading` joins `research-heading` and `ideation-heading`
-   in the responsive rule further down. */
-.define-heading {
-  display: grid;
-  gap: 5vw;
-  grid-template-columns: 1.25fr 0.75fr;
+/* Sits under a section heading to say what the block below is and how far the
+   evidence behind it actually goes. Narrow measure so it never competes with
+   the heading it follows. */
+.chapter-note {
+  color: var(--color-body);
+  margin: 18px 0 0;
+  max-width: 68ch;
 }
 
-.define-heading > p:last-child {
-  color: var(--color-body);
-  font-size: var(--font-lead);
-  font-weight: 500;
-  line-height: var(--line-lead);
-  padding-top: 12px;
+/* The problem statement carries the chapter on its own — no card beside it,
+   because the How-might-we below is where it turns into a question. */
+.problem-statement {
+  max-width: 900px;
+}
+
+/* The hinge between the two halves. Same block as the case study's other
+   How-might-we, ruled top and bottom so it reads as the turn rather than one
+   more subsection. */
+.chapter-hinge {
+  border-bottom: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+  margin: 110px 0;
+  padding: 54px 0;
 }
 
 /* The white panel used from here down is the prototype card's: flat, hairline
@@ -778,7 +786,6 @@ h2 {
 .signal-grid article,
 .need-grid article,
 .concept-grid article,
-.problem-card,
 .scope-table article,
 .hub-nodes span {
   background: #fff;
@@ -815,25 +822,9 @@ h2 {
 
 /* Statement size: these headings are whole sentences rather than titles, and
    break into eight or nine lines at the section heading size. */
-.problem-grid h2,
+.problem-statement,
 .chapter-outcome h2 {
   font-size: clamp(28px, 3vw, 40px);
-  margin: 0;
-}
-
-.problem-grid {
-  align-items: end;
-  display: grid;
-  gap: 8vw;
-  grid-template-columns: 1.1fr 0.9fr;
-  margin-top: 56px;
-}
-
-.problem-card {
-  padding: 30px;
-}
-
-.problem-card h3 {
   margin: 0;
 }
 
@@ -1843,9 +1834,7 @@ footer p:last-child {
   .phone-login { left: 15%; }
   .phone-home { right: 15%; }
   .research-heading,
-  .define-heading,
   .ideation-heading,
-  .problem-grid,
   .prototype-top,
   .evaluation-grid,
   .team-heading {
@@ -1873,7 +1862,6 @@ footer p:last-child {
   }
 
   .research-heading > p:last-child,
-  .define-heading > p:last-child,
   .ideation-heading > p:last-child,
   .prototype-top > p {
     padding-top: 0;

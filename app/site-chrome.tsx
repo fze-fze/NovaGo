@@ -19,7 +19,7 @@ export function SiteHeader() {
       <nav aria-label="Case study sections">
         <Link href="/#team">Team</Link>
         <Link href="/#research">Research</Link>
-        <Link href="/#ideation">Ideation</Link>
+        <Link href="/#define-ideation">Define &amp; Ideation</Link>
         <Link className="nav-cta" href="/#final">
           Final prototype
         </Link>

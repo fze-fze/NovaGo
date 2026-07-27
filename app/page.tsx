@@ -89,7 +89,9 @@ const processSteps = [
   ["04", "Evaluate", "Test clarity, confidence, trust, and continuity."],
 ];
 
-// --- 04 Define -----------------------------------------------------------
+// --- 04 Define & Ideation ------------------------------------------------
+// The chapter runs evidence -> problem -> How might we -> concepts. The first
+// three arrays are the Define half, the last three the Ideation half.
 
 const researchSignals = [
   {
@@ -122,8 +124,6 @@ const productScope = [
   ["Forum", "Search answers", "Ask anonymously", "Source labels"],
   ["Commute", "Compare routes", "Shuttle schedule", "Leave-by alert"],
 ];
-
-// --- 05 Ideation ---------------------------------------------------------
 
 // What survived from each member's original proposal. The five names match
 // the concepts credited in the Design Team chapter.
@@ -417,26 +417,33 @@ export default function Home() {
         <ResearchCarousel />
       </section>
 
-      <section className="define section" id="define">
+      <section className="ideation section" id="define-ideation">
         <div className="section-label">
           <span>04</span>
-          <p>Define</p>
+          <p>Define &amp; Ideation</p>
         </div>
-        <div className="define-heading">
+        <div className="ideation-heading">
           <h2>
             Define the real problem
             <br />
-            <em>before adding more features.</em>
+            <em>before designing the answer.</em>
           </h2>
-          <p>
-            NovaGo is not solving a lack of apps. It is solving the gap between
-            disconnected campus services and the real tasks new students need
-            to finish during their first weeks.
+          <p className="lead">
+            Chapter 03 turned round one into five artefacts. This chapter asks
+            what they justify building — first the problem they add up to, then
+            the concepts that answer it.
           </p>
         </div>
 
+        {/* --- Define: what the artefacts justify --------------------------- */}
+
         <p className="subsection-label needs-label">Research synthesis</p>
         <h2>Three signals shaped the product definition.</h2>
+        <p className="lead chapter-note">
+          The themes that survived clustering, each one traceable back to a
+          note from round one. Three students is enough to see a pattern, not
+          enough to size it — nothing here is counted.
+        </p>
         <div className="signal-grid">
           {researchSignals.map((signal) => (
             <article key={signal.number}>
@@ -447,23 +454,12 @@ export default function Home() {
           ))}
         </div>
 
-        <div className="problem-grid">
-          <div>
-            <p className="subsection-label">Problem statement</p>
-            <h2>
-              New students need a connected way to understand and complete
-              essential campus tasks without repeatedly searching across
-              disconnected sources.
-            </h2>
-          </div>
-          <aside className="problem-card">
-            <p className="subsection-label">Design challenge</p>
-            <h3>
-              How might we help a student new to NUS move from uncertainty to a
-              clear next action?
-            </h3>
-          </aside>
-        </div>
+        <p className="subsection-label needs-label">Problem statement</p>
+        <h2 className="problem-statement">
+          New students need a connected way to understand and complete
+          essential campus tasks without repeatedly searching across
+          disconnected sources.
+        </h2>
 
         <p className="subsection-label needs-label">User needs</p>
         <h2>What the interface has to make visible.</h2>
@@ -478,6 +474,11 @@ export default function Home() {
 
         <p className="subsection-label needs-label">Product scope</p>
         <h2>Five services, reduced to first-week core tasks.</h2>
+        <p className="lead chapter-note">
+          The task analysis, cut down. A task earned its place by being
+          multi-step, observable from start to finish, and capable of failing —
+          anything that could not change a screen was dropped.
+        </p>
         <div className="scope-table">
           {productScope.map(([service, ...tasks]) => (
             <article key={service}>
@@ -498,26 +499,10 @@ export default function Home() {
             directory.
           </h2>
         </div>
-      </section>
 
-      <section className="ideation section" id="ideation">
-        <div className="section-label">
-          <span>05</span>
-          <p>Ideation</p>
-        </div>
-        <div className="ideation-heading">
-          <h2>
-            Five starting points.
-            <br />
-            <em>One newcomer journey.</em>
-          </h2>
-          <p className="lead">
-            Each team member brought a different view of early campus life. We
-            kept the strongest contribution from each, then used the
-            newcomer’s journey as the organising logic.
-          </p>
-        </div>
-        <div className="hmw">
+        {/* --- The hinge: the definition restated as a question ------------- */}
+
+        <div className="hmw chapter-hinge">
           <span className="subsection-label">HOW MIGHT WE</span>
           <p className="lead">
             Help a student who is new to NUS understand and complete essential
@@ -525,8 +510,20 @@ export default function Home() {
             sources?
           </p>
         </div>
+
+        {/* --- Ideation: five answers, converged --------------------------- */}
+
         <p className="subsection-label">Concept convergence</p>
-        <h2>What we kept from each original idea.</h2>
+        <h2>
+          Five starting points.
+          <br />
+          <em>One newcomer journey.</em>
+        </h2>
+        <p className="lead chapter-note">
+          Each team member brought a different view of early campus life. We
+          kept the strongest contribution from each, then used the newcomer’s
+          journey as the organising logic.
+        </p>
         <div className="concept-grid">
           {concepts.map((concept) => (
             <article key={concept.name} className={concept.className}>
@@ -582,7 +579,7 @@ export default function Home() {
 
       <section className="prototype section" id="prototype">
         <div className="section-label">
-          <span>06</span>
+          <span>05</span>
           <p>Prototyping</p>
         </div>
         <div className="prototype-top">
@@ -668,7 +665,7 @@ export default function Home() {
 
       <section className="evaluation section" id="evaluation">
         <div className="section-label light">
-          <span>07</span>
+          <span>06</span>
           <p>Evaluation</p>
         </div>
         <div className="evaluation-grid">
@@ -707,7 +704,7 @@ export default function Home() {
 
       <section className="final section" id="final">
         <div className="section-label">
-          <span>08</span>
+          <span>07</span>
           <p>Final Prototype</p>
         </div>
         <div className="final-heading">
