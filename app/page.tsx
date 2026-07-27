@@ -82,16 +82,9 @@ const introClaims = [
   ],
 ];
 
-const processSteps = [
-  ["01", "Frame", "Turn five product ideas into assumptions to test."],
-  ["02", "Connect", "Map each service to one newcomer journey."],
-  ["03", "Prototype", "Make the cross-service handoffs tangible."],
-  ["04", "Evaluate", "Test clarity, confidence, trust, and continuity."],
-];
-
 // --- 04 Define & Ideation ------------------------------------------------
 // Three movements only: the themes the evidence produced, the How-might-we
-// they turn into, and the concepts that answer it.
+// they turn into, and the system that answers it.
 
 const researchSignals = [
   {
@@ -424,27 +417,26 @@ export default function Home() {
             </article>
           ))}
         </div>
+        {/* What the three signals add up to — the problem, stated in prose
+            rather than as its own heading. */}
+        <p className="signal-conclusion">
+          Together they define the problem: new students need a connected way
+          to understand and complete essential campus tasks without repeatedly
+          searching across disconnected sources.
+        </p>
 
-        <p className="subsection-label needs-label">Problem statement</p>
-        <h2 className="problem-statement">
-          New students need a connected way to understand and complete
-          essential campus tasks without repeatedly searching across
-          disconnected sources.
-        </h2>
+        {/* --- The hinge: Define turns into the question Ideation answers --- */}
 
-        {/* --- The hinge: the problem turned into a question ---------------- */}
-
-        <div className="hmw chapter-hinge">
-          <span className="subsection-label">HOW MIGHT WE</span>
-          <p className="lead">
+        <div className="chapter-hinge">
+          <p className="subsection-label">How might we</p>
+          <h2>
             Help a student new to NUS move from uncertainty to a clear next
             action?
-          </p>
+          </h2>
         </div>
 
         {/* --- Ideation: the five concepts from chapter 02, converged ------- */}
 
-        <p className="subsection-label">Synthesis move</p>
         <h2>From separate concepts to one connected system.</h2>
         <div className="system-hub">
           <p className="wordmark hub-mark">
@@ -493,15 +485,6 @@ export default function Home() {
             dashboard, a relevant service, and a clear next step. That
             continuity is the product’s central interaction idea.
           </p>
-        </div>
-        <div className="flow-row">
-          {processSteps.map(([number, title, copy]) => (
-            <article key={number}>
-              <span>{number}</span>
-              <h3>{title}</h3>
-              <p>{copy}</p>
-            </article>
-          ))}
         </div>
         {/* Lead item sticks while the service rail scrolls past it. */}
         <div className="proto-grid">

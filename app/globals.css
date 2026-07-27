@@ -757,20 +757,37 @@ h2 {
   max-width: 68ch;
 }
 
-/* The problem statement carries the chapter on its own — no card beside it,
-   because the How-might-we below is where it turns into a question. */
+/* Statement headings carry the chapter on their own — no card beside them. */
 .problem-statement {
   max-width: 900px;
 }
 
-/* The hinge between the two halves. Same block as the case study's other
-   How-might-we, ruled top and bottom so it reads as the turn rather than one
-   more subsection. */
+/* The hinge of the chapter: Define ends here, and the question the second
+   half answers is stated at full heading weight. Ruled top and bottom, with
+   wide margins, so it separates the two halves instead of reading as one more
+   subsection. */
 .chapter-hinge {
   border-bottom: 1px solid var(--line);
   border-top: 1px solid var(--line);
-  margin: 110px 0;
-  padding: 54px 0;
+  margin: 104px 0 96px;
+  padding: 58px 0 62px;
+}
+
+.chapter-hinge h2 {
+  margin: 0;
+  max-width: 17ch;
+}
+
+/* The conclusion the three signals add up to. Ruled off from the cards so it
+   reads as their result rather than a fourth one. */
+.signal-conclusion {
+  border-top: 1px solid var(--line);
+  color: var(--color-body);
+  font-size: var(--font-lead);
+  line-height: var(--line-lead);
+  margin: 40px 0 0;
+  max-width: 78ch;
+  padding-top: 30px;
 }
 
 /* The white panel used from here down is the prototype card's: flat, hairline
@@ -1122,28 +1139,6 @@ h2 {
   padding-top: 12px;
 }
 
-.hmw {
-  display: grid;
-  gap: 6vw;
-  grid-template-columns: 0.35fr 1.65fr;
-  margin: 110px 0;
-}
-
-.hmw > span {
-  color: var(--color-caption);
-  font-size: var(--font-label);
-  font-weight: 800;
-  letter-spacing: 2px;
-}
-
-.hmw p {
-  color: var(--color-body);
-  font-size: var(--font-lead);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: var(--line-lead);
-}
-
 .principles {
   border-top: 1px solid var(--line);
   display: grid;
@@ -1182,25 +1177,6 @@ h2 {
   line-height: var(--line-lead);
   padding-top: 35px;
 }
-
-.flow-row {
-  display: grid;
-  gap: 1px;
-  grid-template-columns: repeat(4, 1fr);
-  margin: 70px 0;
-}
-
-.flow-row article {
-  background: #fff;
-  min-height: 170px;
-  padding: 27px;
-}
-
-.flow-row article:first-child { border-radius: 22px 0 0 22px; }
-.flow-row article:last-child { border-radius: 0 22px 22px 0; }
-.flow-row span { color: var(--color-caption); font-size: var(--font-label); }
-.flow-row h3 { font-size: var(--font-h3); margin: 24px 0 9px; }
-.flow-row p { color: var(--color-body); font-size: var(--font-body); line-height: var(--line-body); }
 
 /* --- 05 Prototyping: lead item + service rail -------------------------- */
 
@@ -1330,9 +1306,13 @@ h2 {
   width: 100%;
 }
 
+/* Sized against the frame, not in absolute pixels: the rail card is ~250px
+   wide beside the lead item but goes full width once the grid collapses, and
+   a fixed glyph left the icon stranded in a half-empty panel. 30% keeps the
+   desktop rail where it was tuned. */
 .proto-card-glyph {
   display: block;
-  width: 74px;
+  width: min(30%, 150px);
 }
 
 .proto-card-glyph img {
@@ -1788,6 +1768,12 @@ footer p:last-child {
     position: static;
   }
 
+  /* Two up, so a card keeps roughly the width it had beside the lead item.
+     Full width here gave each service a 500px-tall card holding one icon. */
+  .proto-rail {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   /* Stack the convergence stage: fragments above, one screen below. */
   .intro-stage {
     display: flex;
@@ -2035,24 +2021,14 @@ footer p:last-child {
     padding: 20px 22px 24px;
   }
 
-  .hmw {
-    gap: 32px;
-    grid-template-columns: 1fr;
-    margin: 75px 0;
-  }
-
-  .flow-row {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .flow-row article:first-child { border-radius: 20px 0 0 0; }
-  .flow-row article:nth-child(2) { border-radius: 0 20px 0 0; }
-  .flow-row article:last-child { border-radius: 0 0 20px 0; }
-  .flow-row article:nth-child(3) { border-radius: 0 0 0 20px; }
-
   .proto-feature {
     border-radius: 24px;
     padding: 24px;
+  }
+
+  /* Below this the viewport itself is narrow enough that one up is right. */
+  .proto-rail {
+    grid-template-columns: 1fr;
   }
 
   .final-showcase {
