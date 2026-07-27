@@ -41,6 +41,16 @@ const services = [
   },
 ];
 
+// Every visible mention of the product carries the wordmark's two-tone colour.
+// Alt text and metadata keep the plain string — they are never styled.
+function NovaGo() {
+  return (
+    <span className="novago">
+      Nova<span>Go</span>
+    </span>
+  );
+}
+
 // Drop the generated convergence illustration in `public/images/` and set this
 // path to replace the built-in fragment cards, e.g. "/images/intro-scatter.png".
 // Empty keeps the CSS + SVG version.
@@ -104,18 +114,18 @@ const fragmentSources = [
 const introClaims = [
   [
     "01",
-    "Context, not co-location",
-    "Current task, campus location, and stage of arrival decide what surfaces first.",
+    "Beautiful and simple",
+    "A soft, characterful visual language, paired with flows a newcomer can complete on the first try.",
   ],
   [
     "02",
-    "Task-first, not feature-first",
-    "Organised around what a student needs to finish—not a cabinet of five apps.",
+    "Timely and trustworthy",
+    "Information stays current and traceable to its source, so a student can act on it without second-guessing.",
   ],
   [
     "03",
-    "A layer, not a replacement",
-    "Guidance and coordination on top of official systems, with the handoff made visible.",
+    "Always someone to ask",
+    "Albot takes the questions that feel too basic to ask a person—so nobody stays stuck out of embarrassment.",
   ],
 ];
 
@@ -163,7 +173,7 @@ export default function Home() {
             <span>your new campus life.</span>
           </h1>
           <p className="hero-lede lead">
-            NovaGo connects the essential moments of a newcomer&apos;s first
+            <NovaGo /> connects the essential moments of a newcomer’s first
             weeks—from finding the next step to navigating campus, paying with
             confidence, getting everyday items, and asking for help.
           </p>
@@ -265,11 +275,11 @@ export default function Home() {
                 </linearGradient>
               </defs>
               {[
-                "M150 85 Q500 180 817 415",
-                "M310 203 Q570 280 817 415",
-                "M110 383 Q480 430 817 415",
-                "M450 103 Q650 225 817 415",
-                "M350 517 Q600 530 817 415",
+                "M150 85 Q500 180 833 404",
+                "M310 203 Q570 280 833 404",
+                "M110 383 Q480 430 833 404",
+                "M450 103 Q650 225 833 404",
+                "M350 517 Q600 530 833 404",
               ].map((d) => (
                 <path
                   key={d}
@@ -308,6 +318,18 @@ export default function Home() {
           </div>
         </div>
 
+        <h2 className="intro-claims-heading">
+          Our build target:
+          <br />
+          <em>User-centred design</em>
+        </h2>
+
+        <p className="intro-claims-lede lead">
+          <NovaGo /> sets out to improve how newcomers move through these
+          moments, and to give that a warm, carefully crafted interface. Both
+          serve the same end: a better short stay on campus.
+        </p>
+
         <div className="intro-claims">
           {introClaims.map(([number, title, copy]) => (
             <article key={number}>
@@ -316,14 +338,6 @@ export default function Home() {
               <p>{copy}</p>
             </article>
           ))}
-        </div>
-
-        <div className="scope-note">
-          <strong>Design boundary</strong>
-          <p>
-            NovaGo is a guidance and coordination layer. It connects to official
-            systems instead of pretending to replace them.
-          </p>
         </div>
       </section>
 
@@ -339,7 +353,7 @@ export default function Home() {
             <em>one super app.</em>
           </h2>
           <p className="lead">
-            NovaGo began as five independent concepts. Each member owned one
+            <NovaGo /> began as five independent concepts. Each member owned one
             early campus need and carried it into the connected experience.
           </p>
         </div>
@@ -449,7 +463,7 @@ export default function Home() {
           <p className="lead">
             Each team member brought a different view of early campus life. We
             kept the strongest contribution from each, then used the
-            newcomer&apos;s journey as the organising logic.
+            newcomer’s journey as the organising logic.
           </p>
         </div>
         <div className="hmw">
@@ -483,7 +497,7 @@ export default function Home() {
           <p className="lead">
             The core prototype flow connects arrival context to a personalised
             dashboard, a relevant service, and a clear next step. That
-            continuity is the product&apos;s central interaction idea.
+            continuity is the product’s central interaction idea.
           </p>
         </div>
         <div className="flow-row">
@@ -617,7 +631,8 @@ export default function Home() {
           </div>
           <div>
             <p className="lead">
-              NovaGo brings the first week together—safely, simply, and gently.
+              <NovaGo /> brings the first week together—safely, simply, and
+              gently.
             </p>
             <a className="button button-primary" href="#top">
               Back to the beginning <span aria-hidden="true">↑</span>
@@ -630,7 +645,9 @@ export default function Home() {
         <a className="wordmark footer-mark" href="#top">
           Nova<span>Go</span>
         </a>
-        <p>Portfolio of NovaGo</p>
+        <p>
+          Portfolio of <NovaGo />
+        </p>
         <p>A well-designed super app</p>
       </footer>
     </main>
