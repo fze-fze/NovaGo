@@ -111,16 +111,8 @@ const researchSignals = [
   },
 ];
 
-// What survived from each member's original proposal. The five names match
-// the concepts credited in the Design Team chapter.
-const concepts = [
-  { name: "Settly", focus: "Arrival", keeper: "First-week action path", className: "blue" },
-  { name: "EZPAY", focus: "Payment", keeper: "Wallet, exchange, and budget handoff", className: "violet" },
-  { name: "BorrowNest", focus: "Access", keeper: "Safe buy, rent, pickup, and return", className: "mint" },
-  { name: "NUS Nexus", focus: "Community", keeper: "Low-pressure help with visible sources", className: "orange" },
-  { name: "UniFlow", focus: "Study", keeper: "Academic tasks and deadlines", className: "pink" },
-];
-
+// The five services the concepts became. They are named per member in the
+// Design Team chapter, which is where the convergence story starts.
 const systemNodes = ["Academic Hub", "Payment", "Market", "Forum", "Commute"];
 
 // Photos live in `public/images/team/`. Clearing `photo` falls back to the
@@ -408,9 +400,9 @@ export default function Home() {
             <em>before designing the answer.</em>
           </h2>
           <p className="lead">
-            Chapter 03 turned round one into five artefacts. This chapter asks
-            what they justify building — first the problem they add up to, then
-            the concepts that answer it.
+            Our user research tasks turned round one into five artefacts. This
+            chapter asks what they justify building — first the problem they
+            add up to, then the system that answers it.
           </p>
         </div>
 
@@ -450,30 +442,9 @@ export default function Home() {
           </p>
         </div>
 
-        {/* --- Ideation: five answers, converged --------------------------- */}
+        {/* --- Ideation: the five concepts from chapter 02, converged ------- */}
 
-        <p className="subsection-label">Concept convergence</p>
-        <h2>
-          Five starting points.
-          <br />
-          <em>One newcomer journey.</em>
-        </h2>
-        <p className="lead chapter-note">
-          Each team member brought a different view of early campus life. We
-          kept the strongest contribution from each, then used the newcomer’s
-          journey as the organising logic.
-        </p>
-        <div className="concept-grid">
-          {concepts.map((concept) => (
-            <article key={concept.name} className={concept.className}>
-              <span>{concept.focus}</span>
-              <h3>{concept.name}</h3>
-              <p>{concept.keeper}</p>
-            </article>
-          ))}
-        </div>
-
-        <p className="subsection-label needs-label">Synthesis move</p>
+        <p className="subsection-label">Synthesis move</p>
         <h2>From separate concepts to one connected system.</h2>
         <div className="system-hub">
           <p className="wordmark hub-mark">

@@ -783,7 +783,6 @@ h2 {
 }
 
 .signal-grid article,
-.concept-grid article,
 .hub-nodes span {
   background: #fff;
   border: 1px solid rgba(37, 76, 126, 0.07);
@@ -803,8 +802,7 @@ h2 {
   margin: 22px 0 10px;
 }
 
-.signal-grid p,
-.concept-grid p {
+.signal-grid p {
   color: var(--color-body);
   font-size: var(--font-body);
   line-height: var(--line-body);
@@ -830,44 +828,6 @@ h2 {
   max-width: 900px;
   padding-top: 46px;
 }
-
-/* --- 05 Ideation: convergence and the connected system ------------------- */
-
-.concept-grid {
-  display: grid;
-  gap: 14px;
-  grid-template-columns: repeat(5, 1fr);
-  margin-top: 56px;
-}
-
-/* Colour spine and eyebrow, the same pairing the prototype rail and the
-   service marks use. */
-.concept-grid article {
-  border-left-width: 3px;
-  padding: 24px;
-}
-
-.concept-grid article > span {
-  font-size: var(--font-label);
-  font-weight: 700;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-}
-
-.concept-grid h3 {
-  margin: 18px 0 8px;
-}
-
-.concept-grid .blue { border-left-color: #2f8cff; }
-.concept-grid .blue > span { color: #1f6fd0; }
-.concept-grid .violet { border-left-color: #a67cff; }
-.concept-grid .violet > span { color: #7346d1; }
-.concept-grid .mint { border-left-color: #69d9ce; }
-.concept-grid .mint > span { color: #1d8b81; }
-.concept-grid .orange { border-left-color: #f3a739; }
-.concept-grid .orange > span { color: #c97c12; }
-.concept-grid .pink { border-left-color: #f39acb; }
-.concept-grid .pink > span { color: #c9558f; }
 
 /* The convergence payoff again, this time as the thing the five services hang
    off: the mark, then the rail, then the services. */
@@ -1795,7 +1755,6 @@ footer p:last-child {
     grid-template-columns: 1fr;
   }
 
-  .concept-grid,
   .hub-nodes {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -2013,7 +1972,6 @@ footer p:last-child {
     grid-template-columns: 1fr;
   }
 
-  .concept-grid,
   .hub-nodes {
     grid-template-columns: repeat(2, 1fr);
   }
