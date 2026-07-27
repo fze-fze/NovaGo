@@ -1,0 +1,336 @@
+Exit code: 0
+Wall time: 0.6 seconds
+Output:
+.page {
+  min-height: 100vh;
+  background:
+    radial-gradient(1000px 650px at 18% 8%, rgba(87, 182, 255, 0.16), transparent 70%),
+    radial-gradient(900px 620px at 84% 40%, rgba(166, 124, 255, 0.13), transparent 70%),
+    #f3f8fd;
+  color: var(--color-body);
+}
+
+.header {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  padding: 32px 7vw 0;
+}
+
+.wordmark {
+  color: var(--color-heading);
+  font-size: 27px;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+}
+
+.wordmark span {
+  color: var(--color-accent);
+}
+
+.nav {
+  display: flex;
+  gap: 24px;
+}
+
+.nav a {
+  color: var(--color-body);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.hero,
+.conceptSection,
+.principleSection,
+.flowSection,
+.nextStep {
+  padding: 96px 7vw;
+}
+
+.kicker {
+  color: var(--color-accent);
+  font-size: var(--font-label);
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  margin: 0 0 24px;
+  text-transform: uppercase;
+}
+
+.heroGrid,
+.nextStep {
+  display: grid;
+  gap: 8vw;
+  grid-template-columns: 1.1fr 0.9fr;
+}
+
+.hero h1,
+.conceptSection h2,
+.darkPanel h2,
+.principleSection h2,
+.flowSection h2,
+.nextStep h2 {
+  color: var(--color-heading);
+  font-family: var(--serif);
+  font-size: clamp(40px, 5vw, 70px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.04;
+  margin: 0;
+}
+
+.hero h1 em {
+  color: var(--color-accent);
+  font-style: normal;
+}
+
+.hero p:not(.kicker),
+.hmw p {
+  font-size: var(--font-lead);
+  line-height: var(--line-lead);
+}
+
+.hmw {
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 6vw;
+  grid-template-columns: 0.28fr 1fr;
+  margin: 0 7vw;
+  padding: 54px 0;
+}
+
+.hmw span {
+  color: var(--color-caption);
+  font-size: var(--font-label);
+  font-weight: 900;
+  letter-spacing: 0.18em;
+}
+
+.hmw p {
+  color: var(--color-heading);
+  font-weight: 600;
+  margin: 0;
+}
+
+.sectionIntro {
+  max-width: 860px;
+}
+
+.conceptGrid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(5, 1fr);
+  margin-top: 56px;
+}
+
+.conceptGrid article {
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 28px;
+  box-shadow: 0 24px 64px rgba(49, 84, 125, 0.12);
+  min-height: 245px;
+  padding: 28px;
+}
+
+.conceptGrid span {
+  font-size: var(--font-label);
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.conceptGrid h3,
+.principles h3,
+.flowRow h3 {
+  color: var(--color-heading);
+  font-size: var(--font-h3);
+  line-height: 1.3;
+  margin: 38px 0 12px;
+}
+
+.conceptGrid p,
+.principles p,
+.flowRow p {
+  line-height: var(--line-body);
+  margin: 0;
+}
+
+.blue {
+  background: #edf6ff;
+  color: #185fa5;
+}
+
+.violet {
+  background: #f2eeff;
+  color: #7654df;
+}
+
+.mint {
+  background: #e9fbf7;
+  color: #168b7d;
+}
+
+.orange {
+  background: #fff4e4;
+  color: #c97912;
+}
+
+.pink {
+  background: #ffeff7;
+  color: #ca4f89;
+}
+
+.darkPanel {
+  background: var(--color-heading);
+  color: white;
+  padding: 96px 7vw;
+}
+
+.darkPanel h2 {
+  color: white;
+}
+
+.systemDiagram {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 60px;
+}
+
+.node,
+.centerNode {
+  align-items: center;
+  border-radius: 28px;
+  display: flex;
+  justify-content: center;
+  min-height: 132px;
+  text-align: center;
+}
+
+.node {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: var(--color-body-inverse);
+  font-weight: 800;
+}
+
+.centerNode {
+  background: white;
+  color: var(--color-heading);
+  flex-direction: column;
+  font-size: 36px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+}
+
+.centerNode span {
+  color: var(--color-accent);
+}
+
+.centerNode small {
+  color: var(--color-caption);
+  font-size: var(--font-label);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  margin-top: 10px;
+  text-transform: uppercase;
+}
+
+.principles,
+.flowRow {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 56px;
+}
+
+.principles article,
+.flowRow article {
+  background: white;
+  border-radius: 28px;
+  box-shadow: 0 24px 64px rgba(49, 84, 125, 0.1);
+  padding: 32px;
+}
+
+.principles span,
+.flowRow span {
+  color: var(--color-caption);
+  font-size: var(--font-label);
+  font-weight: 800;
+}
+
+.flowRow {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.flowRow article {
+  min-height: 230px;
+}
+
+.nextStep {
+  align-items: center;
+  background: white;
+}
+
+.button {
+  align-items: center;
+  background: var(--color-accent);
+  border-radius: 999px;
+  box-shadow: 0 16px 38px rgba(24, 95, 165, 0.24);
+  color: white;
+  display: inline-flex;
+  font-weight: 800;
+  gap: 28px;
+  justify-content: center;
+  justify-self: end;
+  padding: 16px 22px;
+}
+
+@media (max-width: 1100px) {
+  .conceptGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .flowRow,
+  .principles {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 820px) {
+  .heroGrid,
+  .nextStep,
+  .hmw,
+  .systemDiagram {
+    grid-template-columns: 1fr;
+  }
+
+  .button {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 640px) {
+  .header,
+  .hero,
+  .conceptSection,
+  .principleSection,
+  .flowSection,
+  .nextStep,
+  .darkPanel {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .hmw {
+    margin-left: 24px;
+    margin-right: 24px;
+  }
+
+  .conceptGrid,
+  .flowRow,
+  .principles {
+    grid-template-columns: 1fr;
+  }
+}
+
