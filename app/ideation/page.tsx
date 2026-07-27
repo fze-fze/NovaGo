@@ -1,6 +1,3 @@
-Exit code: 0
-Wall time: 0.6 seconds
-Output:
 import Link from "next/link";
 import styles from "./ideation.module.css";
 
@@ -191,4 +188,3 @@ export default function IdeationPage() {
     </main>
   );
 }
-
