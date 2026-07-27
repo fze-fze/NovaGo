@@ -1,6 +1,3 @@
-Exit code: 0
-Wall time: 0.6 seconds
-Output:
 import Link from "next/link";
 import styles from "./define.module.css";
 
@@ -144,4 +141,3 @@ export default function DefinePage() {
     </main>
   );
 }
-
