@@ -1,5 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+import { SiteFooter, SiteHeader } from "../site-chrome";
 import styles from "./ideation.module.css";
+
+export const metadata: Metadata = {
+  title: "Ideation — NovaGo case study",
+  description:
+    "How five separate team concepts converged into one connected campus companion organised around a newcomer's first-week tasks.",
+};
 
 const concepts = [
   {
@@ -33,6 +42,8 @@ const concepts = [
     color: "pink",
   },
 ] as const;
+
+const services = ["Academic Hub", "Payment", "Market", "Forum", "Commute"];
 
 const principles = [
   {
@@ -69,46 +80,38 @@ const conceptClassNames = {
 
 export default function IdeationPage() {
   return (
-    <main className={styles.page}>
-      <header className={styles.header}>
-        <Link className={styles.wordmark} href="/">
-          Nova<span>Go</span>
-        </Link>
-        <nav className={styles.nav} aria-label="Ideation page navigation">
-          <Link href="/">Home</Link>
-          <Link href="/define">Define</Link>
-        </nav>
-      </header>
+    <main>
+      <SiteHeader />
 
-      <section className={styles.hero}>
-        <p className={styles.kicker}>04 / Ideation</p>
-        <div className={styles.heroGrid}>
+      <section className={`section ${styles.opening}`}>
+        <div className="section-label">
+          <span>04</span>
+          <p>Ideation</p>
+        </div>
+        <div className={styles.headingGrid}>
           <h1>
             Five starting points.
             <br />
             <em>One newcomer journey.</em>
           </h1>
-          <p>
+          <p className="lead">
             Each team member brought a different view of early campus life. The
             ideation phase kept the strongest task from each proposal, then
             connected them around one first-week student journey.
           </p>
         </div>
-      </section>
 
-      <section className={styles.hmw}>
-        <span>HOW MIGHT WE</span>
-        <p>
-          Help a student who is new to NUS understand and complete essential
-          campus tasks without repeatedly searching across disconnected sources?
-        </p>
-      </section>
-
-      <section className={styles.conceptSection}>
-        <div className={styles.sectionIntro}>
-          <p className={styles.kicker}>Concept convergence</p>
-          <h2>What we kept from each original idea.</h2>
+        <div className="hmw">
+          <span className="subsection-label">HOW MIGHT WE</span>
+          <p className="lead">
+            Help a student who is new to NUS understand and complete essential
+            campus tasks without repeatedly searching across disconnected
+            sources?
+          </p>
         </div>
+
+        <p className="subsection-label">Concept convergence</p>
+        <h2>What we kept from each original idea.</h2>
         <div className={styles.conceptGrid}>
           {concepts.map((concept) => (
             <article
@@ -123,30 +126,31 @@ export default function IdeationPage() {
         </div>
       </section>
 
-      <section className={styles.darkPanel}>
-        <div className={styles.sectionIntro}>
-          <p className={styles.kicker}>Synthesis move</p>
-          <h2>From separate concepts to one connected system.</h2>
-        </div>
-        <div className={styles.systemDiagram}>
-          <div className={styles.node}>Academic Hub</div>
-          <div className={styles.node}>Payment</div>
-          <div className={styles.centerNode}>
-            Nova<span>Go</span>
+      <section className="section section-dark">
+        <p className="subsection-label light">Synthesis move</p>
+        <h2>From separate concepts to one connected system.</h2>
+        {/* The hub sits above the row it feeds, so NovaGo reads as the thing
+            the five services hang off rather than a sixth service. */}
+        <div className={styles.systemMap}>
+          <div className={styles.hub}>
+            <p className={`wordmark ${styles.hubMark}`}>
+              Nova<span>Go</span>
+            </p>
             <small>Task-first campus companion</small>
           </div>
-          <div className={styles.node}>Market</div>
-          <div className={styles.node}>Forum</div>
-          <div className={styles.node}>Commute</div>
+          <span className={styles.connector} aria-hidden="true" />
+          <div className={styles.nodes}>
+            {services.map((service) => (
+              <div key={service}>{service}</div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className={styles.principleSection}>
-        <div className={styles.sectionIntro}>
-          <p className={styles.kicker}>Design principles</p>
-          <h2>Rules for deciding what belongs in the product.</h2>
-        </div>
-        <div className={styles.principles}>
+      <section className="section">
+        <p className="subsection-label">Design principles</p>
+        <h2>Rules for deciding what belongs in the product.</h2>
+        <div className={`principles ${styles.principleGrid}`}>
           {principles.map((principle) => (
             <article key={principle.number}>
               <span>{principle.number}</span>
@@ -155,14 +159,14 @@ export default function IdeationPage() {
             </article>
           ))}
         </div>
-      </section>
 
-      <section className={styles.flowSection}>
-        <div className={styles.sectionIntro}>
-          <p className={styles.kicker}>Prototype direction</p>
-          <h2>The prototype should design the handoffs, not just the home screen.</h2>
-        </div>
-        <div className={styles.flowRow}>
+        <p className={`subsection-label ${styles.flowLabel}`}>
+          Prototype direction
+        </p>
+        <h2>
+          The prototype should design the handoffs, not just the home screen.
+        </h2>
+        <div className="flow-row">
           {flows.map(([title, copy], index) => (
             <article key={title}>
               <span>{String(index + 1).padStart(2, "0")}</span>
@@ -171,20 +175,25 @@ export default function IdeationPage() {
             </article>
           ))}
         </div>
+
+        <div className={styles.outcome}>
+          <div>
+            <p className="subsection-label">Ideation outcome</p>
+            <h2>
+              NovaGo became a connected service map organised around a
+              newcomer’s first-week tasks.
+            </h2>
+          </div>
+          <Link
+            className={`button button-primary ${styles.outcomeCta}`}
+            href="/#ideation"
+          >
+            Back to case study <span aria-hidden="true">↑</span>
+          </Link>
+        </div>
       </section>
 
-      <section className={styles.nextStep}>
-        <div>
-          <p className={styles.kicker}>Ideation outcome</p>
-          <h2>
-            NovaGo became a connected service map organised around a newcomer’s
-            first-week tasks.
-          </h2>
-        </div>
-        <Link className={styles.button} href="/">
-          Back to case study <span aria-hidden="true">↑</span>
-        </Link>
-      </section>
+      <SiteFooter />
     </main>
   );
 }

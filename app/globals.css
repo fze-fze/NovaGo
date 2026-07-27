@@ -301,6 +301,19 @@ h3 {
   padding-bottom: 6px;
 }
 
+/* The accent is tuned for the light wash and disappears on navy. */
+.research .text-link,
+.evaluation .text-link,
+.section-dark .text-link {
+  border-bottom-color: var(--color-accent-light);
+  color: var(--color-accent-light);
+}
+
+/* Sends a chapter on the case study through to its own page. */
+.chapter-link {
+  margin: 54px 0 0;
+}
+
 .hero-facts {
   border-top: 1px solid var(--line);
   display: grid;
@@ -438,7 +451,8 @@ h3 {
 }
 
 .research .section-label,
-.evaluation .section-label {
+.evaluation .section-label,
+.section-dark .section-label {
   border-color: rgba(255, 255, 255, 0.16);
 }
 
@@ -739,8 +753,12 @@ h2 {
 }
 
 
+/* `.section-dark` is the same navy band as the two dark case-study chapters,
+   available to any page. The three are listed together everywhere below so a
+   dark section behaves identically wherever it is used. */
 .research,
-.evaluation {
+.evaluation,
+.section-dark {
   background: var(--color-heading);
   color: var(--color-heading-inverse);
 }
@@ -766,12 +784,15 @@ h2 {
 .research h2,
 .research h3,
 .evaluation h2,
-.evaluation h3 {
+.evaluation h3,
+.section-dark h2,
+.section-dark h3 {
   color: var(--color-heading-inverse);
 }
 
 .research .section-label p,
-.evaluation .section-label p {
+.evaluation .section-label p,
+.section-dark .section-label p {
   color: var(--color-heading-inverse);
 }
 

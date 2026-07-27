@@ -1,5 +1,14 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+import { SiteFooter, SiteHeader } from "../site-chrome";
 import styles from "./define.module.css";
+
+export const metadata: Metadata = {
+  title: "Define — NovaGo case study",
+  description:
+    "How research evidence became a problem statement, three user needs, and a first-week scope for five NovaGo services.",
+};
 
 const researchSignals = [
   {
@@ -35,22 +44,17 @@ const scope = [
 
 export default function DefinePage() {
   return (
-    <main className={styles.page}>
-      <header className={styles.header}>
-        <Link className={styles.wordmark} href="/">
-          Nova<span>Go</span>
-        </Link>
-        <nav className={styles.nav} aria-label="Define page navigation">
-          <Link href="/">Home</Link>
-          <Link href="/ideation">Ideation</Link>
-        </nav>
-      </header>
+    <main>
+      <SiteHeader />
 
-      <section className={styles.hero}>
-        <p className={styles.kicker}>03 / Define</p>
-        <div className={styles.heroGrid}>
+      <section className={`section ${styles.opening}`}>
+        <div className="section-label">
+          <span>03</span>
+          <p>Define</p>
+        </div>
+        <div className={styles.headingGrid}>
           <h1>Define the real problem before adding more features.</h1>
-          <p>
+          <p className="lead">
             NovaGo is not solving a lack of apps. It is solving the gap between
             disconnected campus services and the real tasks new students need
             to finish during their first weeks.
@@ -58,11 +62,9 @@ export default function DefinePage() {
         </div>
       </section>
 
-      <section className={styles.darkPanel}>
-        <div className={styles.sectionIntro}>
-          <p className={styles.kicker}>Research synthesis</p>
-          <h2>Three signals shaped the product definition.</h2>
-        </div>
+      <section className="section section-dark">
+        <p className="subsection-label light">Research synthesis</p>
+        <h2>Three signals shaped the product definition.</h2>
         <div className={styles.signalGrid}>
           {researchSignals.map((signal) => (
             <article key={signal.number}>
@@ -74,29 +76,27 @@ export default function DefinePage() {
         </div>
       </section>
 
-      <section className={styles.problemSection}>
-        <div>
-          <p className={styles.kicker}>Problem statement</p>
-          <h2>
-            New students need a connected way to understand and complete
-            essential campus tasks without repeatedly searching across
-            disconnected sources.
-          </h2>
+      <section className="section">
+        <div className={styles.problemGrid}>
+          <div>
+            <p className="subsection-label">Problem statement</p>
+            <h2>
+              New students need a connected way to understand and complete
+              essential campus tasks without repeatedly searching across
+              disconnected sources.
+            </h2>
+          </div>
+          <aside className={styles.problemCard}>
+            <p className="subsection-label">Design challenge</p>
+            <h3>
+              How might we help a student new to NUS move from uncertainty to a
+              clear next action?
+            </h3>
+          </aside>
         </div>
-        <aside className={styles.problemCard}>
-          <p>Design challenge</p>
-          <h3>
-            How might we help a student new to NUS move from uncertainty to a
-            clear next action?
-          </h3>
-        </aside>
-      </section>
 
-      <section className={styles.needsSection}>
-        <div className={styles.sectionIntro}>
-          <p className={styles.kicker}>User needs</p>
-          <h2>What the interface has to make visible.</h2>
-        </div>
+        <p className={`subsection-label ${styles.needsLabel}`}>User needs</p>
+        <h2>What the interface has to make visible.</h2>
         <div className={styles.needGrid}>
           {needs.map(([title, copy]) => (
             <article key={title}>
@@ -107,11 +107,9 @@ export default function DefinePage() {
         </div>
       </section>
 
-      <section className={styles.scopeSection}>
-        <div className={styles.sectionIntro}>
-          <p className={styles.kicker}>Product scope</p>
-          <h2>Five services, reduced to first-week core tasks.</h2>
-        </div>
+      <section className="section">
+        <p className="subsection-label">Product scope</p>
+        <h2>Five services, reduced to first-week core tasks.</h2>
         <div className={styles.scopeTable}>
           {scope.map(([service, taskOne, taskTwo, taskThree]) => (
             <article key={service}>
@@ -124,20 +122,25 @@ export default function DefinePage() {
             </article>
           ))}
         </div>
+
+        <div className={styles.outcome}>
+          <div>
+            <p className="subsection-label">Definition outcome</p>
+            <h2>
+              NovaGo should be a task-first campus companion, not a feature
+              directory.
+            </h2>
+          </div>
+          <Link
+            className={`button button-primary ${styles.outcomeCta}`}
+            href="/ideation"
+          >
+            Continue to ideation <span aria-hidden="true">↘</span>
+          </Link>
+        </div>
       </section>
 
-      <section className={styles.nextStep}>
-        <div>
-          <p className={styles.kicker}>Definition outcome</p>
-          <h2>
-            NovaGo should be a task-first campus companion, not a feature
-            directory.
-          </h2>
-        </div>
-        <Link className={styles.button} href="/ideation">
-          Continue to ideation <span aria-hidden="true">↘</span>
-        </Link>
-      </section>
+      <SiteFooter />
     </main>
   );
 }

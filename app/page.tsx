@@ -360,6 +360,12 @@ export default function Home() {
           How we turn notes into decisions
         </p>
         <ResearchCarousel />
+
+        <p className="chapter-link">
+          <Link className="text-link" href="/define">
+            Read the Define chapter <span aria-hidden="true">→</span>
+          </Link>
+        </p>
       </section>
 
       <section className="ideation section" id="ideation">
@@ -392,6 +398,12 @@ export default function Home() {
           <article><span>02</span><h3>Task-first navigation</h3><p>Organise around what students need to complete—not a folder of features.</p></article>
           <article><span>03</span><h3>Trust made visible</h3><p>Distinguish official information, guidance, and peer advice at a glance.</p></article>
         </div>
+
+        <p className="chapter-link">
+          <Link className="text-link" href="/ideation">
+            Read the Ideation chapter <span aria-hidden="true">→</span>
+          </Link>
+        </p>
       </section>
 
       <section className="prototype section" id="prototype">

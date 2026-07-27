@@ -1,205 +1,135 @@
-.page {
-  min-height: 100vh;
-  background:
-    radial-gradient(900px 560px at 12% 8%, rgba(87, 182, 255, 0.18), transparent 70%),
-    radial-gradient(850px 560px at 88% 24%, rgba(122, 224, 214, 0.16), transparent 70%),
-    #f3f8fd;
-  color: var(--color-body);
+/* Everything typographic — headings, labels, leads, buttons, the dark band —
+   comes from globals.css. What is left here is only this chapter's layout. */
+
+/* Clears the fixed 76px header, matching the prototype pages' top padding. */
+.opening {
+  padding-top: 140px;
 }
 
-.header {
-  align-items: center;
-  display: flex;
-  justify-content: space-between;
-  padding: 32px 7vw 0;
+/* Same split as the Research and Ideation chapter headings on the home page. */
+.headingGrid {
+  display: grid;
+  gap: 5vw;
+  grid-template-columns: 1.25fr 0.75fr;
 }
 
-.wordmark {
-  color: var(--color-heading);
-  font-size: 27px;
-  font-weight: 800;
-  letter-spacing: -1.5px;
+.headingGrid > p {
+  padding-top: 12px;
 }
 
-.wordmark span {
-  color: var(--color-accent);
+/* --- Research synthesis (dark) ------------------------------------------ */
+
+.signalGrid {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 56px;
 }
 
-.nav {
-  display: flex;
-  gap: 24px;
+/* The research carousel's card surface, so the two dark chapters read as the
+   same material. */
+.signalGrid article {
+  background: rgba(255, 255, 255, 0.065);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 28px;
+  padding: 30px;
 }
 
-.nav a {
-  color: var(--color-body);
-  font-size: 15px;
-  font-weight: 700;
-}
-
-.hero,
-.problemSection,
-.needsSection,
-.scopeSection,
-.nextStep {
-  padding: 96px 7vw;
-}
-
-.kicker {
-  color: var(--color-accent);
+.signalGrid article > span {
+  color: var(--color-caption-inverse);
   font-size: var(--font-label);
-  font-weight: 800;
-  letter-spacing: 0.16em;
-  margin: 0 0 24px;
-  text-transform: uppercase;
 }
 
-.heroGrid,
-.problemSection,
-.nextStep {
+.signalGrid h3 {
+  margin: 22px 0 10px;
+}
+
+.signalGrid p {
+  color: var(--color-body-inverse);
+  margin: 0;
+}
+
+/* --- Problem statement --------------------------------------------------- */
+
+.problemGrid {
+  align-items: end;
   display: grid;
   gap: 8vw;
   grid-template-columns: 1.1fr 0.9fr;
 }
 
-.hero h1,
-.problemSection h2,
-.needsSection h2,
-.scopeSection h2,
-.nextStep h2,
-.darkPanel h2 {
-  color: var(--color-heading);
-  font-family: var(--serif);
-  font-size: clamp(40px, 5vw, 70px);
-  font-weight: 500;
-  letter-spacing: -0.02em;
-  line-height: 1.04;
+/* Statement size, as on the service pages: these two headings are full
+   sentences rather than titles, and break badly at the section h2 size. */
+.problemGrid h2,
+.outcome h2 {
+  font-size: clamp(28px, 3vw, 40px);
   margin: 0;
 }
 
-.hero p:not(.kicker),
-.problemCard h3,
-.nextStep h2 {
-  font-size: var(--font-lead);
-  line-height: var(--line-lead);
-}
-
-.darkPanel {
-  background: var(--color-heading);
-  color: white;
-  padding: 92px 7vw;
-}
-
-.darkPanel h2,
-.darkPanel h3 {
-  color: white;
-}
-
-.sectionIntro {
-  max-width: 860px;
-}
-
-.signalGrid,
-.needGrid {
-  display: grid;
-  gap: 20px;
-  grid-template-columns: repeat(3, 1fr);
-  margin-top: 56px;
-}
-
-.signalGrid article {
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 28px;
-  min-height: 290px;
+/* The challenge is lifted out of the statement onto the same flat white panel
+   the prototype rail uses, so the eye lands on it second. */
+.problemCard {
+  background: #fff;
+  border: 1px solid rgba(37, 76, 126, 0.07);
+  border-radius: 20px;
   padding: 30px;
 }
 
-.signalGrid span {
-  color: var(--color-caption-inverse);
-  font-size: var(--font-label);
-}
-
-.signalGrid h3,
-.needGrid h3,
-.scopeTable h3,
 .problemCard h3 {
-  font-size: var(--font-h3);
-  line-height: 1.35;
-  margin: 32px 0 14px;
-}
-
-.signalGrid p {
-  color: var(--color-body-inverse);
-  line-height: var(--line-body);
-}
-
-.problemSection {
-  align-items: end;
-  border-bottom: 1px solid var(--line);
-}
-
-.problemCard {
-  background: white;
-  border: 1px solid rgba(255, 255, 255, 0.8);
-  border-radius: 30px;
-  box-shadow: 0 30px 80px rgba(49, 84, 125, 0.13);
-  padding: 36px;
-}
-
-.problemCard p {
-  color: var(--color-caption);
-  font-size: var(--font-label);
-  font-weight: 800;
-  letter-spacing: 0.14em;
   margin: 0;
-  text-transform: uppercase;
 }
 
-.needGrid article {
-  background: white;
-  border-radius: 26px;
-  box-shadow: 0 22px 55px rgba(49, 84, 125, 0.1);
-  padding: 34px;
+/* --- User needs ---------------------------------------------------------- */
+
+.needsLabel {
+  margin-top: 110px;
+}
+
+/* Ruled columns rather than cards — the same restraint as the Introduction
+   claims and the ideation principles. */
+.needGrid {
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 35px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 54px;
+  padding-top: 36px;
 }
 
 .needGrid h3 {
-  color: var(--color-heading);
-  margin-top: 0;
+  margin: 0 0 10px;
 }
 
 .needGrid p {
   margin: 0;
 }
 
-.scopeSection {
-  padding-top: 40px;
-}
+/* --- Product scope ------------------------------------------------------- */
 
 .scopeTable {
   display: grid;
-  gap: 14px;
-  margin-top: 48px;
+  gap: 12px;
+  margin-top: 54px;
 }
 
 .scopeTable article {
   align-items: center;
-  background: rgba(255, 255, 255, 0.82);
-  border: 1px solid rgba(255, 255, 255, 0.9);
-  border-radius: 24px;
+  background: #fff;
+  border: 1px solid rgba(37, 76, 126, 0.07);
+  border-radius: 20px;
   display: grid;
   gap: 28px;
-  grid-template-columns: 0.34fr 1fr;
-  padding: 24px 28px;
+  grid-template-columns: 0.3fr 1fr;
+  padding: 22px 26px;
 }
 
 .scopeTable h3 {
-  color: var(--color-heading);
   margin: 0;
 }
 
 .scopeTable ul {
   display: grid;
-  gap: 12px;
+  gap: 10px;
   grid-template-columns: repeat(3, 1fr);
   list-style: none;
   margin: 0;
@@ -207,66 +137,66 @@
 }
 
 .scopeTable li {
-  background: #eef6ff;
+  background: var(--cloud);
   border-radius: 999px;
   color: var(--color-heading);
-  font-size: 14px;
+  font-size: var(--font-label);
   font-weight: 700;
-  padding: 12px 16px;
+  padding: 11px 16px;
   text-align: center;
 }
 
-.nextStep {
-  align-items: center;
-  background: white;
+/* --- Definition outcome -------------------------------------------------- */
+
+.outcome {
+  align-items: end;
+  border-top: 1px solid var(--line);
+  display: grid;
+  gap: 8vw;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 110px;
+  padding-top: 65px;
 }
 
-.button {
-  align-items: center;
-  background: var(--color-accent);
-  border-radius: 999px;
-  box-shadow: 0 16px 38px rgba(24, 95, 165, 0.24);
-  color: white;
-  display: inline-flex;
-  font-weight: 800;
-  gap: 28px;
-  justify-content: center;
+.outcomeCta {
   justify-self: end;
-  padding: 16px 22px;
 }
 
-@media (max-width: 900px) {
-  .heroGrid,
-  .problemSection,
-  .nextStep,
-  .signalGrid,
-  .needGrid {
+@media (max-width: 1050px) {
+  .headingGrid,
+  .problemGrid,
+  .outcome {
+    gap: 55px;
     grid-template-columns: 1fr;
   }
 
+  .headingGrid > p {
+    padding-top: 0;
+  }
+
+  .outcomeCta {
+    justify-self: start;
+  }
+}
+
+@media (max-width: 760px) {
+  .opening {
+    padding-top: 112px;
+  }
+
+  .signalGrid,
+  .needGrid,
   .scopeTable article,
   .scopeTable ul {
     grid-template-columns: 1fr;
   }
 
-  .button {
-    justify-self: start;
-  }
-}
-
-@media (max-width: 640px) {
-  .header,
-  .hero,
-  .problemSection,
-  .needsSection,
-  .scopeSection,
-  .nextStep,
-  .darkPanel {
-    padding-left: 24px;
-    padding-right: 24px;
+  .scopeTable article {
+    gap: 18px;
   }
 
-  .nav {
-    gap: 14px;
+  .needsLabel,
+  .outcome {
+    margin-top: 76px;
   }
 }
