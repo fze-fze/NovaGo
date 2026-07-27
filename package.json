@@ -5,11 +5,12 @@
   "engines": {
     "node": ">=20.9.0"
   },
+  "comment": "dev/start/lint call their binaries by path: this checkout sits under a directory whose name contains ':', which is the PATH separator, so npm's node_modules/.bin injection does not resolve here. `build` stays conventional for the Vercel toolchain.",
   "scripts": {
-    "dev": "next dev",
+    "dev": "node ./node_modules/next/dist/bin/next dev",
     "build": "next build",
-    "start": "next start",
-    "lint": "eslint ."
+    "start": "node ./node_modules/next/dist/bin/next start",
+    "lint": "node ./node_modules/eslint/bin/eslint.js ."
   },
   "dependencies": {
     "next": "16.2.6",
