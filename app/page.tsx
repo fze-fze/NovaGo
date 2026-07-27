@@ -90,8 +90,8 @@ const processSteps = [
 ];
 
 // --- 04 Define & Ideation ------------------------------------------------
-// The chapter runs evidence -> problem -> How might we -> concepts. The first
-// three arrays are the Define half, the last three the Ideation half.
+// Three movements only: the themes the evidence produced, the How-might-we
+// they turn into, and the concepts that answer it.
 
 const researchSignals = [
   {
@@ -111,20 +111,6 @@ const researchSignals = [
   },
 ];
 
-const userNeeds = [
-  ["Clarity", "Show the next action clearly instead of presenting a folder of features."],
-  ["Confidence", "Make cost, source, status, and consequence visible before the student acts."],
-  ["Continuity", "Carry context across services so students do not restart the same task repeatedly."],
-];
-
-const productScope = [
-  ["Academic Hub", "Course planner", "Leave application", "Deadline tracking"],
-  ["Payment", "Wallet & top up", "Currency exchange", "QR pay & budget update"],
-  ["Market", "Browse or rent", "Safe checkout", "Pickup & return"],
-  ["Forum", "Search answers", "Ask anonymously", "Source labels"],
-  ["Commute", "Compare routes", "Shuttle schedule", "Leave-by alert"],
-];
-
 // What survived from each member's original proposal. The five names match
 // the concepts credited in the Design Team chapter.
 const concepts = [
@@ -136,13 +122,6 @@ const concepts = [
 ];
 
 const systemNodes = ["Academic Hub", "Payment", "Market", "Forum", "Commute"];
-
-const journeySteps = [
-  ["01", "Find", "Student starts with a real campus task, not a menu category."],
-  ["02", "Guide", "Albot and the dashboard explain the next action in plain language."],
-  ["03", "Act", "The relevant service opens with context already carried forward."],
-  ["04", "Handoff", "Completed actions update the next service, such as Budget Planner after payment."],
-];
 
 // Photos live in `public/images/team/`. Clearing `photo` falls back to the
 // colour placeholder.
@@ -461,53 +440,13 @@ export default function Home() {
           disconnected sources.
         </h2>
 
-        <p className="subsection-label needs-label">User needs</p>
-        <h2>What the interface has to make visible.</h2>
-        <div className="need-grid">
-          {userNeeds.map(([title, copy]) => (
-            <article key={title}>
-              <h3>{title}</h3>
-              <p>{copy}</p>
-            </article>
-          ))}
-        </div>
-
-        <p className="subsection-label needs-label">Product scope</p>
-        <h2>Five services, reduced to first-week core tasks.</h2>
-        <p className="lead chapter-note">
-          The task analysis, cut down. A task earned its place by being
-          multi-step, observable from start to finish, and capable of failing —
-          anything that could not change a screen was dropped.
-        </p>
-        <div className="scope-table">
-          {productScope.map(([service, ...tasks]) => (
-            <article key={service}>
-              <h3>{service}</h3>
-              <ul>
-                {tasks.map((task) => (
-                  <li key={task}>{task}</li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
-
-        <div className="chapter-outcome">
-          <p className="subsection-label">Definition outcome</p>
-          <h2>
-            NovaGo should be a task-first campus companion, not a feature
-            directory.
-          </h2>
-        </div>
-
-        {/* --- The hinge: the definition restated as a question ------------- */}
+        {/* --- The hinge: the problem turned into a question ---------------- */}
 
         <div className="hmw chapter-hinge">
           <span className="subsection-label">HOW MIGHT WE</span>
           <p className="lead">
-            Help a student who is new to NUS understand and complete essential
-            campus tasks without repeatedly searching across disconnected
-            sources?
+            Help a student new to NUS move from uncertainty to a clear next
+            action?
           </p>
         </div>
 
@@ -554,18 +493,6 @@ export default function Home() {
           <article><span>01</span><h3>Synergy over quantity</h3><p>Every service should hand off to a meaningful next step.</p></article>
           <article><span>02</span><h3>Task-first navigation</h3><p>Organise around what students need to complete—not a folder of features.</p></article>
           <article><span>03</span><h3>Trust made visible</h3><p>Distinguish official information, guidance, and peer advice at a glance.</p></article>
-        </div>
-
-        <p className="subsection-label needs-label">Prototype direction</p>
-        <h2>The handoffs the prototype has to make real.</h2>
-        <div className="flow-row">
-          {journeySteps.map(([number, title, copy]) => (
-            <article key={number}>
-              <span>{number}</span>
-              <h3>{title}</h3>
-              <p>{copy}</p>
-            </article>
-          ))}
         </div>
 
         <div className="chapter-outcome">

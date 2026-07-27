@@ -775,8 +775,7 @@ h2 {
 
 /* The white panel used from here down is the prototype card's: flat, hairline
    border, no shadow until something is interactive. */
-.signal-grid,
-.need-grid {
+.signal-grid {
   display: grid;
   gap: 20px;
   grid-template-columns: repeat(3, 1fr);
@@ -784,17 +783,14 @@ h2 {
 }
 
 .signal-grid article,
-.need-grid article,
 .concept-grid article,
-.scope-table article,
 .hub-nodes span {
   background: #fff;
   border: 1px solid rgba(37, 76, 126, 0.07);
   border-radius: 20px;
 }
 
-.signal-grid article,
-.need-grid article {
+.signal-grid article {
   padding: 28px;
 }
 
@@ -807,12 +803,7 @@ h2 {
   margin: 22px 0 10px;
 }
 
-.need-grid h3 {
-  margin: 0 0 10px;
-}
-
 .signal-grid p,
-.need-grid p,
 .concept-grid p {
   color: var(--color-body);
   font-size: var(--font-body);
@@ -832,45 +823,7 @@ h2 {
   margin-top: 110px;
 }
 
-.scope-table {
-  display: grid;
-  gap: 12px;
-  margin-top: 54px;
-}
-
-.scope-table article {
-  align-items: center;
-  display: grid;
-  gap: 28px;
-  grid-template-columns: 0.3fr 1fr;
-  padding: 22px 26px;
-}
-
-.scope-table h3 {
-  margin: 0;
-}
-
-.scope-table ul {
-  display: grid;
-  gap: 10px;
-  grid-template-columns: repeat(3, 1fr);
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-.scope-table li {
-  background: var(--cloud);
-  border-radius: 999px;
-  color: var(--color-heading);
-  font-size: var(--font-label);
-  font-weight: 700;
-  padding: 11px 16px;
-  text-align: center;
-}
-
-/* Closes both the Define and the Ideation chapter with the decision it
-   reached. */
+/* Closes the chapter with the decision it reached. */
 .chapter-outcome {
   border-top: 1px solid var(--line);
   margin-top: 110px;
@@ -2056,15 +2009,8 @@ footer p:last-child {
   }
 
   .principles,
-  .signal-grid,
-  .need-grid,
-  .scope-table article,
-  .scope-table ul {
+  .signal-grid {
     grid-template-columns: 1fr;
-  }
-
-  .scope-table article {
-    gap: 18px;
   }
 
   .concept-grid,
