@@ -1,55 +1,8 @@
-const services = [
-  {
-    icon: "▰",
-    name: "Pay",
-    subtitle: "Quick & secure",
-    className: "blue",
-    description:
-      "Plain-language guidance for accepted payment methods, setup steps, and fallback options.",
-  },
-  {
-    icon: "◈",
-    name: "Market",
-    subtitle: "Buy & rent",
-    className: "violet",
-    description:
-      "A campus marketplace shaped around short stays, verified peers, and safer handovers.",
-  },
-  {
-    icon: "▣",
-    name: "Commute",
-    subtitle: "Plan your ride",
-    className: "mint",
-    description:
-      "Contextual routes, walking time, and timely departure guidance across campus.",
-  },
-  {
-    icon: "◆",
-    name: "Academic Hub",
-    subtitle: "Resources & tools",
-    className: "orange",
-    description:
-      "One place to understand tasks, terms, deadlines, and links to official systems.",
-  },
-  {
-    icon: "▤",
-    name: "Forum",
-    subtitle: "Connect & discuss",
-    className: "pink",
-    description:
-      "Low-pressure, task-based help with visible source and freshness cues.",
-  },
-];
+import Link from "next/link";
 
-// Every visible mention of the product carries the wordmark's two-tone colour.
-// Alt text and metadata keep the plain string — they are never styled.
-function NovaGo() {
-  return (
-    <span className="novago">
-      Nova<span>Go</span>
-    </span>
-  );
-}
+import { ecosystemMap, services as serviceProgress } from "./services";
+import { ResearchCarousel } from "./research-carousel";
+import { NovaGo, SiteFooter, SiteHeader } from "./site-chrome";
 
 // Drop the generated convergence illustration in `public/images/` and set this
 // path to replace the built-in fragment cards, e.g. "/images/intro-scatter.png".
@@ -149,19 +102,7 @@ const teamMembers = [
 export default function Home() {
   return (
     <main>
-      <header className="site-header">
-        <a className="wordmark" href="#top" aria-label="NovaGo home">
-          Nova<span>Go</span>
-        </a>
-        <nav aria-label="Case study sections">
-          <a href="#team">Team</a>
-          <a href="#research">Research</a>
-          <a href="#ideation">Ideation</a>
-          <a className="nav-cta" href="#final">
-            Final prototype
-          </a>
-        </nav>
-      </header>
+      <SiteHeader />
 
       <section className="hero" id="top">
         <div className="orb orb-one" />
@@ -331,6 +272,12 @@ export default function Home() {
         </p>
 
         <div className="intro-claims">
+          <img
+            className="intro-robot"
+            src="/images/novago-robot-lying.png"
+            alt=""
+            aria-hidden="true"
+          />
           {introClaims.map(([number, title, copy]) => (
             <article key={number}>
               <span>{number}</span>
@@ -402,51 +349,17 @@ export default function Home() {
             questions worth testing.
           </h2>
           <p className="lead">
-            We began with five team proposals. Instead of presenting product
-            assumptions as user findings, we reframed them into three initial
-            research themes and a traceable evidence plan.
+            We began with five team proposals. Rather than present product
+            assumptions as user findings, we ran a first round of interviews to
+            establish what newcomers actually struggle with, then reframed the
+            proposals into service-level questions worth testing.
           </p>
         </div>
-        <div className="theme-grid">
-          <article>
-            <span className="theme-number">01</span>
-            <div className="theme-icon blue">↗</div>
-            <h3>Arrival & orientation</h3>
-            <p>
-              Can newcomers turn unfamiliar places, terms, and deadlines into
-              a clear first-week action path?
-            </p>
-          </article>
-          <article>
-            <span className="theme-number">02</span>
-            <div className="theme-icon violet">◎</div>
-            <h3>Information & learning</h3>
-            <p>
-              How do students decide which information is current, credible,
-              and relevant to the task at hand?
-            </p>
-          </article>
-          <article>
-            <span className="theme-number">03</span>
-            <div className="theme-icon mint">◇</div>
-            <h3>Trust & independence</h3>
-            <p>
-              What helps students ask for help and interact with peers without
-              unnecessary uncertainty or social pressure?
-            </p>
-          </article>
-        </div>
-        <div className="research-chain">
-          <p>Our evidence standard</p>
-          <div className="chain">
-            <span>Verbatim note</span><b>→</b><span>Theme</span><b>→</b>
-            <span>User need</span><b>→</b><span>Design implication</span>
-          </div>
-          <small>
-            Current status: hypotheses defined; primary participant research is
-            the next evidence milestone.
-          </small>
-        </div>
+
+        <p className="subsection-label light research-next-label">
+          How we turn notes into decisions
+        </p>
+        <ResearchCarousel />
       </section>
 
       <section className="ideation section" id="ideation">
@@ -509,36 +422,60 @@ export default function Home() {
             </article>
           ))}
         </div>
-        <div className="prototype-stage">
-          <div className="screen-pair">
-            <div className="mini-phone back">
-              <img src="/images/novago-login.png" alt="NovaGo entry screen" />
-            </div>
-            <div className="mini-phone front">
-              <img src="/images/novago-home.png" alt="NovaGo dashboard screen" />
-            </div>
-          </div>
-          <div className="visual-system">
-            <p className="subsection-label">VISUAL SYSTEM</p>
-            <h3>Calm enough to reassure. Bright enough to invite.</h3>
-            <p>
-              Deep navy creates clarity; luminous blue signals action; soft
-              colour washes differentiate services without making the system
-              feel administrative.
-            </p>
-            <div className="swatches" aria-label="NovaGo color palette">
-              <span style={{ background: "#112c67" }} />
-              <span style={{ background: "#2f8cff" }} />
-              <span style={{ background: "#69d9ce" }} />
-              <span style={{ background: "#a67cff" }} />
-              <span style={{ background: "#f3a739" }} />
-              <span style={{ background: "#f39acb" }} />
-            </div>
-            <ul>
-              <li>Rounded, translucent service cards</li>
-              <li>Supportive, plain-language prompts</li>
-              <li>Friendly robot guide as a recurring companion</li>
-            </ul>
+        {/* Lead item sticks while the service rail scrolls past it. */}
+        <div className="proto-grid">
+          <Link className="proto-feature" href="/prototype/system">
+            <span className="proto-feature-media">
+              {ecosystemMap ? (
+                <img
+                  src={ecosystemMap}
+                  alt="Ecosystem map showing how the five NovaGo services hand off to each other"
+                />
+              ) : (
+                <span className="proto-slot">
+                  <span>Ecosystem map</span>
+                </span>
+              )}
+            </span>
+            <span className="subsection-label">Visual system &amp; ecosystem map</span>
+            <span className="proto-feature-title">
+              Calm enough to reassure. Bright enough to invite.
+              <span className="proto-card-arrow" aria-hidden="true">
+                ↗
+              </span>
+            </span>
+          </Link>
+
+          <div className="proto-rail">
+            {serviceProgress.map((service) => (
+              <Link
+                className={`proto-card ${service.className}`}
+                href={`/prototype/${service.slug}`}
+                key={service.slug}
+              >
+                <span className="proto-card-media">
+                  {service.hifi[0] ? (
+                    <img
+                      src={service.hifi[0].src}
+                      alt={service.hifi[0].caption}
+                    />
+                  ) : (
+                    <span className="proto-card-glyph">
+                      <img src={service.icon} alt="" />
+                    </span>
+                  )}
+                </span>
+                <span className="proto-card-text">
+                  <span className="proto-card-name">{service.name}</span>
+                  <span className="proto-card-hint">
+                    Read
+                    <span className="proto-card-arrow" aria-hidden="true">
+                      ↗
+                    </span>
+                  </span>
+                </span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -603,24 +540,21 @@ export default function Home() {
           <div className="final-phone login-shot">
             <img src="/images/novago-login.png" alt="Final NovaGo login prototype" />
           </div>
-          <div className="final-copy">
-            <p className="subsection-label">THE CONNECTING LAYER</p>
-            <h3>One profile. One campus context. One clear next step.</h3>
-            <p>
-              Academic Hub clarifies what to do; Commute gets students there;
-              Pay reduces uncertainty at the point of action; Market supports
-              short-term access; and Forum makes relevant help easier to find.
-            </p>
-            <div className="service-mini-grid">
-              {services.map((service) => (
-                <article key={service.name} className={service.className}>
-                  <div>{service.icon}</div>
-                  <span>{service.name}</span>
-                  <small>{service.subtitle}</small>
-                </article>
-              ))}
-            </div>
-          </div>
+          <a
+            className="final-poster"
+            href="https://www.figma.com/proto/3TRs3ZdFmmtym1RywfpS1R/NovaGo?node-id=7-462&p=f&t=KE70MKvdrNx5Zf2V-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=7%3A462"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="/images/novago-poster.jpg"
+              alt="NovaGo — help your campus life. Pay, Market, Commute, Academic Hub and Forum rising from a student's phone on campus, with Albot alongside."
+            />
+            <span className="final-poster-cta">
+              Try the Figma prototype
+              <span aria-hidden="true">↗</span>
+            </span>
+          </a>
           <div className="final-phone home-shot">
             <img src="/images/novago-home.png" alt="Final NovaGo home prototype" />
           </div>
@@ -641,15 +575,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer>
-        <a className="wordmark footer-mark" href="#top">
-          Nova<span>Go</span>
-        </a>
-        <p>
-          Portfolio of <NovaGo />
-        </p>
-        <p>A well-designed super app</p>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }
