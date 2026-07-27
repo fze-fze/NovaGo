@@ -89,6 +89,61 @@ const processSteps = [
   ["04", "Evaluate", "Test clarity, confidence, trust, and continuity."],
 ];
 
+// --- 04 Define -----------------------------------------------------------
+
+const researchSignals = [
+  {
+    number: "01",
+    title: "Fragmented campus systems",
+    copy: "New students move between official pages, email, maps, payment tools, group chats, and marketplaces before they can complete one simple task.",
+  },
+  {
+    number: "02",
+    title: "Unclear trust signals",
+    copy: "Students can find answers quickly, but they often cannot tell whether the information is official, current, peer-based, or only a guess.",
+  },
+  {
+    number: "03",
+    title: "High-pressure first-week decisions",
+    copy: "Payment, currency exchange, directions, deadlines, and buying essentials all happen while the student is still learning campus language.",
+  },
+];
+
+const userNeeds = [
+  ["Clarity", "Show the next action clearly instead of presenting a folder of features."],
+  ["Confidence", "Make cost, source, status, and consequence visible before the student acts."],
+  ["Continuity", "Carry context across services so students do not restart the same task repeatedly."],
+];
+
+const productScope = [
+  ["Academic Hub", "Course planner", "Leave application", "Deadline tracking"],
+  ["Payment", "Wallet & top up", "Currency exchange", "QR pay & budget update"],
+  ["Market", "Browse or rent", "Safe checkout", "Pickup & return"],
+  ["Forum", "Search answers", "Ask anonymously", "Source labels"],
+  ["Commute", "Compare routes", "Shuttle schedule", "Leave-by alert"],
+];
+
+// --- 05 Ideation ---------------------------------------------------------
+
+// What survived from each member's original proposal. The five names match
+// the concepts credited in the Design Team chapter.
+const concepts = [
+  { name: "Settly", focus: "Arrival", keeper: "First-week action path", className: "blue" },
+  { name: "EZPAY", focus: "Payment", keeper: "Wallet, exchange, and budget handoff", className: "violet" },
+  { name: "BorrowNest", focus: "Access", keeper: "Safe buy, rent, pickup, and return", className: "mint" },
+  { name: "NUS Nexus", focus: "Community", keeper: "Low-pressure help with visible sources", className: "orange" },
+  { name: "UniFlow", focus: "Study", keeper: "Academic tasks and deadlines", className: "pink" },
+];
+
+const systemNodes = ["Academic Hub", "Payment", "Market", "Forum", "Commute"];
+
+const journeySteps = [
+  ["01", "Find", "Student starts with a real campus task, not a menu category."],
+  ["02", "Guide", "Albot and the dashboard explain the next action in plain language."],
+  ["03", "Act", "The relevant service opens with context already carried forward."],
+  ["04", "Handoff", "Completed actions update the next service, such as Budget Planner after payment."],
+];
+
 // Photos live in `public/images/team/`. Clearing `photo` falls back to the
 // colour placeholder.
 const teamMembers = [
@@ -360,17 +415,94 @@ export default function Home() {
           How we turn notes into decisions
         </p>
         <ResearchCarousel />
+      </section>
 
-        <p className="chapter-link">
-          <Link className="text-link" href="/define">
-            Read the Define chapter <span aria-hidden="true">→</span>
-          </Link>
-        </p>
+      <section className="define section" id="define">
+        <div className="section-label">
+          <span>04</span>
+          <p>Define</p>
+        </div>
+        <div className="define-heading">
+          <h2>
+            Define the real problem
+            <br />
+            <em>before adding more features.</em>
+          </h2>
+          <p>
+            NovaGo is not solving a lack of apps. It is solving the gap between
+            disconnected campus services and the real tasks new students need
+            to finish during their first weeks.
+          </p>
+        </div>
+
+        <p className="subsection-label needs-label">Research synthesis</p>
+        <h2>Three signals shaped the product definition.</h2>
+        <div className="signal-grid">
+          {researchSignals.map((signal) => (
+            <article key={signal.number}>
+              <span>{signal.number}</span>
+              <h3>{signal.title}</h3>
+              <p>{signal.copy}</p>
+            </article>
+          ))}
+        </div>
+
+        <div className="problem-grid">
+          <div>
+            <p className="subsection-label">Problem statement</p>
+            <h2>
+              New students need a connected way to understand and complete
+              essential campus tasks without repeatedly searching across
+              disconnected sources.
+            </h2>
+          </div>
+          <aside className="problem-card">
+            <p className="subsection-label">Design challenge</p>
+            <h3>
+              How might we help a student new to NUS move from uncertainty to a
+              clear next action?
+            </h3>
+          </aside>
+        </div>
+
+        <p className="subsection-label needs-label">User needs</p>
+        <h2>What the interface has to make visible.</h2>
+        <div className="need-grid">
+          {userNeeds.map(([title, copy]) => (
+            <article key={title}>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </article>
+          ))}
+        </div>
+
+        <p className="subsection-label needs-label">Product scope</p>
+        <h2>Five services, reduced to first-week core tasks.</h2>
+        <div className="scope-table">
+          {productScope.map(([service, ...tasks]) => (
+            <article key={service}>
+              <h3>{service}</h3>
+              <ul>
+                {tasks.map((task) => (
+                  <li key={task}>{task}</li>
+                ))}
+              </ul>
+            </article>
+          ))}
+        </div>
+
+        <div className="chapter-outcome">
+          <p className="subsection-label">Definition outcome</p>
+          <h2>
+            NovaGo should be a task-first campus companion, not a feature
+            directory.
+          </h2>
+        </div>
       </section>
 
       <section className="ideation section" id="ideation">
         <div className="section-label">
-          <span>04</span>
+          <span>05</span>
           <p>Ideation</p>
         </div>
         <div className="ideation-heading">
@@ -393,22 +525,64 @@ export default function Home() {
             sources?
           </p>
         </div>
+        <p className="subsection-label">Concept convergence</p>
+        <h2>What we kept from each original idea.</h2>
+        <div className="concept-grid">
+          {concepts.map((concept) => (
+            <article key={concept.name} className={concept.className}>
+              <span>{concept.focus}</span>
+              <h3>{concept.name}</h3>
+              <p>{concept.keeper}</p>
+            </article>
+          ))}
+        </div>
+
+        <p className="subsection-label needs-label">Synthesis move</p>
+        <h2>From separate concepts to one connected system.</h2>
+        <div className="system-hub">
+          <p className="wordmark hub-mark">
+            Nova<span>Go</span>
+          </p>
+          <small>Task-first campus companion</small>
+          <span className="hub-connector" aria-hidden="true" />
+          <div className="hub-nodes">
+            {systemNodes.map((node) => (
+              <span key={node}>{node}</span>
+            ))}
+          </div>
+        </div>
+
+        <p className="subsection-label needs-label">Design principles</p>
         <div className="principles">
           <article><span>01</span><h3>Synergy over quantity</h3><p>Every service should hand off to a meaningful next step.</p></article>
           <article><span>02</span><h3>Task-first navigation</h3><p>Organise around what students need to complete—not a folder of features.</p></article>
           <article><span>03</span><h3>Trust made visible</h3><p>Distinguish official information, guidance, and peer advice at a glance.</p></article>
         </div>
 
-        <p className="chapter-link">
-          <Link className="text-link" href="/ideation">
-            Read the Ideation chapter <span aria-hidden="true">→</span>
-          </Link>
-        </p>
+        <p className="subsection-label needs-label">Prototype direction</p>
+        <h2>The handoffs the prototype has to make real.</h2>
+        <div className="flow-row">
+          {journeySteps.map(([number, title, copy]) => (
+            <article key={number}>
+              <span>{number}</span>
+              <h3>{title}</h3>
+              <p>{copy}</p>
+            </article>
+          ))}
+        </div>
+
+        <div className="chapter-outcome">
+          <p className="subsection-label">Ideation outcome</p>
+          <h2>
+            NovaGo became a connected service map organised around a
+            newcomer’s first-week tasks.
+          </h2>
+        </div>
       </section>
 
       <section className="prototype section" id="prototype">
         <div className="section-label">
-          <span>05</span>
+          <span>06</span>
           <p>Prototyping</p>
         </div>
         <div className="prototype-top">
@@ -494,7 +668,7 @@ export default function Home() {
 
       <section className="evaluation section" id="evaluation">
         <div className="section-label light">
-          <span>06</span>
+          <span>07</span>
           <p>Evaluation</p>
         </div>
         <div className="evaluation-grid">
@@ -533,7 +707,7 @@ export default function Home() {
 
       <section className="final section" id="final">
         <div className="section-label">
-          <span>07</span>
+          <span>08</span>
           <p>Final Prototype</p>
         </div>
         <div className="final-heading">

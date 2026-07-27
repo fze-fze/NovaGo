@@ -303,15 +303,9 @@ h3 {
 
 /* The accent is tuned for the light wash and disappears on navy. */
 .research .text-link,
-.evaluation .text-link,
-.section-dark .text-link {
+.evaluation .text-link {
   border-bottom-color: var(--color-accent-light);
   color: var(--color-accent-light);
-}
-
-/* Sends a chapter on the case study through to its own page. */
-.chapter-link {
-  margin: 54px 0 0;
 }
 
 .hero-facts {
@@ -451,8 +445,7 @@ h3 {
 }
 
 .research .section-label,
-.evaluation .section-label,
-.section-dark .section-label {
+.evaluation .section-label {
   border-color: rgba(255, 255, 255, 0.16);
 }
 
@@ -753,12 +746,260 @@ h2 {
 }
 
 
-/* `.section-dark` is the same navy band as the two dark case-study chapters,
-   available to any page. The three are listed together everywhere below so a
-   dark section behaves identically wherever it is used. */
+/* --- 04 Define ---------------------------------------------------------- */
+
+/* The three chapters that open with a headline beside a lede share this
+   split; `define-heading` joins `research-heading` and `ideation-heading`
+   in the responsive rule further down. */
+.define-heading {
+  display: grid;
+  gap: 5vw;
+  grid-template-columns: 1.25fr 0.75fr;
+}
+
+.define-heading > p:last-child {
+  color: var(--color-body);
+  font-size: var(--font-lead);
+  font-weight: 500;
+  line-height: var(--line-lead);
+  padding-top: 12px;
+}
+
+/* The white panel used from here down is the prototype card's: flat, hairline
+   border, no shadow until something is interactive. */
+.signal-grid,
+.need-grid {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 56px;
+}
+
+.signal-grid article,
+.need-grid article,
+.concept-grid article,
+.problem-card,
+.scope-table article,
+.hub-nodes span {
+  background: #fff;
+  border: 1px solid rgba(37, 76, 126, 0.07);
+  border-radius: 20px;
+}
+
+.signal-grid article,
+.need-grid article {
+  padding: 28px;
+}
+
+.signal-grid article > span {
+  color: var(--color-caption);
+  font-size: var(--font-label);
+}
+
+.signal-grid h3 {
+  margin: 22px 0 10px;
+}
+
+.need-grid h3 {
+  margin: 0 0 10px;
+}
+
+.signal-grid p,
+.need-grid p,
+.concept-grid p {
+  color: var(--color-body);
+  font-size: var(--font-body);
+  line-height: var(--line-body);
+  margin: 0;
+}
+
+/* Statement size: these headings are whole sentences rather than titles, and
+   break into eight or nine lines at the section heading size. */
+.problem-grid h2,
+.chapter-outcome h2 {
+  font-size: clamp(28px, 3vw, 40px);
+  margin: 0;
+}
+
+.problem-grid {
+  align-items: end;
+  display: grid;
+  gap: 8vw;
+  grid-template-columns: 1.1fr 0.9fr;
+  margin-top: 56px;
+}
+
+.problem-card {
+  padding: 30px;
+}
+
+.problem-card h3 {
+  margin: 0;
+}
+
+.needs-label {
+  margin-top: 110px;
+}
+
+.scope-table {
+  display: grid;
+  gap: 12px;
+  margin-top: 54px;
+}
+
+.scope-table article {
+  align-items: center;
+  display: grid;
+  gap: 28px;
+  grid-template-columns: 0.3fr 1fr;
+  padding: 22px 26px;
+}
+
+.scope-table h3 {
+  margin: 0;
+}
+
+.scope-table ul {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(3, 1fr);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.scope-table li {
+  background: var(--cloud);
+  border-radius: 999px;
+  color: var(--color-heading);
+  font-size: var(--font-label);
+  font-weight: 700;
+  padding: 11px 16px;
+  text-align: center;
+}
+
+/* Closes both the Define and the Ideation chapter with the decision it
+   reached. */
+.chapter-outcome {
+  border-top: 1px solid var(--line);
+  margin-top: 110px;
+  max-width: 900px;
+  padding-top: 46px;
+}
+
+/* --- 05 Ideation: convergence and the connected system ------------------- */
+
+.concept-grid {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(5, 1fr);
+  margin-top: 56px;
+}
+
+/* Colour spine and eyebrow, the same pairing the prototype rail and the
+   service marks use. */
+.concept-grid article {
+  border-left-width: 3px;
+  padding: 24px;
+}
+
+.concept-grid article > span {
+  font-size: var(--font-label);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.concept-grid h3 {
+  margin: 18px 0 8px;
+}
+
+.concept-grid .blue { border-left-color: #2f8cff; }
+.concept-grid .blue > span { color: #1f6fd0; }
+.concept-grid .violet { border-left-color: #a67cff; }
+.concept-grid .violet > span { color: #7346d1; }
+.concept-grid .mint { border-left-color: #69d9ce; }
+.concept-grid .mint > span { color: #1d8b81; }
+.concept-grid .orange { border-left-color: #f3a739; }
+.concept-grid .orange > span { color: #c97c12; }
+.concept-grid .pink { border-left-color: #f39acb; }
+.concept-grid .pink > span { color: #c9558f; }
+
+/* The convergence payoff again, this time as the thing the five services hang
+   off: the mark, then the rail, then the services. */
+.system-hub {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 56px;
+}
+
+.hub-mark {
+  font-size: 46px;
+  letter-spacing: -0.05em;
+  line-height: 1;
+  margin: 0;
+}
+
+.system-hub > small {
+  color: var(--color-caption);
+  font-size: var(--font-label);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  margin-top: 8px;
+  text-transform: uppercase;
+}
+
+/* Drops out of the mark onto a rail running between the first and last
+   service's centre, so the mark reads as feeding all five. */
+.hub-connector {
+  height: 46px;
+  position: relative;
+  width: 100%;
+}
+
+.hub-connector::before,
+.hub-connector::after {
+  background: var(--line);
+  content: "";
+  position: absolute;
+}
+
+.hub-connector::before {
+  height: 32px;
+  left: 50%;
+  top: 0;
+  width: 1px;
+}
+
+.hub-connector::after {
+  height: 1px;
+  left: 10%;
+  right: 10%;
+  top: 32px;
+}
+
+.hub-nodes {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(5, 1fr);
+  width: 100%;
+}
+
+.hub-nodes span {
+  align-items: center;
+  color: var(--color-heading);
+  display: flex;
+  font-size: var(--font-body);
+  font-weight: 600;
+  justify-content: center;
+  min-height: 92px;
+  padding: 16px;
+  text-align: center;
+}
+
 .research,
-.evaluation,
-.section-dark {
+.evaluation {
   background: var(--color-heading);
   color: var(--color-heading-inverse);
 }
@@ -784,15 +1025,12 @@ h2 {
 .research h2,
 .research h3,
 .evaluation h2,
-.evaluation h3,
-.section-dark h2,
-.section-dark h3 {
+.evaluation h3 {
   color: var(--color-heading-inverse);
 }
 
 .research .section-label p,
-.evaluation .section-label p,
-.section-dark .section-label p {
+.evaluation .section-label p {
   color: var(--color-heading-inverse);
 }
 
@@ -1605,12 +1843,25 @@ footer p:last-child {
   .phone-login { left: 15%; }
   .phone-home { right: 15%; }
   .research-heading,
+  .define-heading,
   .ideation-heading,
+  .problem-grid,
   .prototype-top,
   .evaluation-grid,
   .team-heading {
     gap: 55px;
     grid-template-columns: 1fr;
+  }
+
+  .concept-grid,
+  .hub-nodes {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  /* The rail is aimed at five node centres; on a wrapped grid it points at
+     nothing, so only the drop survives. */
+  .hub-connector::after {
+    display: none;
   }
 
   .team-heading > p {
@@ -1622,6 +1873,7 @@ footer p:last-child {
   }
 
   .research-heading > p:last-child,
+  .define-heading > p:last-child,
   .ideation-heading > p:last-child,
   .prototype-top > p {
     padding-top: 0;
@@ -1815,8 +2067,40 @@ footer p:last-child {
     margin-top: 56px;
   }
 
-  .principles {
+  .principles,
+  .signal-grid,
+  .need-grid,
+  .scope-table article,
+  .scope-table ul {
     grid-template-columns: 1fr;
+  }
+
+  .scope-table article {
+    gap: 18px;
+  }
+
+  .concept-grid,
+  .hub-nodes {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* An even number of columns puts the drop over the gutter, so it goes too
+     and only the spacing is left. */
+  .hub-connector {
+    height: 26px;
+  }
+
+  .hub-connector::before {
+    display: none;
+  }
+
+  .hub-mark {
+    font-size: 36px;
+  }
+
+  .needs-label,
+  .chapter-outcome {
+    margin-top: 76px;
   }
 
   .team-grid {
