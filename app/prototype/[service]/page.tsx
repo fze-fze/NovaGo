@@ -140,6 +140,49 @@ const payScreens = [
   },
 ];
 
+const forumScreens = [
+  {
+    number: "01",
+    flow: "Find answers",
+    title: "Search and filter before posting",
+    screen: "Find Existing Answers",
+    lofi: "/images/prototype/forum/01-filter-low-fi.png",
+    hifi: "/images/prototype/forum/12-screen-v2.png",
+    logic:
+      "This flow combines feed filtering and keyword search into one entry point. New students can narrow repeated campus questions by topic before deciding whether they need to open a post or create a new one.",
+  },
+  {
+    number: "02",
+    flow: "Evaluate and reply",
+    title: "Judge answer quality inside the post",
+    screen: "Post Detail and Comments",
+    lofi: "/images/prototype/forum/03-post-detail-low-fi.png",
+    hifi: "/images/prototype/forum/02-screen-v2.png",
+    logic:
+      "Post detail brings the question, tags, comments, freshness, and engagement into one reading space. This helps students compare answers and decide whether to reply without losing the original context.",
+  },
+  {
+    number: "03",
+    flow: "Ask a question",
+    title: "Make new posts complete and discoverable",
+    screen: "Publish a New Question",
+    lofi: "/images/prototype/forum/05-create-post-low-fi.png",
+    hifi: "/images/prototype/forum/04-screen-v2.png",
+    logic:
+      "The create-post flow asks for a clear title, details, tags, optional media, and privacy choice. The goal is to make questions easier for others to understand, answer, and find later.",
+  },
+  {
+    number: "04",
+    flow: "Follow up",
+    title: "Return to replies and personal posts",
+    screen: "Notifications and My Posts",
+    lofi: "/images/prototype/forum/06-notifications-low-fi.png",
+    hifi: "/images/prototype/forum/05-screen-v2.png",
+    logic:
+      "Follow-up combines notifications with profile history. It keeps replies, mentions, and personal discussions recoverable after the student leaves the forum page.",
+  },
+];
+
 function MarketStory() {
   return (
     <>
@@ -317,6 +360,88 @@ function PayStory() {
   );
 }
 
+function ForumStory() {
+  return (
+    <>
+      <section className="service-block market-origin">
+        <h2>Why Forum needed a trusted support pathway</h2>
+        <p className="lead">
+          Forum is not just a message board. For newcomers, the useful pathway
+          is finding an existing answer, judging whether it is reliable, asking
+          a complete question when needed, and returning when replies arrive.
+        </p>
+        <div className="market-paths">
+          <article>
+            <p className="subsection-label">Before posting</p>
+            <h3>Search, filter, and compare first.</h3>
+            <p>
+              Students can narrow the feed, search repeated questions, and read
+              answer cues before adding another post.
+            </p>
+          </article>
+          <article>
+            <p className="subsection-label">After asking</p>
+            <h3>Keep the conversation recoverable.</h3>
+            <p>
+              Comments, notifications, and profile history help a student
+              return to active threads instead of losing answers in a fast feed.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section className="service-block market-evolution">
+        <h2>Designing each forum page from lo-fi to hi-fi</h2>
+        <p className="lead">
+          The Forum prototype is shown as four representative flows. They cover
+          finding existing answers, judging a discussion, asking a new question,
+          and following up after replies arrive.
+        </p>
+        <div className="market-evolution-list">
+          {forumScreens.map((screen) => (
+            <article className="market-screen-step" key={screen.number}>
+              <header className="market-screen-heading">
+                <span>{screen.number}</span>
+                <div>
+                  <p className="subsection-label">{screen.flow} flow</p>
+                  <h3>{screen.title}</h3>
+                </div>
+              </header>
+              <div className="market-screen-pair">
+                <figure>
+                  <img
+                    className="market-screen-image"
+                    src={screen.lofi}
+                    alt={`${screen.screen} lo-fi prototype`}
+                    loading="lazy"
+                  />
+                  <figcaption>Lo-fi - {screen.screen}</figcaption>
+                </figure>
+                <span className="market-evolution-arrow" aria-hidden="true">
+                  &rarr;
+                </span>
+                <figure>
+                  <img
+                    className="market-screen-image"
+                    src={screen.hifi}
+                    alt={`${screen.screen} hi-fi prototype`}
+                    loading="lazy"
+                  />
+                  <figcaption>Hi-fi - {screen.screen}</figcaption>
+                </figure>
+              </div>
+              <div className="market-screen-logic">
+                <p className="subsection-label">Design logic</p>
+                <p>{screen.logic}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}
+
 export default async function ServicePage({
   params,
 }: {
@@ -364,6 +489,8 @@ export default async function ServicePage({
           <PayStory />
         ) : service.slug === "market" ? (
           <MarketStory />
+        ) : service.slug === "forum" ? (
+          <ForumStory />
         ) : (
           <>
             <section className="service-block">
