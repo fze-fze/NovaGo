@@ -94,13 +94,19 @@ export const services: Service[] = [
     name: "Forum",
     icon: "/images/services/forum.png",
     className: "pink",
-    role: "Low-pressure, task-based help with visible source and freshness cues.",
-    origin: "NUS Nexus",
-    author: "Wang Huaiyin",
+    role: "A trusted campus support pathway for searching, filtering, comparing answers, posting questions, tracking replies, and revisiting personal discussions.",
+    origin: "Settly",
+    author: "Huang Molin",
     lofi: [],
-    hifi: [],
+    hifi: [
+      {
+        src: "/images/prototype/forum/12-screen-v2.png",
+        caption: "Forum feed with active filters and realistic campus posts",
+      },
+    ],
     decisions: [],
-    handoff: "",
+    handoff:
+      "Forum hands off to Academic Hub when an answer points to an official task, to Commute when a question involves a campus location, to Market when students ask about buying or renting items, and back to Profile when the student needs to follow replies on their own posts.",
   },
 ];
 
