@@ -1,5 +1,7 @@
 import Link from "next/link";
 
+import { SmoothLink } from "./smooth-link";
+
 // Shared by the case study and the per-service pages. Section links are
 // root-relative so they also work from /prototype/*.
 export function NovaGo() {
@@ -13,16 +15,16 @@ export function NovaGo() {
 export function SiteHeader() {
   return (
     <header className="site-header">
-      <Link className="wordmark" href="/#top" aria-label="NovaGo home">
+      <SmoothLink className="wordmark" href="/#top" aria-label="NovaGo home">
         Nova<span>Go</span>
-      </Link>
+      </SmoothLink>
       <nav aria-label="Case study sections">
-        <Link href="/#team">Team</Link>
-        <Link href="/#research">Research</Link>
-        <Link href="/#define-ideation">Define &amp; Ideation</Link>
-        <Link className="nav-cta" href="/#final">
+        <SmoothLink href="/#team">Team</SmoothLink>
+        <SmoothLink href="/#research">Research</SmoothLink>
+        <SmoothLink href="/#define-ideation">Define &amp; Ideation</SmoothLink>
+        <SmoothLink className="nav-cta" href="/#final">
           Final prototype
-        </Link>
+        </SmoothLink>
       </nav>
     </header>
   );

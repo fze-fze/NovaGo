@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ecosystemMap, services as serviceProgress } from "./services";
 import { ResearchCarousel } from "./research-carousel";
 import { NovaGo, SiteFooter, SiteHeader } from "./site-chrome";
+import { SmoothLink } from "./smooth-link";
 
 // Drop the generated convergence illustration in `public/images/` and set this
 // path to replace the built-in fragment cards, e.g. "/images/intro-scatter.png".
@@ -138,12 +139,12 @@ export default function Home() {
             confidence, getting everyday items, and asking for help.
           </p>
           <div className="hero-actions">
-            <a className="button button-primary" href="#final">
+            <SmoothLink className="button button-primary" href="#final">
               View final prototype <span aria-hidden="true">↘</span>
-            </a>
-            <a className="text-link" href="#introduction">
+            </SmoothLink>
+            <SmoothLink className="text-link" href="#research">
               Explore the process <span aria-hidden="true">↓</span>
-            </a>
+            </SmoothLink>
           </div>
           <dl className="hero-facts">
             <div>
@@ -363,9 +364,9 @@ export default function Home() {
         </div>
         <div className="research-heading">
           <h2>
-            From feature ideas to
+            From feature ideas
             <br />
-            questions worth testing.
+            <em>to questions worth testing.</em>
           </h2>
           <p className="lead">
             We began with five team proposals. Rather than present product
@@ -430,20 +431,41 @@ export default function Home() {
         <div className="chapter-hinge">
           <p className="subsection-label">How might we</p>
           <h2>
-            Help a student new to NUS move from uncertainty to a clear next
-            action?
+            Help a student new to NUS
+            <br />
+            move from uncertainty to a clear{" "}
+            <span>next&nbsp;action?</span>
           </h2>
         </div>
 
         {/* --- Ideation: the five concepts from chapter 02, converged ------- */}
 
-        <h2>From separate concepts to one connected system.</h2>
+        {/* Opens the Ideation half in the same shape as the chapter opener. */}
+        <div className="ideation-heading">
+          <h2>
+            From separate concepts
+            <br />
+            <em>to one connected system.</em>
+          </h2>
+          <p className="lead">
+            NovaGo became a connected service map organised around a
+            newcomer’s first-week tasks — with Albot woven through all five
+            rather than parked beside them, so help arrives inside whichever
+            service the student is already in.
+          </p>
+        </div>
         <div className="system-hub">
           <p className="wordmark hub-mark">
             Nova<span>Go</span>
           </p>
           <small>Task-first campus companion</small>
-          <span className="hub-connector" aria-hidden="true" />
+          <span className="hub-connector" aria-hidden="true">
+            <img
+              className="hub-robot"
+              src="/images/novago-robot-sitting.png"
+              alt=""
+            />
+          </span>
           <div className="hub-nodes">
             {systemNodes.map((node) => (
               <span key={node}>{node}</span>
@@ -451,19 +473,67 @@ export default function Home() {
           </div>
         </div>
 
-        <p className="subsection-label needs-label">Design principles</p>
-        <div className="principles">
-          <article><span>01</span><h3>Synergy over quantity</h3><p>Every service should hand off to a meaningful next step.</p></article>
-          <article><span>02</span><h3>Task-first navigation</h3><p>Organise around what students need to complete—not a folder of features.</p></article>
-          <article><span>03</span><h3>Trust made visible</h3><p>Distinguish official information, guidance, and peer advice at a glance.</p></article>
-        </div>
+        <div className="ideation-support">
+          {/* The principles that shaped the map, kept as concise prose. */}
+          <div className="principle-notes">
+            <p>
+              <strong>Synergy over quantity.</strong> Every service should hand
+              off to a meaningful next step.
+            </p>
+            <p>
+              <strong>Task-first navigation.</strong> Organise around what
+              students need to complete—not a folder of features.
+            </p>
+            <p>
+              <strong>Trust made visible.</strong> Distinguish official
+              information, guidance, and peer advice at a glance.
+            </p>
 
-        <div className="chapter-outcome">
-          <p className="subsection-label">Ideation outcome</p>
-          <h2>
-            NovaGo became a connected service map organised around a
-            newcomer’s first-week tasks.
-          </h2>
+            <div className="convergence-rationale">
+              <p className="subsection-label">How we converged</p>
+              <h3>We did not choose one proposal as the winner.</h3>
+              <p>
+                The five proposals gave us a deliberately broad idea pool.
+                Rather than voting for a single concept, we clustered the
+                recurring newcomer tasks and compared each direction against
+                research relevance, user value, feasibility, and its ability to
+                support an integrated journey.
+              </p>
+              <div className="convergence-steps">
+                <p>
+                  <strong>Keep</strong>
+                  Preserve the distinct user need behind each concept.
+                </p>
+                <p>
+                  <strong>Combine</strong>
+                  Join ideas that can share identity, task, and context.
+                </p>
+                <p>
+                  <strong>Defer</strong>
+                  Move lower-value breadth outside the first prototype scope.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <aside className="albot-callout" aria-labelledby="albot-callout-title">
+            <p className="subsection-label">Why Albot</p>
+            <h3 id="albot-callout-title">AI support, built into NovaGo.</h3>
+            <ol>
+              <li>
+                <strong>Trusted information</strong>
+                <span>Official sources help keep hallucination risk low.</span>
+              </li>
+              <li>
+                <strong>Fast help, anywhere</strong>
+                <span>Clear answers are available whenever students need them.</span>
+              </li>
+              <li>
+                <strong>One tap to take action</strong>
+                <span>Each answer can open the relevant NovaGo service screen.</span>
+              </li>
+            </ol>
+          </aside>
         </div>
       </section>
 
@@ -551,7 +621,13 @@ export default function Home() {
         </div>
         <div className="evaluation-grid">
           <div>
-            <h2>Test whether “connected” actually feels simpler.</h2>
+            <h2>
+              Test whether “connected”
+              <br />
+              <span className="evaluation-heading-accent">
+                actually feels simpler.
+              </span>
+            </h2>
             <p className="lead">
               The next study should test task-first comprehension,
               cross-service continuity, and trust—not visual preference alone.

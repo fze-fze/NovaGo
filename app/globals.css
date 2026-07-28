@@ -38,9 +38,6 @@
   box-sizing: border-box;
 }
 
-/* No smooth scrolling: it turned every route change and every jump back to
-   /#prototype into a long visible slide. Anchors land in one step. */
-
 body {
   margin: 0;
   background: var(--wash);
@@ -679,7 +676,9 @@ h2 {
 }
 
 .intro-claims-heading {
+  border-top: 1px solid var(--line);
   margin: 92px 0 24px;
+  padding-top: 36px;
 }
 
 .intro-claims-lede {
@@ -757,37 +756,27 @@ h2 {
   max-width: 68ch;
 }
 
-/* Statement headings carry the chapter on their own — no card beside them. */
-.problem-statement {
-  max-width: 900px;
-}
-
 /* The hinge of the chapter: Define ends here, and the question the second
-   half answers is stated at full heading weight. Ruled top and bottom, with
-   wide margins, so it separates the two halves instead of reading as one more
-   subsection. */
+   half answers is stated at full heading weight. The rule follows the question
+   so it leads into the ideation half instead of separating label from heading. */
 .chapter-hinge {
-  border-bottom: 1px solid var(--line);
   border-top: 1px solid var(--line);
   margin: 104px 0 96px;
-  padding: 58px 0 62px;
+  padding: 58px 0 0;
 }
 
 .chapter-hinge h2 {
   margin: 0;
-  max-width: 17ch;
+  max-width: 26ch;
 }
 
-/* The conclusion the three signals add up to. Ruled off from the cards so it
-   reads as their result rather than a fourth one. */
+/* The conclusion the three signals add up to. */
 .signal-conclusion {
-  border-top: 1px solid var(--line);
   color: var(--color-body);
   font-size: var(--font-lead);
   line-height: var(--line-lead);
-  margin: 40px 0 0;
+  margin: 46px 0 0;
   max-width: 78ch;
-  padding-top: 30px;
 }
 
 /* The white panel used from here down is the prototype card's: flat, hairline
@@ -826,24 +815,121 @@ h2 {
   margin: 0;
 }
 
-/* Statement size: these headings are whole sentences rather than titles, and
-   break into eight or nine lines at the section heading size. */
-.problem-statement,
-.chapter-outcome h2 {
-  font-size: clamp(28px, 3vw, 40px);
-  margin: 0;
-}
-
 .needs-label {
   margin-top: 110px;
 }
 
-/* Closes the chapter with the decision it reached. */
-.chapter-outcome {
+.ideation-support {
+  align-items: start;
+  display: grid;
+  gap: clamp(52px, 7vw, 110px);
+  grid-template-columns: minmax(0, 1.35fr) minmax(340px, 0.65fr);
+  margin-top: 84px;
+}
+
+/* The principles behind the map, kept as prose so they read as a closing note
+   rather than another card. */
+.principle-notes {
+  display: grid;
+  gap: 18px;
+  max-width: 78ch;
+}
+
+.principle-notes p {
+  color: var(--color-body);
+  font-size: var(--font-body);
+  line-height: var(--line-body);
+  margin: 0;
+}
+
+.principle-notes strong {
+  color: var(--color-heading);
+  font-weight: 700;
+}
+
+.convergence-rationale {
   border-top: 1px solid var(--line);
-  margin-top: 110px;
-  max-width: 900px;
-  padding-top: 46px;
+  margin-top: 18px;
+  padding-top: 30px;
+}
+
+.convergence-rationale > h3 {
+  font-size: var(--font-h3);
+  line-height: 1.35;
+  margin: 18px 0 10px;
+}
+
+.convergence-rationale > p:not(.subsection-label) {
+  max-width: 68ch;
+}
+
+.convergence-steps {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 26px;
+}
+
+.convergence-steps p {
+  display: grid;
+  gap: 6px;
+}
+
+.convergence-steps strong {
+  font-size: var(--font-label);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.albot-callout {
+  background: #fff;
+  border: 1px solid rgba(37, 76, 126, 0.1);
+  border-radius: 20px;
+  padding: 28px 30px 30px;
+}
+
+.albot-callout h3 {
+  font-size: var(--font-h3);
+  line-height: 1.35;
+  margin: 18px 0 24px;
+}
+
+.albot-callout ol {
+  display: grid;
+  gap: 0;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.albot-callout li {
+  display: grid;
+  gap: 5px;
+  padding: 15px 0;
+}
+
+.albot-callout li:first-child {
+  padding-top: 0;
+}
+
+.albot-callout li:last-child {
+  padding-bottom: 0;
+}
+
+.albot-callout li + li {
+  border-top: 1px solid var(--line);
+}
+
+.albot-callout li strong {
+  color: var(--color-heading);
+  font-size: var(--font-body);
+  line-height: 1.4;
+}
+
+.albot-callout li span {
+  color: var(--color-body);
+  font-size: var(--font-body);
+  line-height: var(--line-body);
 }
 
 /* The convergence payoff again, this time as the thing the five services hang
@@ -900,6 +986,18 @@ h2 {
   top: 32px;
 }
 
+/* Albot sits on the rail beside Commute, echoing the earlier character-on-rule
+   composition without becoming another service node. */
+.hub-robot {
+  bottom: 14px;
+  filter: drop-shadow(0 12px 18px rgba(13, 31, 64, 0.12));
+  pointer-events: none;
+  position: absolute;
+  right: calc(10% - 52px);
+  width: 104px;
+  z-index: 1;
+}
+
 .hub-nodes {
   display: grid;
   gap: 14px;
@@ -948,6 +1046,19 @@ h2 {
 .evaluation h2,
 .evaluation h3 {
   color: var(--color-heading-inverse);
+}
+
+/* The accent is a dark smudge on navy. The accented second line takes the
+   same light variant the chapter numbers and labels already use down here. */
+.research h1 em,
+.research h1 span,
+.research h2 em,
+.research h2 span,
+.evaluation h1 em,
+.evaluation h1 span,
+.evaluation h2 em,
+.evaluation h2 span {
+  color: var(--color-accent-light);
 }
 
 .research .section-label p,
@@ -1137,30 +1248,6 @@ h2 {
   font-weight: 500;
   line-height: var(--line-lead);
   padding-top: 12px;
-}
-
-.principles {
-  border-top: 1px solid var(--line);
-  display: grid;
-  gap: 35px;
-  grid-template-columns: repeat(3, 1fr);
-  padding-top: 36px;
-}
-
-.principles article > span {
-  color: var(--color-caption);
-  font-size: var(--font-label);
-}
-
-.principles h3 {
-  font-size: var(--font-h3);
-  margin: 24px 0 10px;
-}
-
-.principles p {
-  color: var(--color-body);
-  font-size: var(--font-body);
-  line-height: var(--line-body);
 }
 
 .prototype-top,
@@ -1403,6 +1490,10 @@ h2 {
 
 .evaluation-grid h2 {
   max-width: 680px;
+}
+
+.evaluation-heading-accent {
+  color: var(--color-accent-light);
 }
 
 .evaluation-grid > div:first-child > p:last-child {
@@ -1745,6 +1836,23 @@ footer p:last-child {
     display: none;
   }
 
+  .hub-robot {
+    display: none;
+  }
+
+  .ideation-support {
+    gap: 44px;
+    grid-template-columns: 1fr;
+  }
+
+  .albot-callout {
+    max-width: 620px;
+  }
+
+  .convergence-steps {
+    max-width: 760px;
+  }
+
   .team-heading > p {
     padding-top: 0;
   }
@@ -1953,13 +2061,17 @@ footer p:last-child {
     margin-top: 56px;
   }
 
-  .principles,
   .signal-grid {
     grid-template-columns: 1fr;
   }
 
   .hub-nodes {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  .convergence-steps {
+    gap: 18px;
+    grid-template-columns: 1fr;
   }
 
   /* An even number of columns puts the drop over the gutter, so it goes too
@@ -1976,8 +2088,7 @@ footer p:last-child {
     font-size: 36px;
   }
 
-  .needs-label,
-  .chapter-outcome {
+  .needs-label {
     margin-top: 76px;
   }
 
@@ -2255,6 +2366,113 @@ footer p:last-child {
   margin: 0;
 }
 
+.market-paths {
+  display: grid;
+  gap: 36px;
+  grid-template-columns: repeat(2, 1fr);
+  margin-top: 38px;
+}
+
+.market-paths article {
+  border-top: 1px solid var(--line);
+  padding-top: 22px;
+}
+
+.market-paths h3 {
+  font-size: var(--font-h3);
+  line-height: 1.35;
+  margin: 18px 0 10px;
+}
+
+.market-paths article > p:last-child,
+.market-screen-logic > p:last-child {
+  color: var(--color-body);
+  font-size: var(--font-body);
+  line-height: var(--line-body);
+  margin-bottom: 0;
+}
+
+.market-evolution-list {
+  display: grid;
+}
+
+.market-screen-step {
+  padding: 52px 0;
+}
+
+.market-screen-step + .market-screen-step {
+  border-top: 1px solid var(--line);
+}
+
+.market-screen-heading {
+  align-items: start;
+  display: grid;
+  gap: 20px;
+  grid-template-columns: auto 1fr;
+}
+
+.market-screen-heading > span {
+  color: var(--color-accent);
+  font-family: var(--serif);
+  font-size: 28px;
+  line-height: 1;
+}
+
+.market-screen-heading h3 {
+  font-size: var(--font-h3);
+  line-height: 1.35;
+  margin: 10px 0 0;
+}
+
+.market-screen-pair {
+  align-items: center;
+  display: grid;
+  gap: 22px;
+  grid-template-columns: minmax(0, 300px) 36px minmax(0, 300px);
+  margin-top: 30px;
+}
+
+.market-screen-pair figure {
+  margin: 0;
+  min-width: 0;
+}
+
+.market-screen-slot {
+  aspect-ratio: 9 / 16;
+  border-radius: 18px;
+}
+
+.market-screen-image {
+  border: 1px solid rgba(37, 76, 126, 0.1);
+  border-radius: 18px;
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.market-evolution-arrow {
+  color: var(--color-caption);
+  font-family: var(--serif);
+  font-size: 28px;
+  justify-self: center;
+}
+
+.market-screen-pair figcaption {
+  color: var(--color-caption);
+  font-size: var(--font-label);
+  line-height: var(--line-body);
+  margin-top: 12px;
+}
+
+.market-screen-logic {
+  margin-top: 28px;
+  max-width: 68ch;
+}
+
+.market-screen-logic > p:last-child {
+  margin-top: 12px;
+}
+
 .service-nav {
   border-top: 1px solid var(--line);
   display: flex;
@@ -2287,6 +2505,23 @@ footer p:last-child {
   .service-meta,
   .shot-grid {
     grid-template-columns: 1fr;
+  }
+
+  .market-paths {
+    grid-template-columns: 1fr;
+  }
+
+  .market-screen-pair {
+    gap: 18px;
+    grid-template-columns: 1fr;
+  }
+
+  .market-evolution-arrow {
+    transform: rotate(90deg);
+  }
+
+  .market-screen-step {
+    padding: 40px 0;
   }
 
   /* Give the longest name ("Academic Hub") room to stay on one line. */
@@ -2382,20 +2617,14 @@ footer p:last-child {
   font-size: var(--font-label);
 }
 
-.principle-list {
+.pattern-copy {
   color: var(--color-body);
   display: grid;
-  font-size: var(--font-lead);
-  gap: 16px;
-  line-height: var(--line-lead);
-  list-style: none;
+  font-size: var(--font-body);
+  gap: 1em;
+  line-height: var(--line-body);
   margin: 0;
-  padding: 0;
-}
-
-.principle-list li {
-  border-top: 1px solid var(--line);
-  padding-top: 16px;
+  max-width: 68ch;
 }
 
 @media (max-width: 760px) {

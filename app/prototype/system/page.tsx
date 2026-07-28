@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-import { ecosystemMap, palette, principles, services } from "../../services";
+import { ecosystemMap, palette, services } from "../../services";
 import { SiteFooter, SiteHeader } from "../../site-chrome";
 
 export const metadata: Metadata = {
@@ -86,11 +86,18 @@ export default function SystemPage() {
 
         <section className="service-block">
           <h2>Recurring patterns</h2>
-          <ul className="principle-list">
-            {principles.map((principle) => (
-              <li key={principle}>{principle}</li>
-            ))}
-          </ul>
+          <div className="pattern-copy">
+            <p>
+              Across NovaGo, rounded translucent service cards, supportive
+              plain-language prompts, and Albot as a recurring companion form a
+              consistent visual language.
+            </p>
+            <p>
+              We wanted this style to give users a clear, easy-to-scan
+              interface so they can quickly locate the information they need
+              without losing NovaGo&apos;s friendly and reassuring character.
+            </p>
+          </div>
         </section>
 
         <nav className="service-nav" aria-label="Services">

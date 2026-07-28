@@ -25,6 +25,8 @@ export type Service = {
   role: string;
   /** Which team concept this grew out of, for the meta strip. */
   origin: string;
+  /** Team member responsible for the original concept. */
+  author: string;
   lofi: Shot[];
   hifi: Shot[];
   /** What changed between lo-fi and hi-fi, and why. */
@@ -41,6 +43,7 @@ export const services: Service[] = [
     className: "blue",
     role: "Plain-language guidance for accepted payment methods, setup steps, and fallback options.",
     origin: "EZPAY",
+    author: "Cao Yuchen",
     lofi: [],
     hifi: [],
     decisions: [],
@@ -53,6 +56,7 @@ export const services: Service[] = [
     className: "violet",
     role: "A campus marketplace shaped around short stays, verified peers, and safer handovers.",
     origin: "BorrowNest",
+    author: "Fan Zeen",
     lofi: [],
     hifi: [],
     decisions: [],
@@ -65,6 +69,7 @@ export const services: Service[] = [
     className: "mint",
     role: "Contextual routes, walking time, and timely departure guidance across campus.",
     origin: "Settly",
+    author: "Huang Molin",
     lofi: [],
     hifi: [],
     decisions: [],
@@ -77,6 +82,7 @@ export const services: Service[] = [
     className: "orange",
     role: "One place to understand tasks, terms, deadlines, and links to official systems.",
     origin: "UniFlow",
+    author: "Duan Xurui",
     lofi: [],
     hifi: [],
     decisions: [],
@@ -89,6 +95,7 @@ export const services: Service[] = [
     className: "pink",
     role: "Low-pressure, task-based help with visible source and freshness cues.",
     origin: "NUS Nexus",
+    author: "Wang Huaiyin",
     lofi: [],
     hifi: [],
     decisions: [],
@@ -120,10 +127,4 @@ export const palette = [
   { name: "Market", hex: "#a67cff" },
   { name: "Academic", hex: "#f3a739" },
   { name: "Forum", hex: "#f39acb" },
-];
-
-export const principles = [
-  "Rounded, translucent service cards",
-  "Supportive, plain-language prompts",
-  "Friendly robot guide as a recurring companion",
 ];
