@@ -2,97 +2,98 @@
 
 import { useEffect, useRef, useState } from "react";
 
-// Round two focus, one card per service. These are the questions we are going
-// to ask and what we are looking for — not findings. Nothing here is presented
-// as a participant quote, because round two has not run yet.
-//
-// Drop research visuals (interview photos, affinity maps, survey charts…)
-// into `public/images/research/` and set `image`. An empty string keeps the
-// tinted icon placeholder.
-// The five analysis artefacts, in the order the course teaches them
-// (L4: WHO / WHERE / HOW / WHAT / HOW MUCH). `state` says honestly how far
-// each one has got — nothing here claims a finding we have not collected.
-//
-// Drop artefacts (persona sheets, journey maps, affinity photos, charts) into
-// `public/images/research/` and set `image`. Empty keeps the icon placeholder.
-// The five analysis outputs, carrying the actual result rather than a
-// description of the method.
-//
-// Drop artefacts (persona sheets, journey maps, affinity photos, charts) into
-// `public/images/research/` and set `image`. Empty keeps the icon placeholder.
+// User research artefacts for the portfolio homepage. The notes from the
+// supplied content file are treated as draft evidence prompts: useful for
+// showing the intended research direction, but still labelled as material to
+// validate in the next round.
 const slides = [
   {
     number: "01",
-    title: "Persona",
-    question: "WHO",
-    headline: "Alex Chen and Maya Lim",
+    title: "Research scope",
+    question: "EVIDENCE STATUS",
+    headline: "Round one found patterns; round two needs more students",
     lines: [
-      "Maya Lim \u00b7 21 \u00b7 exchange student, first semester, lives near campus.",
-      "\u201cI do not want to ask basic questions every time, but I also do not know which answer to trust.\u201d",
-      "Checks group chats first for speed, then re-checks official pages because she does not fully trust them.",
+      "The first interviews gave a useful starting point, especially around abbreviations, scattered platforms and first-week uncertainty.",
+      "The new notes extend each service with draft questions, not final proof: Payment, Academic Hub, Market, Forum and Commute all need individual follow-up interviews.",
+      "We will use the next round to compare perspectives across services instead of relying on only three students.",
     ],
     className: "blue",
-    icon: "\u25C9",
+    icon: "◉",
     image: "",
     imageAlt: "",
   },
   {
     number: "02",
-    title: "Journey map",
-    question: "WHERE",
-    headline: "Payment is the conflict peak",
+    title: "Service notes",
+    question: "WHAT WE NEED TO LEARN",
+    headline: "Each service now has a sharper research angle",
     lines: [
-      "Eight stages from arrival to budget update.",
-      "Money, exchange rate, trust and consequence all land at once \u2014 the highest-stress point of the first week.",
-      "Commute and course setup sit second: high stress, but recoverable.",
+      "Payment: students need visible wallet balance, supported methods, exchange fees, payment status and recovery steps after failure.",
+      "Academic Hub: students need course planning, deadline tracking and admin task guidance rather than a large folder of links.",
+      "Market, Forum and Commute: trust signals, source labels, pickup details, route comparison and leave-by reminders are the details that make the flow usable.",
     ],
     className: "violet",
-    icon: "\u25D0",
+    icon: "◐",
     image: "",
     imageAlt: "",
   },
   {
     number: "03",
-    title: "Affinity diagram",
-    question: "WHAT",
-    headline: "Four themes from round one",
+    title: "Second persona",
+    question: "WHO",
+    headline: "Maya Lim: exchange student, first semester at NUS",
     lines: [
-      "Unfamiliar abbreviations \u00b7 scattered official information.",
-      "Uncertainty about the next step \u00b7 help that feels costly to ask for.",
-      "Clustered by meaning from three students\u2019 notes, labelled in their words.",
+      "Maya is 21, lives near campus, uses English daily, but is unfamiliar with local acronyms and campus systems.",
+      "Quote: 'I do not want to ask basic questions every time, but I also do not know which answer to trust.'",
+      "She checks group chats first because they are fast, then cross-checks official websites, friends and emails before acting.",
     ],
     className: "orange",
-    icon: "\u25A8",
+    icon: "◈",
     image: "",
     imageAlt: "",
   },
   {
     number: "04",
-    title: "Task analysis",
-    question: "HOW",
-    headline: "Every service cut to three tasks",
+    title: "Journey map",
+    question: "WHERE THE CONFLICT PEAKS",
+    headline: "Maya's first-week journey peaks at payment and exchange",
     lines: [
-      "Pay \u2014 wallet and top up \u00b7 currency exchange \u00b7 QR payment with budget update.",
-      "Market \u2014 browse \u00b7 buy or rent safely \u00b7 pickup, return and refund.",
-      "Forum \u2014 search answers \u00b7 ask anonymously \u00b7 check source and freshness.",
+      "Stages: arrival, orientation, course setup, commute, payment, currency exchange, forum help and budget update.",
+      "The highest conflict happens when money, exchange rate, card reliability and consequence all arrive in one decision.",
+      "The website should show this as a visual journey map with an emotion curve, highlighting Payment and Currency Exchange as the main stress point.",
     ],
     className: "mint",
-    icon: "\u25A6",
+    icon: "◇",
     image: "",
     imageAlt: "",
   },
   {
     number: "05",
-    title: "Quantitative",
-    question: "HOW MUCH",
-    headline: "Nothing counted yet",
+    title: "Core tasks",
+    question: "FOCUSING THE ECOSYSTEM",
+    headline: "Each service is reduced to two or three useful tasks",
     lines: [
-      "Round one was three students \u2014 too few for counts, rates or time on task.",
-      "Round two adds 2\u20133 per service, which is when severity and frequency become measurable.",
-      "Until then no percentage on this site would mean anything.",
+      "Payment: wallet and top up, currency exchange, QR payment with Budget Planner update.",
+      "Academic Hub: course planner, leave application, assignment and deadline tracking.",
+      "Market, Forum and Commute: safe buy/rent flows, source-aware help, route comparison and leave-by alerts.",
     ],
     className: "pink",
-    icon: "\u25A5",
+    icon: "▦",
+    image: "",
+    imageAlt: "",
+  },
+  {
+    number: "06",
+    title: "Evaluation plan",
+    question: "HOW WE WILL TEST IT",
+    headline: "Test confidence, trust and continuity, not only screen polish",
+    lines: [
+      "Heuristic evaluation will check visibility of system status, consistency, error recovery, user control and information hierarchy.",
+      "Usability testing with five students will cover finding a class, buying or renting a textbook, paying, exchanging currency and identifying answer sources in Forum.",
+      "Metrics: task completion, wrong turns, time to complete, confidence rating, trust rating and clarity of the next action.",
+    ],
+    className: "blue",
+    icon: "▣",
     image: "",
     imageAlt: "",
   },
@@ -124,9 +125,6 @@ export function ResearchCarousel() {
     return () => el.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Jumps rather than animates: `scroll-snap-type: mandatory` cancels a smooth
-  // programmatic scroll mid-flight, so `behavior: "smooth"` moved nothing at
-  // all here. Instant also matches the rest of the site, which does not slide.
   const goTo = (index: number) => {
     const el = scrollerRef.current;
     const card = el?.querySelectorAll<HTMLElement>(".research-card")[index];
@@ -139,7 +137,7 @@ export function ResearchCarousel() {
       <div
         className="research-scroller"
         ref={scrollerRef}
-        aria-label="Analysis artefacts"
+        aria-label="User research artefacts"
       >
         {slides.map((slide) => (
           <article className="research-card" key={slide.number}>
