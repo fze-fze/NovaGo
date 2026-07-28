@@ -45,12 +45,7 @@ export const services: Service[] = [
     origin: "EZPAY",
     author: "Cao Yuchen",
     lofi: [],
-    hifi: [
-      {
-        src: "/images/prototype/pay/payment-home-hifi.webp",
-        caption: "Payment Home with wallet balance, Pay Now, Accessing Funds, Currency Exchange, Budget Planner, and recent transactions.",
-      },
-    ],
+    hifi: [],
     decisions: [],
     handoff:
       "Pay hands off to Market checkout when a student rents or buys an item, to Currency Exchange when the available currency is not ready, to Accessing Funds when the balance is low, and to Budget Planner after the transaction is completed.",
