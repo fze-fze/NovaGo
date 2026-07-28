@@ -110,26 +110,6 @@ const payScreens = [
   },
   {
     number: "02",
-    flow: "Accessing Funds",
-    title: "Let students top up before the payment blocks them",
-    screen: "Accessing Funds overview",
-    lofi: "/images/prototype/pay/accessing-funds-overview-lofi.png",
-    hifi: "/images/prototype/pay/accessing-funds-overview-hifi.webp",
-    logic:
-      "Accessing Funds is designed as a supporting step inside the payment journey. The student can check payable balance, choose an amount, and understand which account will be used before continuing.",
-  },
-  {
-    number: "03",
-    flow: "Top up continuation",
-    title: "Confirm that the wallet is ready before returning to checkout",
-    screen: "Accessing Funds continue",
-    lofi: "/images/prototype/pay/accessing-funds-continue-lofi.png",
-    hifi: "/images/prototype/pay/accessing-funds-continue-hifi.webp",
-    logic:
-      "The continuation screen closes the low-balance loop. It shows that the wallet has updated, then sends the student back to payment instead of leaving the top-up task as a dead end.",
-  },
-  {
-    number: "04",
     flow: "Currency exchange",
     title: "Expose the exchange step before the student pays",
     screen: "Currency Exchange",
@@ -139,27 +119,7 @@ const payScreens = [
       "Currency Exchange is treated as an optional but important pre-payment step. The design makes available currencies, converted value, and completion status visible so international students are not guessing about fees or usable balance.",
   },
   {
-    number: "05",
-    flow: "Budget planner",
-    title: "Show how the payment affects monthly spending",
-    screen: "Budget Planner",
-    lofi: "/images/prototype/pay/budget-planner-lofi.png",
-    hifi: "/images/prototype/pay/budget-planner-hifi.webp",
-    logic:
-      "Budget Planner connects payment to aftercare. It turns the transaction into a visible spending update, which answers the research concern that students want to see balance and recent payments in one place.",
-  },
-  {
-    number: "06",
-    flow: "Pay Now",
-    title: "Make QR scanning a focused payment mode",
-    screen: "Scan to Pay",
-    lofi: "/images/prototype/pay/scan-to-pay-lofi.png",
-    hifi: "/images/prototype/pay/scan-to-pay-hifi.webp",
-    logic:
-      "Pay Now opens directly into a scanner interface. The merchant amount, scan frame, upload option, flashlight, and selected wallet are all present so the student can pay without hunting for settings.",
-  },
-  {
-    number: "07",
+    number: "03",
     flow: "Checkout",
     title: "Branch by method, balance, and next action",
     screen: "Payment Summary",
@@ -169,17 +129,7 @@ const payScreens = [
       "The summary screen makes the decision point explicit: enough balance leads to confirmation, while low balance leads to top up. Wallet and card sit as separate methods because card payment may require extra verification.",
   },
   {
-    number: "08",
-    flow: "Verification",
-    title: "Add 3DS / OTP only when the payment needs it",
-    screen: "3DS OTP Verification",
-    lofi: "/images/prototype/pay/sms-otp-lofi.png",
-    hifi: "/images/prototype/pay/sms-otp-hifi.webp",
-    logic:
-      "Verification is separated from the main checkout so it reads as a security checkpoint, not another payment method. The student sees why they are entering a code and can return if something is wrong.",
-  },
-  {
-    number: "09",
+    number: "04",
     flow: "Success",
     title: "Close the transaction and update the budget",
     screen: "Payment Successful",
@@ -187,16 +137,6 @@ const payScreens = [
     hifi: "/images/prototype/pay/payment-success-hifi.webp",
     logic:
       "The success state confirms the amount, payment method, transaction ID, and budget update. This reduces the post-payment uncertainty of whether money was deducted and what changed afterwards.",
-  },
-  {
-    number: "10",
-    flow: "Failure and retry",
-    title: "Explain failure without trapping the student",
-    screen: "Payment Failed",
-    lofi: "/images/prototype/pay/payment-failed-lofi.png",
-    hifi: "/images/prototype/pay/payment-failed-hifi.webp",
-    logic:
-      "The failed state keeps the recovery loop visible: retry 3DS / OTP, change payment method, retry payment, or cancel. The design prioritises what to do next over a vague error message.",
   },
 ];
 

@@ -1,3 +1,8 @@
+"use client";
+
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
+
 const userNeeds = [
   {
     title: "Clear, trusted answers",
@@ -50,52 +55,80 @@ const journeyMap = [
     stage: "Orientation",
     action: "Opens NovaGo after check-in",
     problem: "Scattered emails and unfamiliar acronyms",
-    response: "First-week dashboard with today's tasks",
   },
   {
     stage: "Course setup",
     action: "Checks planner, fees, and waitlist",
     problem: "Status and payments are separated",
-    response: "Academic timeline with official sync",
   },
   {
     stage: "Find class",
     action: "Uses route guidance to lecture hall",
     problem: "Indoor route details are hard to find",
-    response: "Route comparison and leave-by alerts",
   },
   {
     stage: "Pay budget",
     action: "Pays deposit and sets monthly budget",
     problem: "Exchange fees create money anxiety",
-    response: "Wallet and Budget Planner update together",
   },
   {
     stage: "Buy textbook",
     action: "Reserves a used textbook nearby",
     problem: "Trust, pickup, refund, and deposit risks",
-    response: "Verified campus pickup and protected checkout",
   },
   {
     stage: "Ask AI",
     action: "Asks why a form was rejected",
     problem: "AI could answer without sources",
-    response: "Source-backed answer or human escalation",
   },
 ];
 
 export function ResearchCarousel() {
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const [active, setActive] = useState(0);
+
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+    const onScroll = () => {
+      const panels = el.querySelectorAll<HTMLElement>(".research-panel");
+      const mid = el.scrollLeft + el.clientWidth / 2;
+      let best = 0;
+      let bestDist = Infinity;
+      panels.forEach((panel, i) => {
+        const dist = Math.abs(panel.offsetLeft + panel.offsetWidth / 2 - mid);
+        if (dist < bestDist) {
+          bestDist = dist;
+          best = i;
+        }
+      });
+      setActive(best);
+    };
+    onScroll();
+    el.addEventListener("scroll", onScroll, { passive: true });
+    return () => el.removeEventListener("scroll", onScroll);
+  }, []);
+
+  // Jumps rather than animates: `scroll-snap-type: mandatory` cancels a smooth
+  // programmatic scroll mid-flight, so `behavior: "smooth"` moves nothing here.
+  const goTo = (index: number) => {
+    const el = scrollerRef.current;
+    const panel = el?.querySelectorAll<HTMLElement>(".research-panel")[index];
+    if (!el || !panel) return;
+    el.scrollLeft = panel.offsetLeft - (el.clientWidth - panel.offsetWidth) / 2;
+  };
+
   return (
-    <div className="research-evidence">
+    <div className="research-carousel">
+      <div
+        className="research-evidence"
+        ref={scrollerRef}
+        aria-label="Research evidence"
+      >
       <section className="research-panel research-data-panel">
         <div className="research-panel-head">
-          <p className="subsection-label light">User data</p>
+          <p className="subsection-label light">Affinity diagram</p>
           <h3>New students need trusted next steps, not more scattered links.</h3>
-          <p>
-            The PPT research synthesis groups interview notes into four needs:
-            trusted answers, confidence in campus tasks, low-pressure help, and
-            safer buying or payment moments.
-          </p>
         </div>
         <div className="research-data-grid">
           {userNeeds.map((need) => (
@@ -110,23 +143,24 @@ export function ResearchCarousel() {
       </section>
 
       <section className="research-panel persona-panel">
-        <div className="persona-card">
-          <div className="persona-avatar" aria-hidden="true">
-            AC
+        <div className="persona-overview">
+          <div className="persona-card">
+            <div className="persona-avatar">
+              <img src="/images/research/alex-chen.jpg" alt="Alex Chen" />
+            </div>
+            <div>
+              <p className="subsection-label light">Persona</p>
+              <h3>Alex Chen</h3>
+              <p className="persona-role">
+                Computer Science freshman - first week on campus
+              </p>
+              <blockquote>
+                &ldquo;I just want one app that tells me everything I need to
+                know.&rdquo;
+              </blockquote>
+            </div>
           </div>
-          <div>
-            <p className="subsection-label light">Persona</p>
-            <h3>Alex Chen</h3>
-            <p className="persona-role">
-              Computer Science freshman - first week on campus
-            </p>
-            <blockquote>
-              "I just want one app that tells me everything I need to know."
-            </blockquote>
-          </div>
-        </div>
-        <div className="persona-detail">
-          <div>
+          <div className="persona-scenario">
             <h4>Scenario</h4>
             <p>
               Alex arrives for orientation week and needs to complete course
@@ -134,21 +168,24 @@ export function ResearchCarousel() {
               and ask for help when official instructions are unclear.
             </p>
           </div>
-          <div>
-            <h4>Goals</h4>
-            <ul>
-              {personaGoals.map((goal) => (
-                <li key={goal}>{goal}</li>
-              ))}
-            </ul>
-          </div>
+        </div>
+        <div className="persona-goals">
+          <h4>Goals</h4>
+          <ul>
+            {personaGoals.map((goal, index) => (
+              <li key={goal}>
+                <span>{String(index + 1).padStart(2, "0")}</span>
+                {goal}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
       <section className="research-panel journey-panel">
         <div className="research-panel-head">
           <p className="subsection-label light">User journey</p>
-          <h3>Alex's first week moves across five connected modules.</h3>
+          <h3>Alex&rsquo;s first week moves across five connected modules.</h3>
           <p>
             The journey starts with uncertainty and becomes more confident as
             NovaGo turns each task into a visible next step.
@@ -175,25 +212,48 @@ export function ResearchCarousel() {
           <p className="subsection-label light">Journey map</p>
           <h3>A successful journey reduces the moments when Alex has to guess.</h3>
           <p>
-            The map shows what Alex does, where the pain appears, and how NovaGo
-            responds at each stage.
+            The map shows what Alex does and where the pain appears across six
+            stages of his first week.
           </p>
         </div>
         <div className="journey-map">
-          <div className="journey-map-header">
+          <div className="journey-map-axis journey-map-stage-axis">
             <span>Stage</span>
-            <span>Action</span>
-            <span>Problem</span>
-            <span>NovaGo response</span>
+            {journeyMap.map((item, index) => (
+              <strong key={item.stage}>
+                <small>{String(index + 1).padStart(2, "0")}</small>
+                {item.stage}
+              </strong>
+            ))}
           </div>
-          {journeyMap.map((row, index) => (
-            <div className="journey-map-row" key={row.stage}>
-              <span>{String(index + 1).padStart(2, "0")} {row.stage}</span>
-              <p>{row.action}</p>
-              <p>{row.problem}</p>
-              <p>{row.response}</p>
+          <div className="journey-map-axis">
+            <span>Action</span>
+            {journeyMap.map((item) => (
+              <p key={item.stage}>{item.action}</p>
+            ))}
+          </div>
+          <div className="journey-map-axis">
+            <span>Problem</span>
+            {journeyMap.map((item) => (
+              <p key={item.stage}>{item.problem}</p>
+            ))}
+          </div>
+          <div className="journey-map-axis journey-map-emotion-axis">
+            <span>Emotion</span>
+            <div className="emotion-journey">
+              <Image
+                src="/images/research/emotion-journey.png"
+                alt="Alex's emotions rise and fall from overwhelmed and confused to relieved, cautious, hopeful, and confident."
+                width={2081}
+                height={350}
+              />
+              <div className="emotion-journey-labels" aria-hidden="true">
+                {journeyStages.map((item) => (
+                  <small key={item.stage}>{item.feeling}</small>
+                ))}
+              </div>
             </div>
-          ))}
+          </div>
         </div>
         <p className="journey-principle">
           Design principle: every AI shortcut must also be reachable through
@@ -201,6 +261,21 @@ export function ResearchCarousel() {
           fallback.
         </p>
       </section>
+      </div>
+      <div className="carousel-dots">
+        {["Affinity diagram", "Persona", "User journey", "Journey map"].map(
+          (label, i) => (
+            <button
+              key={label}
+              type="button"
+              className={i === active ? "is-active" : undefined}
+              aria-label={`Slide ${i + 1} of 4: ${label}`}
+              aria-current={i === active}
+              onClick={() => goTo(i)}
+            />
+          ),
+        )}
+      </div>
     </div>
   );
 }

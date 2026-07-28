@@ -433,8 +433,16 @@ export default function Home() {
           <h2>
             Help a student new to NUS
             <br />
-            move from uncertainty to a clear{" "}
-            <span>next&nbsp;action?</span>
+            <span
+              className="chapter-hinge-line"
+              style={{
+                color: "var(--color-heading)",
+                display: "inline-block",
+                whiteSpace: "nowrap",
+              }}
+            >
+              move from uncertainty to a clear next action?
+            </span>
           </h2>
         </div>
 
@@ -547,7 +555,9 @@ export default function Home() {
             <h2>
               Design the handoffs,
               <br />
-              not just the home screen.
+              <span className="prototype-heading-accent">
+                not just the home screen.
+              </span>
             </h2>
           </div>
           <p className="lead">
@@ -619,43 +629,115 @@ export default function Home() {
           <span>06</span>
           <p>Evaluation</p>
         </div>
-        <div className="evaluation-grid">
-          <div>
-            <h2>
-              Test whether “connected”
-              <br />
-              <span className="evaluation-heading-accent">
-                actually feels simpler.
-              </span>
-            </h2>
-            <p className="lead">
-              The next study should test task-first comprehension,
-              cross-service continuity, and trust—not visual preference alone.
-              This framework records the plan without inventing outcomes.
-            </p>
-          </div>
-          <div className="evaluation-list">
-            <article>
-              <span>01</span>
-              <div><h3>Find the next action</h3><p>Can a newcomer identify what matters now and recognise its official source?</p></div>
-            </article>
-            <article>
-              <span>02</span>
-              <div><h3>Move between services</h3><p>Does a route, payment scenario, or campus task lead naturally to the right next tool?</p></div>
-            </article>
-            <article>
-              <span>03</span>
-              <div><h3>Decide what to trust</h3><p>Are source, freshness, identity, and safety cues clear in Market and Forum moments?</p></div>
-            </article>
-          </div>
+        <div className="evaluation-heading">
+          <h2>
+            Evaluate the journey,
+            <br />
+            <span className="evaluation-heading-accent">
+              not only each screen.
+            </span>
+          </h2>
+          <p className="lead evaluation-intro">
+            We walked through the shared Figma prototype from Home to Payment
+            Summary, then used the same journey to define a target-user study.
+            Expert findings and planned participant evidence are kept separate.
+          </p>
         </div>
-        <div className="measure-strip">
-          <span>Task completion</span>
-          <span>Critical errors</span>
-          <span>Wrong turns</span>
-          <span>Time to next action</span>
-          <span>Confidence</span>
-          <span>Perceived trust</span>
+
+        <div className="evaluation-methods">
+          <article className="evaluation-method-card">
+            <p className="subsection-label light">Expert inspection</p>
+            <h3>Heuristic Review</h3>
+            <p className="evaluation-method-lede">
+              A bounded walkthrough covered Home, Market, Search, Product
+              Detail, Buy/Rent, Cart, and Payment Summary. Three issues were
+              prioritised using Nielsen&apos;s heuristics and the course&apos;s
+              0–4 severity scale.
+            </p>
+            <ol className="evaluation-detail-list">
+              <li>
+                <span>S3</span>
+                <div>
+                  <h4>Search behaves inconsistently.</h4>
+                  <p>
+                    The visible textbook result and recent-search chip did not
+                    continue the flow, while a similar Market home card did.
+                    Every equivalent entry point should lead somewhere
+                    predictable.
+                  </p>
+                </div>
+              </li>
+              <li>
+                <span>S3</span>
+                <div>
+                  <h4>Buy is selected by default.</h4>
+                  <p>
+                    A short-stay renter can continue with the wrong commitment
+                    in one tap. Start with neither option selected and require
+                    an explicit Buy or Rent choice.
+                  </p>
+                </div>
+              </li>
+              <li>
+                <span>S2</span>
+                <div>
+                  <h4>The payment total hides the refundable hold.</h4>
+                  <p>
+                    Separate non-refundable cost, refundable deposit, and the
+                    amount charged today so the real rental cost is clear.
+                  </p>
+                </div>
+              </li>
+            </ol>
+          </article>
+
+          <article className="evaluation-method-card">
+            <p className="subsection-label light">Target-user validation</p>
+            <h3>Usability Testing</h3>
+            <p className="evaluation-method-lede">
+              A pilot walkthrough confirmed the test endpoints and exposed one
+              broken route. Formal moderated sessions will involve 5–10
+              students who are new to NUS or staying for a short period.
+            </p>
+            <ol className="evaluation-detail-list">
+              <li>
+                <span>01</span>
+                <div>
+                  <h4>Find the right service.</h4>
+                  <p>
+                    From Home, find where to obtain a textbook from another
+                    student. <em>Pilot: completable.</em>
+                  </p>
+                </div>
+              </li>
+              <li>
+                <span>02</span>
+                <div>
+                  <h4>Choose temporary access.</h4>
+                  <p>
+                    Find the Calculus II textbook, select a one-week rental, and
+                    stop before payment. <em>Pilot: workaround required.</em>
+                  </p>
+                </div>
+              </li>
+              <li>
+                <span>03</span>
+                <div>
+                  <h4>Respond to a return reminder.</h4>
+                  <p>
+                    Find the approaching textbook return and choose the next
+                    action. <em>Pilot: not yet measurable.</em>
+                  </p>
+                </div>
+              </li>
+            </ol>
+            <p className="evaluation-note">
+              We will record unassisted, assisted, or failed completion;
+              critical errors, wrong turns, time, price/deposit comprehension,
+              and 1–5 confidence. Participant results will be added only after
+              the sessions are completed.
+            </p>
+          </article>
         </div>
       </section>
 

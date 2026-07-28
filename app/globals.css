@@ -760,14 +760,21 @@ h2 {
    half answers is stated at full heading weight. The rule follows the question
    so it leads into the ideation half instead of separating label from heading. */
 .chapter-hinge {
-  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
   margin: 104px 0 96px;
-  padding: 58px 0 0;
+  padding: 0 0 58px;
 }
 
 .chapter-hinge h2 {
   margin: 0;
-  max-width: 26ch;
+  max-width: none;
+}
+
+.chapter-hinge h2 .chapter-hinge-line {
+  color: var(--color-heading);
+  display: inline-block;
+  font-style: inherit;
+  white-space: nowrap;
 }
 
 /* The conclusion the three signals add up to. */
@@ -1023,17 +1030,21 @@ h2 {
   color: var(--color-heading-inverse);
 }
 
-.research-heading {
+/* The two dark chapters open the same way, so they share one heading rhythm. */
+.research-heading,
+.evaluation-heading {
   display: grid;
   gap: 7vw;
   grid-template-columns: 1.3fr 0.7fr;
 }
 
-.research-heading h2 {
+.research-heading h2,
+.evaluation-heading h2 {
   max-width: 800px;
 }
 
-.research-heading > p:last-child {
+.research-heading > p:last-child,
+.evaluation-intro {
   color: var(--color-body-inverse);
   font-size: var(--font-lead);
   font-weight: 500;
@@ -1232,17 +1243,30 @@ h2 {
   width: 26px;
 }
 
+/* Horizontal snap gallery. Bleeds to the viewport edge so the next panel peeks
+   in from the side. */
 .research-evidence {
-  display: grid;
-  gap: 34px;
-  margin-top: 26px;
+  display: flex;
+  gap: 22px;
+  margin: 26px -7vw 0;
+  overflow-x: auto;
+  padding-inline: 7vw;
+  scroll-padding-inline: 7vw;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.research-evidence::-webkit-scrollbar {
+  display: none;
 }
 
 .research-panel {
   background: rgba(255, 255, 255, 0.065);
   border: 1px solid rgba(255, 255, 255, 0.09);
   border-radius: 28px;
+  flex: 0 0 min(880px, 88%);
   padding: clamp(24px, 3vw, 38px);
+  scroll-snap-align: center;
 }
 
 .research-panel-head {
@@ -1253,13 +1277,16 @@ h2 {
 .research-panel-head h3,
 .persona-card h3 {
   color: var(--color-heading-inverse);
+  font-family: var(--serif);
   font-size: clamp(26px, 3vw, 36px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
   line-height: 1.15;
   margin: 0 0 12px;
 }
 
 .research-panel-head p,
-.persona-detail p,
+.persona-scenario p,
 .journey-focus,
 .journey-principle {
   color: var(--color-body-inverse);
@@ -1278,8 +1305,10 @@ h2 {
 }
 
 .research-data-grid h4,
-.persona-detail h4,
-.journey-stage-grid h4 {
+.persona-scenario h4,
+.persona-goals h4,
+.journey-stage-grid h4,
+.evaluation-detail-list h4 {
   color: #fff;
   font-size: var(--font-h3);
   margin: 0 0 12px;
@@ -1295,10 +1324,17 @@ h2 {
 }
 
 .persona-panel {
+  align-items: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+
+.persona-overview {
   align-items: start;
   display: grid;
-  gap: 32px;
-  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(36px, 5vw, 64px);
+  grid-template-columns: 1.15fr 0.85fr;
 }
 
 .persona-card {
@@ -1309,16 +1345,17 @@ h2 {
 }
 
 .persona-avatar {
-  align-items: center;
   background: #8db4ff;
   border-radius: 24px;
-  color: #0b1b3a;
-  display: flex;
-  font-size: 24px;
-  font-weight: 800;
   height: 86px;
-  justify-content: center;
+  overflow: hidden;
   width: 86px;
+}
+
+.persona-avatar img {
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
 }
 
 .persona-role {
@@ -1335,18 +1372,46 @@ h2 {
   margin: 0;
 }
 
-.persona-detail {
-  display: grid;
-  gap: 22px;
-  grid-template-columns: 1.15fr 0.85fr;
+.persona-scenario {
+  border-left: 1px solid rgba(255, 255, 255, 0.14);
+  padding-left: clamp(24px, 3vw, 38px);
 }
 
-.persona-detail ul {
+.persona-goals {
+  border-top: 1px solid rgba(255, 255, 255, 0.14);
+  margin-top: auto;
+  padding-top: 22px;
+}
+
+.persona-goals ul {
   color: var(--color-body-inverse);
   display: grid;
-  gap: 9px;
+  gap: 0;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  list-style: none;
   margin: 0;
-  padding-left: 18px;
+  padding: 0;
+}
+
+.persona-goals li {
+  border-left: 1px solid rgba(255, 255, 255, 0.12);
+  display: grid;
+  gap: 8px;
+  line-height: 1.45;
+  min-height: 72px;
+  padding: 0 18px;
+}
+
+.persona-goals li:first-child {
+  border-left: 0;
+  padding-left: 0;
+}
+
+.persona-goals li span {
+  color: var(--color-accent-light);
+  font-family: var(--serif);
+  font-size: 20px;
+  line-height: 1;
 }
 
 .journey-stage-grid {
@@ -1390,47 +1455,104 @@ h2 {
   padding-top: 20px;
 }
 
+.journey-map-panel {
+  flex-basis: min(1180px, 94%);
+}
+
+.journey-map-panel .research-panel-head {
+  max-width: 940px;
+}
+
 .journey-map {
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 20px;
-  display: grid;
-  gap: 0;
-  overflow: hidden;
+  overflow-x: auto;
+  scrollbar-width: thin;
 }
 
-.journey-map-header,
-.journey-map-row {
+.journey-map-axis {
   display: grid;
-  gap: 0;
-  grid-template-columns: 0.75fr 1.15fr 1.15fr 1.25fr;
+  grid-template-columns: 0.68fr repeat(6, minmax(132px, 1fr));
+  min-width: 1060px;
 }
 
-.journey-map-header {
+.journey-map-stage-axis {
   background: rgba(141, 180, 255, 0.16);
-  color: #fff;
-  font-size: var(--font-label);
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
 }
 
-.journey-map-header span,
-.journey-map-row > * {
+.journey-map-axis > * {
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
   padding: 14px 16px;
 }
 
-.journey-map-row {
+.journey-map-axis > *:first-child {
+  border-left: 0;
+}
+
+.journey-map-axis + .journey-map-axis {
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.journey-map-row > span {
+.journey-map-axis > span {
   color: #fff;
+  font-size: var(--font-label);
   font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
 }
 
-.journey-map-row p {
+.journey-map-axis strong {
+  color: #fff;
+  font-size: var(--font-body);
+  line-height: 1.3;
+}
+
+.journey-map-axis strong small {
+  color: var(--color-accent-light);
+  display: block;
+  font-size: var(--font-label);
+  margin-bottom: 4px;
+}
+
+.journey-map-axis p {
   color: var(--color-body-inverse);
+  font-size: var(--font-label);
+  line-height: 1.5;
   margin: 0;
+}
+
+.journey-map-emotion-axis {
+  align-items: stretch;
+}
+
+.journey-map-emotion-axis > span {
+  align-content: center;
+}
+
+.journey-map-emotion-axis .emotion-journey {
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+  grid-column: 2 / -1;
+  padding: 8px 0 10px;
+}
+
+.emotion-journey img {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+.emotion-journey-labels {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+}
+
+.emotion-journey-labels small {
+  color: var(--color-caption-inverse);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .ideation {
@@ -1451,8 +1573,7 @@ h2 {
   padding-top: 12px;
 }
 
-.prototype-top,
-.evaluation-grid {
+.prototype-top {
   display: grid;
   gap: 8vw;
   grid-template-columns: 1.1fr 0.9fr;
@@ -1464,6 +1585,10 @@ h2 {
   font-weight: 500;
   line-height: var(--line-lead);
   padding-top: 35px;
+}
+
+.prototype-heading-accent {
+  color: var(--color-accent-light);
 }
 
 /* --- 05 Prototyping: lead item + service rail -------------------------- */
@@ -1689,60 +1814,86 @@ h2 {
   padding-left: 18px;
 }
 
-.evaluation-grid h2 {
-  max-width: 680px;
-}
-
 .evaluation-heading-accent {
   color: var(--color-accent-light);
 }
 
-.evaluation-grid > div:first-child > p:last-child {
-  color: var(--color-body-inverse);
-  font-size: var(--font-lead);
-  font-weight: 500;
-  line-height: var(--line-lead);
-  max-width: 650px;
-}
-
-.evaluation-list article {
-  border-top: 1px solid rgba(255, 255, 255, 0.12);
+.evaluation-methods {
   display: grid;
-  gap: 25px;
-  grid-template-columns: 30px 1fr;
-  padding: 28px 0;
+  gap: 24px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 72px;
 }
 
-.evaluation-list article > span {
-  color: var(--color-caption-inverse);
-  font-size: var(--font-label);
+.evaluation-method-card {
+  background: rgba(255, 255, 255, 0.065);
+  border: 1px solid rgba(255, 255, 255, 0.09);
+  border-radius: 28px;
+  padding: clamp(28px, 3vw, 44px);
 }
 
-.evaluation-list h3 {
-  font-size: var(--font-h3);
-  margin-bottom: 7px;
+.evaluation-method-card > .subsection-label {
+  margin: 0 0 12px;
 }
 
-.evaluation-list p {
+/* Same serif sub-heading the prototype feature card uses — one step under the
+   chapter h2 rather than competing with it. */
+.evaluation-method-card > h3 {
+  font-family: var(--serif);
+  font-size: clamp(24px, 2.4vw, 34px);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin: 0 0 18px;
+}
+
+.evaluation-method-lede {
   color: var(--color-body-inverse);
   font-size: var(--font-body);
   line-height: var(--line-body);
+  margin: 0;
 }
 
-.measure-strip {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 70px;
+.evaluation-detail-list {
+  list-style: none;
+  margin: 30px 0 0;
+  padding: 0;
 }
 
-.measure-strip span {
-  background: rgba(255, 255, 255, 0.07);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 999px;
+.evaluation-detail-list li {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  display: grid;
+  gap: 22px;
+  grid-template-columns: 42px 1fr;
+  padding: 22px 0;
+}
+
+/* Every indexed list on the site marks its items with a serif accent numeral. */
+.evaluation-detail-list li > span {
+  color: var(--color-accent-light);
+  font-family: var(--serif);
+  font-size: 26px;
+  line-height: 1;
+}
+
+.evaluation-detail-list p,
+.evaluation-note {
   color: var(--color-body-inverse);
-  font-size: var(--font-label);
-  padding: 11px 15px;
+  font-size: var(--font-body);
+  line-height: var(--line-body);
+  margin: 0;
+}
+
+.evaluation-detail-list em {
+  color: var(--color-accent-light);
+  font-style: normal;
+  font-weight: 600;
+}
+
+.evaluation-note {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  margin-top: 8px;
+  padding-top: 22px;
 }
 
 .final {
@@ -2002,6 +2153,10 @@ footer p:last-child {
 }
 
 @media (max-width: 1050px) {
+  .chapter-hinge h2 .chapter-hinge-line {
+    white-space: normal;
+  }
+
   .hero {
     grid-template-columns: 1fr;
     padding-top: 140px;
@@ -2021,7 +2176,8 @@ footer p:last-child {
   .research-heading,
   .ideation-heading,
   .prototype-top,
-  .evaluation-grid,
+  .evaluation-heading,
+  .evaluation-methods,
   .team-heading {
     gap: 55px;
     grid-template-columns: 1fr;
@@ -2068,27 +2224,24 @@ footer p:last-child {
     padding-top: 0;
   }
 
-  .persona-panel,
-  .persona-detail,
+  .persona-overview,
   .research-data-grid {
     grid-template-columns: 1fr;
+  }
+
+  .persona-scenario {
+    border-left: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.14);
+    padding-left: 0;
+    padding-top: 24px;
   }
 
   .journey-stage-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
-  .journey-map-header {
-    display: none;
-  }
-
-  .journey-map-row {
-    grid-template-columns: 1fr;
-    padding: 14px 0;
-  }
-
-  .journey-map-row > * {
-    padding: 6px 16px;
+  .journey-map-axis {
+    min-width: 1020px;
   }
 
   /* Rail drops under the lead item; nothing left to stick to. */
@@ -2197,13 +2350,36 @@ footer p:last-child {
     padding: 112px 22px 50px;
   }
 
+  .research-evidence {
+    gap: 14px;
+    margin-inline: -22px;
+    padding-inline: 22px;
+    scroll-padding-inline: 22px;
+  }
+
   .research-panel {
     border-radius: 22px;
+    flex-basis: 88%;
     padding: 22px;
   }
 
   .persona-card {
     grid-template-columns: 1fr;
+  }
+
+  .persona-goals ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .persona-goals li:nth-child(odd) {
+    border-left: 0;
+    padding-left: 0;
+  }
+
+  .persona-goals li:nth-child(n + 3) {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    margin-top: 18px;
+    padding-top: 18px;
   }
 
   .journey-stage-grid {
