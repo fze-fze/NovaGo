@@ -377,7 +377,7 @@ export default function Home() {
         </div>
 
         <p className="subsection-label light research-next-label">
-          How we turn notes into decisions
+          Persona / User journey / Journey map
         </p>
         <ResearchCarousel />
       </section>
