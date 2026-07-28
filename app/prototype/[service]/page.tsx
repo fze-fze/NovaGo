@@ -140,6 +140,49 @@ const payScreens = [
   },
 ];
 
+const academicHubScreens = [
+  {
+    number: "01",
+    flow: "Hub entry",
+    title: "Bring five recurring academic tasks into one place",
+    screen: "Academic Hub",
+    lofi: "/images/prototype/academic-hub/academic-hub-dark.png",
+    hifi: "/images/prototype/academic-hub/academic-hub-light.png",
+    logic:
+      "The hub-and-spoke structure stays consistent across both directions. Leave requests, tuition fees, assignments, study resources, and course planning remain visible as distinct entry points, while the hi-fi direction gives each service stronger colour coding and more generous spacing.",
+  },
+  {
+    number: "02",
+    flow: "Leave request",
+    title: "Turn an administrative request into one guided form",
+    screen: "Leave Application",
+    lofi: "/images/prototype/academic-hub/leave-application-dark.png",
+    hifi: "/images/prototype/academic-hub/leave-application-light.png",
+    logic:
+      "Leave Application keeps the request in one sequence: leave type, start and end dates, reason, optional supporting documents, submission, and cancellation. The hi-fi direction separates each step more clearly while preserving the same task order.",
+  },
+  {
+    number: "03",
+    flow: "Assignment tracking",
+    title: "Keep deadlines, status, and submission actions together",
+    screen: "Assignment Hub",
+    lofi: "/images/prototype/academic-hub/assignment-hub-dark.png",
+    hifi: "/images/prototype/academic-hub/assignment-hub-light.png",
+    logic:
+      "Assignment Hub lets students filter work by All, Pending, or Submitted, compare due dates, and open submission directly from unfinished items. Completed work keeps a visible submitted state without presenting another submit action.",
+  },
+  {
+    number: "04",
+    flow: "Fee overview",
+    title: "Separate what is due from what is already paid",
+    screen: "Tuition & Fees",
+    lofi: "/images/prototype/academic-hub/tuition-fees-dark.png",
+    hifi: "/images/prototype/academic-hub/tuition-fees-light.png",
+    logic:
+      "Tuition & Fees separates pending payments from paid history. Each outstanding item keeps its amount, due date, and Pay Now action visible, while the total pending balance of $4,630 provides a clear summary of what remains.",
+  },
+];
+
 const forumScreens = [
   {
     number: "01",
@@ -360,6 +403,94 @@ function PayStory() {
   );
 }
 
+function AcademicHubStory() {
+  return (
+    <>
+      <section className="service-block market-origin">
+        <h2>Why Academic Hub needed one entry point</h2>
+        <p className="lead">
+          Academic Hub brings five recurring tasks into one service directory:
+          leave requests, tuition payments, assignment submission, study
+          resources, and course planning. Each task then opens into a focused
+          screen instead of competing on one dashboard.
+        </p>
+        <div className="market-paths">
+          <article>
+            <p className="subsection-label">Academic work</p>
+            <h3>See what needs attention, then act.</h3>
+            <p>
+              Assignment status, deadlines, resources, and course planning
+              remain separate tasks, but share one recognisable starting point.
+            </p>
+          </article>
+          <article>
+            <p className="subsection-label">Administrative tasks</p>
+            <h3>Keep official actions structured and traceable.</h3>
+            <p>
+              Leave requests and tuition fees use dedicated flows so dates,
+              documents, amounts, status, and the next action stay visible.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section className="service-block market-evolution">
+        <h2>Designing each Academic Hub page from lo-fi to hi-fi</h2>
+        <p className="lead">
+          The same information architecture appears in both directions. Four
+          representative screens show how the compact lo-fi structure becomes
+          a lighter campus interface with stronger hierarchy, service colour,
+          and status cues.
+        </p>
+        <div className="market-evolution-list">
+          {academicHubScreens.map((screen) => (
+            <article className="market-screen-step" key={screen.number}>
+              <header className="market-screen-heading">
+                <span>{screen.number}</span>
+                <div>
+                  <p className="subsection-label">{screen.flow} flow</p>
+                  <h3>{screen.title}</h3>
+                </div>
+              </header>
+              <div className="market-screen-pair">
+                <figure>
+                  <div className="academic-hub-image-frame">
+                    <img
+                      className="market-screen-image"
+                      src={screen.lofi}
+                      alt={`${screen.screen} lo-fi prototype`}
+                      loading="lazy"
+                    />
+                  </div>
+                  <figcaption>Lo-fi · {screen.screen}</figcaption>
+                </figure>
+                <span className="market-evolution-arrow" aria-hidden="true">
+                  →
+                </span>
+                <figure>
+                  <div className="academic-hub-image-frame">
+                    <img
+                      className="market-screen-image"
+                      src={screen.hifi}
+                      alt={`${screen.screen} hi-fi prototype`}
+                      loading="lazy"
+                    />
+                  </div>
+                  <figcaption>Hi-fi · {screen.screen}</figcaption>
+                </figure>
+              </div>
+              <div className="market-screen-logic">
+                <p className="subsection-label">Design logic</p>
+                <p>{screen.logic}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}
+
 function ForumStory() {
   return (
     <>
@@ -489,6 +620,8 @@ export default async function ServicePage({
           <PayStory />
         ) : service.slug === "market" ? (
           <MarketStory />
+        ) : service.slug === "academic-hub" ? (
+          <AcademicHubStory />
         ) : service.slug === "forum" ? (
           <ForumStory />
         ) : (

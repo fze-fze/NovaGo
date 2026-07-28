@@ -647,44 +647,63 @@ export default function Home() {
         <div className="evaluation-methods">
           <article className="evaluation-method-card">
             <p className="subsection-label light">Expert inspection</p>
-            <h3>Heuristic Review</h3>
+            <h3>Heuristic Evaluation</h3>
             <p className="evaluation-method-lede">
-              A bounded walkthrough covered Home, Market, Search, Product
-              Detail, Buy/Rent, Cart, and Payment Summary. Three issues were
-              prioritised using Nielsen&apos;s heuristics and the course&apos;s
-              0–4 severity scale.
+              We inspected the prototype against Nielsen&apos;s heuristics, then
+              recorded the interface evidence, severity, and redesign direction
+              for each issue. This is an expert diagnosis, not participant data.
             </p>
             <ol className="evaluation-detail-list">
               <li>
                 <span>S3</span>
                 <div>
-                  <h4>Search behaves inconsistently.</h4>
+                  <h4>Search entry points lead to different outcomes.</h4>
                   <p>
-                    The visible textbook result and recent-search chip did not
-                    continue the flow, while a similar Market home card did.
-                    Every equivalent entry point should lead somewhere
-                    predictable.
+                    <strong>H4 — Consistency and standards.</strong>
+                    <br />
+                    <strong>Evidence:</strong> the textbook result and
+                    recent-search chip did not continue the flow, while a similar
+                    Market card did. <strong>Impact:</strong> users may repeat the
+                    search or abandon the task.
+                    <br />
+                    <strong>Revision:</strong> make every search entry open the
+                    same result state, preserve the query and filters, and
+                    provide a predictable way back.
                   </p>
                 </div>
               </li>
               <li>
                 <span>S3</span>
                 <div>
-                  <h4>Buy is selected by default.</h4>
+                  <h4>A default Buy state can cause the wrong commitment.</h4>
                   <p>
-                    A short-stay renter can continue with the wrong commitment
-                    in one tap. Start with neither option selected and require
-                    an explicit Buy or Rent choice.
+                    <strong>H5 — Error prevention.</strong>
+                    <br />
+                    <strong>Evidence:</strong> Buy is already selected before the
+                    student makes a choice. <strong>Impact:</strong> a short-stay
+                    student may make the wrong commitment and miss Rent.
+                    <br />
+                    <strong>Revision:</strong> begin with a neutral state, require
+                    an explicit Buy or Rent choice, and show duration and deposit
+                    before Continue becomes available.
                   </p>
                 </div>
               </li>
               <li>
                 <span>S2</span>
                 <div>
-                  <h4>The payment total hides the refundable hold.</h4>
+                  <h4>The payment summary obscures the refundable hold.</h4>
                   <p>
-                    Separate non-refundable cost, refundable deposit, and the
-                    amount charged today so the real rental cost is clear.
+                    <strong>H1 — Visibility of system status.</strong>
+                    <br />
+                    <strong>Evidence:</strong> the summary combines rental cost
+                    and deposit without explaining refund timing.
+                    <strong> Impact:</strong> students cannot judge the real
+                    short-stay cost before confirming.
+                    <br />
+                    <strong>Revision:</strong> separate the amount charged today,
+                    non-refundable cost, refundable deposit, and expected refund
+                    timing before confirmation.
                   </p>
                 </div>
               </li>
@@ -695,50 +714,60 @@ export default function Home() {
             <p className="subsection-label light">Target-user validation</p>
             <h3>Usability Testing</h3>
             <p className="evaluation-method-lede">
-              Moderated sessions with 5–10 students new to NUS will test a
-              complete campus task, not one service in isolation. Each scenario
-              crosses two or more modules and ends at a clear outcome.
+              We will run moderated think-aloud sessions with 5–10 students new
+              to NUS. Participants receive realistic goals without module names
+              or step-by-step prompts; success criteria are fixed before testing.
             </p>
             <ol className="evaluation-detail-list">
               <li>
                 <span>01</span>
                 <div>
-                  <h4>Prepare for the next class.</h4>
+                  <h4>Get to an unfamiliar class on time.</h4>
                   <p>
-                    From Home, find the next tutorial in Academic Hub, confirm
-                    its room, and open Commute to check when to leave. Observe
-                    whether the handoff is understood without prompting.
+                    <strong>Scenario:</strong> You have a tutorial in 25 minutes,
+                    but do not know the room or walking time. Use NovaGo to decide
+                    where to go and when to leave.
+                    <br />
+                    <strong>Success:</strong> identifies the correct class, room,
+                    route, and departure time without assistance.
                   </p>
                 </div>
               </li>
               <li>
                 <span>02</span>
                 <div>
-                  <h4>Complete and recover from a payment.</h4>
+                  <h4>Arrange temporary access within budget.</h4>
                   <p>
-                    Rent a textbook in Market, identify the refundable deposit,
-                    resolve an insufficient balance through Pay, and return to
-                    checkout. Observe cost comprehension and recovery.
+                    <strong>Scenario:</strong> You need a Calculus II textbook
+                    for one week and have S$20 available today. Use NovaGo to
+                    arrange access and explain what is charged now and what is
+                    refundable.
+                    <br />
+                    <strong>Success:</strong> selects a rental, distinguishes fee
+                    from deposit, and recovers if the balance is insufficient.
                   </p>
                 </div>
               </li>
               <li>
                 <span>03</span>
                 <div>
-                  <h4>Ask, verify, and continue.</h4>
+                  <h4>Resolve conflicting course advice.</h4>
                   <p>
-                    Ask Albot about an unfamiliar course requirement, open the
-                    cited official source, then use Forum if the answer remains
-                    unclear. Observe trust, source checking, and fallback.
+                    <strong>Scenario:</strong> Two students give different
+                    answers about a course requirement. Use NovaGo to decide
+                    what to do next and show why the information is trustworthy.
+                    <br />
+                    <strong>Success:</strong> finds a relevant answer, checks an
+                    official source, and uses a human fallback if still uncertain.
                   </p>
                 </div>
               </li>
             </ol>
             <p className="evaluation-note">
-              We will record completion, assistance, wrong turns, time on task,
-              source verification, price/deposit comprehension, and 1–5
-              confidence. Participant findings will be added only after the
-              sessions are completed.
+              The moderator stays neutral and prompts only for think-aloud. We
+              record task success, time, errors, path, quotes, and post-task
+              confidence; observations become Issue → Evidence → Impact →
+              Recommendation only after the sessions.
             </p>
           </article>
         </div>
@@ -797,9 +826,9 @@ export default function Home() {
               <NovaGo /> brings the first week together—safely, simply, and
               gently.
             </p>
-            <a className="button button-primary" href="#top">
+            <SmoothLink className="button button-primary" href="#top">
               Back to the beginning <span aria-hidden="true">↑</span>
-            </a>
+            </SmoothLink>
           </div>
         </div>
       </section>

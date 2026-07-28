@@ -1903,6 +1903,11 @@ h2 {
   margin: 0;
 }
 
+.evaluation-detail-list p strong {
+  color: #fff;
+  font-weight: 700;
+}
+
 .evaluation-detail-list em {
   color: var(--color-accent-light);
   font-style: normal;
@@ -2908,6 +2913,25 @@ footer p:last-child {
   display: block;
   height: auto;
   width: 100%;
+}
+
+.academic-hub-image-frame {
+  aspect-ratio: 9 / 16;
+  background: #eef3f8;
+  border: 1px solid rgba(37, 76, 126, 0.1);
+  border-radius: 18px;
+  overflow: hidden;
+  position: relative;
+}
+
+.academic-hub-image-frame .market-screen-image {
+  border: 0;
+  border-radius: 0;
+  height: 100%;
+  inset: 0;
+  object-fit: contain;
+  object-position: top;
+  position: absolute;
 }
 
 .market-evolution-arrow {

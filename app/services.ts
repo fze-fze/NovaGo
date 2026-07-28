@@ -87,7 +87,8 @@ export const services: Service[] = [
     lofi: [],
     hifi: [],
     decisions: [],
-    handoff: "",
+    handoff:
+      "Academic Hub hands off to Pay when a tuition item needs payment, to Albot when an instruction needs clarification, and back to Home when the student has completed the academic task.",
   },
   {
     slug: "forum",
