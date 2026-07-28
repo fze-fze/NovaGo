@@ -41,13 +41,19 @@ export const services: Service[] = [
     name: "Pay",
     icon: "/images/services/pay.png",
     className: "blue",
-    role: "Plain-language guidance for accepted payment methods, setup steps, and fallback options.",
+    role: "A connected campus money flow for wallet balance, top up, currency exchange, QR payment, verification, and budget updates.",
     origin: "EZPAY",
     author: "Cao Yuchen",
     lofi: [],
-    hifi: [],
+    hifi: [
+      {
+        src: "/images/prototype/pay/payment-home-hifi.webp",
+        caption: "Payment Home with wallet balance, Pay Now, Accessing Funds, Currency Exchange, Budget Planner, and recent transactions.",
+      },
+    ],
     decisions: [],
-    handoff: "",
+    handoff:
+      "Pay hands off to Market checkout when a student rents or buys an item, to Currency Exchange when the available currency is not ready, to Accessing Funds when the balance is low, and to Budget Planner after the transaction is completed.",
   },
   {
     slug: "market",
