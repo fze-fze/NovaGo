@@ -154,10 +154,11 @@ export function ResearchCarousel() {
               <p className="persona-role">
                 Computer Science freshman - first week on campus
               </p>
-              <blockquote>
-                &ldquo;I just want one app that tells me everything I need to
-                know.&rdquo;
-              </blockquote>
+              <p className="persona-goal-label">Primary goal</p>
+              <p className="persona-primary-goal">
+                Complete essential first-week tasks without guessing which
+                source or step to trust.
+              </p>
             </div>
           </div>
           <div className="persona-scenario">
@@ -169,8 +170,20 @@ export function ResearchCarousel() {
             </p>
           </div>
         </div>
+        <div className="persona-detail-grid">
+          <article>
+            <h4>Constraints</h4>
+            <p>Campus information sits across unfamiliar systems.</p>
+            <p>Trust, payments, and routes are hard to verify at a glance.</p>
+          </article>
+          <article>
+            <h4>Behaviours</h4>
+            <p>Cross-checks official pages and group chats before acting.</p>
+            <p>Looks for a clear next step when instructions conflict.</p>
+          </article>
+        </div>
         <div className="persona-goals">
-          <h4>Goals</h4>
+          <h4>Key tasks</h4>
           <ul>
             {personaGoals.map((goal, index) => (
               <li key={goal}>
@@ -196,7 +209,6 @@ export function ResearchCarousel() {
             <article key={item.stage}>
               <span>{String(index + 1).padStart(2, "0")}</span>
               <h4>{item.stage}</h4>
-              <p>{item.module}</p>
               <small>{item.feeling}</small>
             </article>
           ))}
@@ -219,11 +231,8 @@ export function ResearchCarousel() {
         <div className="journey-map">
           <div className="journey-map-axis journey-map-stage-axis">
             <span>Stage</span>
-            {journeyMap.map((item, index) => (
-              <strong key={item.stage}>
-                <small>{String(index + 1).padStart(2, "0")}</small>
-                {item.stage}
-              </strong>
+            {journeyMap.map((item) => (
+              <strong key={item.stage}>{item.stage}</strong>
             ))}
           </div>
           <div className="journey-map-axis">
@@ -247,18 +256,11 @@ export function ResearchCarousel() {
                 width={2081}
                 height={350}
               />
-              <div className="emotion-journey-labels" aria-hidden="true">
-                {journeyStages.map((item) => (
-                  <small key={item.stage}>{item.feeling}</small>
-                ))}
-              </div>
             </div>
           </div>
         </div>
         <p className="journey-principle">
-          Design principle: every AI shortcut must also be reachable through
-          normal menus, and every AI answer needs a visible source or safe
-          fallback.
+          Design principle: keep AI shortcuts accessible, sourced, and safe.
         </p>
       </section>
       </div>

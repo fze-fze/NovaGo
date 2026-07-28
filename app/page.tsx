@@ -377,7 +377,7 @@ export default function Home() {
         </div>
 
         <p className="subsection-label light research-next-label">
-          Persona / User journey / Journey map
+          Affinity diagram / Persona / User journey / Journey map
         </p>
         <ResearchCarousel />
       </section>
@@ -598,7 +598,7 @@ export default function Home() {
                 key={service.slug}
               >
                 <span className="proto-card-media">
-                  {service.hifi[0] ? (
+                  {service.hifi[0] && service.slug !== "forum" ? (
                     <img
                       src={service.hifi[0].src}
                       alt={service.hifi[0].caption}
@@ -695,47 +695,50 @@ export default function Home() {
             <p className="subsection-label light">Target-user validation</p>
             <h3>Usability Testing</h3>
             <p className="evaluation-method-lede">
-              A pilot walkthrough confirmed the test endpoints and exposed one
-              broken route. Formal moderated sessions will involve 5–10
-              students who are new to NUS or staying for a short period.
+              Moderated sessions with 5–10 students new to NUS will test a
+              complete campus task, not one service in isolation. Each scenario
+              crosses two or more modules and ends at a clear outcome.
             </p>
             <ol className="evaluation-detail-list">
               <li>
                 <span>01</span>
                 <div>
-                  <h4>Find the right service.</h4>
+                  <h4>Prepare for the next class.</h4>
                   <p>
-                    From Home, find where to obtain a textbook from another
-                    student. <em>Pilot: completable.</em>
+                    From Home, find the next tutorial in Academic Hub, confirm
+                    its room, and open Commute to check when to leave. Observe
+                    whether the handoff is understood without prompting.
                   </p>
                 </div>
               </li>
               <li>
                 <span>02</span>
                 <div>
-                  <h4>Choose temporary access.</h4>
+                  <h4>Complete and recover from a payment.</h4>
                   <p>
-                    Find the Calculus II textbook, select a one-week rental, and
-                    stop before payment. <em>Pilot: workaround required.</em>
+                    Rent a textbook in Market, identify the refundable deposit,
+                    resolve an insufficient balance through Pay, and return to
+                    checkout. Observe cost comprehension and recovery.
                   </p>
                 </div>
               </li>
               <li>
                 <span>03</span>
                 <div>
-                  <h4>Respond to a return reminder.</h4>
+                  <h4>Ask, verify, and continue.</h4>
                   <p>
-                    Find the approaching textbook return and choose the next
-                    action. <em>Pilot: not yet measurable.</em>
+                    Ask Albot about an unfamiliar course requirement, open the
+                    cited official source, then use Forum if the answer remains
+                    unclear. Observe trust, source checking, and fallback.
                   </p>
                 </div>
               </li>
             </ol>
             <p className="evaluation-note">
-              We will record unassisted, assisted, or failed completion;
-              critical errors, wrong turns, time, price/deposit comprehension,
-              and 1–5 confidence. Participant results will be added only after
-              the sessions are completed.
+              We will record completion, assistance, wrong turns, time on task,
+              source verification, price/deposit comprehension, and 1–5
+              confidence. Participant findings will be added only after the
+              sessions are completed.
             </p>
           </article>
         </div>
@@ -783,7 +786,11 @@ export default function Home() {
         </div>
         <div className="final-details">
           <div>
-            <h2>Arrive curious.<br />Leave confident.</h2>
+            <h2>
+              Arrive curious.
+              <br />
+              <span className="final-heading-accent">Leave confident.</span>
+            </h2>
           </div>
           <div>
             <p className="lead">
