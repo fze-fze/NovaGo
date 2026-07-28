@@ -183,6 +183,49 @@ const academicHubScreens = [
   },
 ];
 
+const commuteScreens = [
+  {
+    number: "01",
+    flow: "Commute home",
+    title: "Show the ways to travel before the destination is known",
+    screen: "Campus Commute",
+    lofi: "/images/prototype/commute/commute-home-lofi.png",
+    hifi: "/images/prototype/commute/commute-home-hifi.png",
+    logic:
+      "Home keeps the four campus travel modes — Shuttle, Bike/Scooter, Walk, and Golf Cart/Taxi — visible next to the search field. Nearby services carry their walking time, so a student who does not yet know the campus can read distance before choosing anything.",
+  },
+  {
+    number: "02",
+    flow: "Destination",
+    title: "Make campus names recognisable, not typed from memory",
+    screen: "Search Location",
+    lofi: "/images/prototype/commute/search-location-lofi.png",
+    hifi: "/images/prototype/commute/search-location-hifi.png",
+    logic:
+      "Newcomers rarely know the official building names. Popular destinations and recent locations are listed above the keyboard so the destination can be picked by recognition, with free search kept for students who already know where they are going.",
+  },
+  {
+    number: "03",
+    flow: "Route choice",
+    title: "Compare modes by cost and effort, with one recommended",
+    screen: "How do you want to go?",
+    lofi: "/images/prototype/commute/choose-route-lofi.png",
+    hifi: "/images/prototype/commute/choose-route-hifi.png",
+    logic:
+      "Each mode states what it involves and what it costs — shuttle free, bike $1.50, walk free, golf cart or taxi $3.00 — and one option carries a Recommended badge. The lo-fi list treated the options as equal; the hi-fi direction keeps the comparison but removes the burden of deciding without guidance.",
+  },
+  {
+    number: "04",
+    flow: "Navigation",
+    title: "Keep the next instruction and the arrival time together",
+    screen: "Turn by turn",
+    lofi: "/images/prototype/commute/turn-by-turn-lofi.png",
+    hifi: "/images/prototype/commute/turn-by-turn-hifi.png",
+    logic:
+      "The active step sits at the top as distance plus direction, while the card below holds remaining time and the arrival window. Exit and Re-center stay reachable so a student who drifts off the path can recover without restarting the trip.",
+  },
+];
+
 const forumScreens = [
   {
     number: "01",
@@ -491,6 +534,91 @@ function AcademicHubStory() {
   );
 }
 
+function CommuteStory() {
+  return (
+    <>
+      <section className="service-block market-origin">
+        <h2>Why Commute needed more than a map</h2>
+        <p className="lead">
+          A new student does not fail to reach a building because the map is
+          missing. They fail because they do not recognise the name, cannot
+          judge how long the walk takes, and do not know which campus transport
+          is theirs to use. Commute answers those three questions before it
+          starts navigating.
+        </p>
+        <div className="market-paths">
+          <article>
+            <p className="subsection-label">Before moving</p>
+            <h3>Decide where, then decide how.</h3>
+            <p>
+              Recognisable destinations, walking times, and four travel modes
+              with visible cost let a student plan the trip instead of guessing
+              at it.
+            </p>
+          </article>
+          <article>
+            <p className="subsection-label">While moving</p>
+            <h3>Stay oriented until arrival.</h3>
+            <p>
+              One instruction at a time, remaining minutes, and a way back to
+              the route keep an unfamiliar campus readable on the way.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section className="service-block market-evolution">
+        <h2>Designing each Commute page from lo-fi to hi-fi</h2>
+        <p className="lead">
+          Four screens carry the journey end to end: opening the service,
+          choosing a destination, picking a way to travel, and following the
+          route until arrival.
+        </p>
+        <div className="market-evolution-list">
+          {commuteScreens.map((screen) => (
+            <article className="market-screen-step" key={screen.number}>
+              <header className="market-screen-heading">
+                <span>{screen.number}</span>
+                <div>
+                  <p className="subsection-label">{screen.flow} flow</p>
+                  <h3>{screen.title}</h3>
+                </div>
+              </header>
+              <div className="market-screen-pair">
+                <figure>
+                  <img
+                    className="market-screen-image"
+                    src={screen.lofi}
+                    alt={`${screen.screen} lo-fi prototype`}
+                    loading="lazy"
+                  />
+                  <figcaption>Lo-fi · {screen.screen}</figcaption>
+                </figure>
+                <span className="market-evolution-arrow" aria-hidden="true">
+                  →
+                </span>
+                <figure>
+                  <img
+                    className="market-screen-image"
+                    src={screen.hifi}
+                    alt={`${screen.screen} hi-fi prototype`}
+                    loading="lazy"
+                  />
+                  <figcaption>Hi-fi · {screen.screen}</figcaption>
+                </figure>
+              </div>
+              <div className="market-screen-logic">
+                <p className="subsection-label">Design logic</p>
+                <p>{screen.logic}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}
+
 function ForumStory() {
   return (
     <>
@@ -622,6 +750,8 @@ export default async function ServicePage({
           <MarketStory />
         ) : service.slug === "academic-hub" ? (
           <AcademicHubStory />
+        ) : service.slug === "commute" ? (
+          <CommuteStory />
         ) : service.slug === "forum" ? (
           <ForumStory />
         ) : (
