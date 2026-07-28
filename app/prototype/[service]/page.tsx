@@ -97,6 +97,109 @@ const marketScreens = [
   },
 ];
 
+const payScreens = [
+  {
+    number: "01",
+    flow: "Payment home",
+    title: "Start from balance, actions, and recent money movement",
+    screen: "Payment Home",
+    lofi: "/images/prototype/pay/payment-home-lofi.png",
+    hifi: "/images/prototype/pay/payment-home-hifi.webp",
+    logic:
+      "The home screen acts as the payment hub rather than a menu of isolated tools. Balance, Pay Now, Accessing Funds, Currency Exchange, Budget Planner, and recent transactions are visible together so a student can decide what to do next.",
+  },
+  {
+    number: "02",
+    flow: "Accessing Funds",
+    title: "Let students top up before the payment blocks them",
+    screen: "Accessing Funds overview",
+    lofi: "/images/prototype/pay/accessing-funds-overview-lofi.png",
+    hifi: "/images/prototype/pay/accessing-funds-overview-hifi.webp",
+    logic:
+      "Accessing Funds is designed as a supporting step inside the payment journey. The student can check payable balance, choose an amount, and understand which account will be used before continuing.",
+  },
+  {
+    number: "03",
+    flow: "Top up continuation",
+    title: "Confirm that the wallet is ready before returning to checkout",
+    screen: "Accessing Funds continue",
+    lofi: "/images/prototype/pay/accessing-funds-continue-lofi.png",
+    hifi: "/images/prototype/pay/accessing-funds-continue-hifi.webp",
+    logic:
+      "The continuation screen closes the low-balance loop. It shows that the wallet has updated, then sends the student back to payment instead of leaving the top-up task as a dead end.",
+  },
+  {
+    number: "04",
+    flow: "Currency exchange",
+    title: "Expose the exchange step before the student pays",
+    screen: "Currency Exchange",
+    lofi: "/images/prototype/pay/currency-exchange-lofi.png",
+    hifi: "/images/prototype/pay/currency-exchange-hifi.webp",
+    logic:
+      "Currency Exchange is treated as an optional but important pre-payment step. The design makes available currencies, converted value, and completion status visible so international students are not guessing about fees or usable balance.",
+  },
+  {
+    number: "05",
+    flow: "Budget planner",
+    title: "Show how the payment affects monthly spending",
+    screen: "Budget Planner",
+    lofi: "/images/prototype/pay/budget-planner-lofi.png",
+    hifi: "/images/prototype/pay/budget-planner-hifi.webp",
+    logic:
+      "Budget Planner connects payment to aftercare. It turns the transaction into a visible spending update, which answers the research concern that students want to see balance and recent payments in one place.",
+  },
+  {
+    number: "06",
+    flow: "Pay Now",
+    title: "Make QR scanning a focused payment mode",
+    screen: "Scan to Pay",
+    lofi: "/images/prototype/pay/scan-to-pay-lofi.png",
+    hifi: "/images/prototype/pay/scan-to-pay-hifi.webp",
+    logic:
+      "Pay Now opens directly into a scanner interface. The merchant amount, scan frame, upload option, flashlight, and selected wallet are all present so the student can pay without hunting for settings.",
+  },
+  {
+    number: "07",
+    flow: "Checkout",
+    title: "Branch by method, balance, and next action",
+    screen: "Payment Summary",
+    lofi: "/images/prototype/pay/payment-summary-lofi.png",
+    hifi: "/images/prototype/pay/payment-summary-hifi.webp",
+    logic:
+      "The summary screen makes the decision point explicit: enough balance leads to confirmation, while low balance leads to top up. Wallet and card sit as separate methods because card payment may require extra verification.",
+  },
+  {
+    number: "08",
+    flow: "Verification",
+    title: "Add 3DS / OTP only when the payment needs it",
+    screen: "3DS OTP Verification",
+    lofi: "/images/prototype/pay/sms-otp-lofi.png",
+    hifi: "/images/prototype/pay/sms-otp-hifi.webp",
+    logic:
+      "Verification is separated from the main checkout so it reads as a security checkpoint, not another payment method. The student sees why they are entering a code and can return if something is wrong.",
+  },
+  {
+    number: "09",
+    flow: "Success",
+    title: "Close the transaction and update the budget",
+    screen: "Payment Successful",
+    lofi: "/images/prototype/pay/payment-success-lofi.png",
+    hifi: "/images/prototype/pay/payment-success-hifi.webp",
+    logic:
+      "The success state confirms the amount, payment method, transaction ID, and budget update. This reduces the post-payment uncertainty of whether money was deducted and what changed afterwards.",
+  },
+  {
+    number: "10",
+    flow: "Failure and retry",
+    title: "Explain failure without trapping the student",
+    screen: "Payment Failed",
+    lofi: "/images/prototype/pay/payment-failed-lofi.png",
+    hifi: "/images/prototype/pay/payment-failed-hifi.webp",
+    logic:
+      "The failed state keeps the recovery loop visible: retry 3DS / OTP, change payment method, retry payment, or cancel. The design prioritises what to do next over a vague error message.",
+  },
+];
+
 function MarketStory() {
   return (
     <>
@@ -192,6 +295,88 @@ function MarketStory() {
   );
 }
 
+function PayStory() {
+  return (
+    <>
+      <section className="service-block market-origin">
+        <h2>Why Pay needed a complete flow</h2>
+        <p className="lead">
+          Payment is not just a final button. For new students, it includes
+          balance confidence, currency readiness, method choice, verification,
+          failure recovery, and the budget impact after money leaves the wallet.
+        </p>
+        <div className="market-paths">
+          <article>
+            <p className="subsection-label">Before payment</p>
+            <h3>Prepare the wallet before checkout.</h3>
+            <p>
+              Students can top up, exchange currency, and check budget context
+              before they commit to a transaction.
+            </p>
+          </article>
+          <article>
+            <p className="subsection-label">During and after</p>
+            <h3>Recover from risk and close the loop.</h3>
+            <p>
+              Balance checks, card verification, success confirmation, failure
+              recovery, and Budget Planner updates keep the process complete.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section className="service-block market-evolution">
+        <h2>Designing each payment page from lo-fi to hi-fi</h2>
+        <p className="lead">
+          The Pay prototype is shown as an end-to-end task flow. It starts at
+          Payment Home, branches through top up, exchange, QR scan, method
+          choice and OTP, then ends with success or a retry path.
+        </p>
+        <div className="market-evolution-list">
+          {payScreens.map((screen) => (
+            <article className="market-screen-step" key={screen.number}>
+              <header className="market-screen-heading">
+                <span>{screen.number}</span>
+                <div>
+                  <p className="subsection-label">{screen.flow} flow</p>
+                  <h3>{screen.title}</h3>
+                </div>
+              </header>
+              <div className="market-screen-pair">
+                <figure>
+                  <img
+                    className="market-screen-image"
+                    src={screen.lofi}
+                    alt={`${screen.screen} lo-fi prototype`}
+                    loading="lazy"
+                  />
+                  <figcaption>Lo-fi · {screen.screen}</figcaption>
+                </figure>
+                <span className="market-evolution-arrow" aria-hidden="true">
+                  →
+                </span>
+                <figure>
+                  <img
+                    className="market-screen-image"
+                    src={screen.hifi}
+                    alt={`${screen.screen} hi-fi prototype`}
+                    loading="lazy"
+                  />
+                  <figcaption>Hi-fi · {screen.screen}</figcaption>
+                </figure>
+              </div>
+              <div className="market-screen-logic">
+                <p className="subsection-label">Design logic</p>
+                <p>{screen.logic}</p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </section>
+    </>
+  );
+}
+
 export default async function ServicePage({
   params,
 }: {
@@ -208,7 +393,7 @@ export default async function ServicePage({
 
       <article className="service-body">
         <Link className="back-link" href="/#prototype">
-          <span aria-hidden="true">←</span> Back to the case study
+          <span aria-hidden="true">&larr;</span> Back to the case study
         </Link>
 
         <header className="service-head">
@@ -235,7 +420,9 @@ export default async function ServicePage({
           </dl>
         </header>
 
-        {service.slug === "market" ? (
+        {service.slug === "pay" ? (
+          <PayStory />
+        ) : service.slug === "market" ? (
           <MarketStory />
         ) : (
           <>
@@ -251,7 +438,7 @@ export default async function ServicePage({
               <h2>What changed, and why</h2>
               {service.decisions.length === 0 ? (
                 <p className="service-todo">
-                  Decisions to be written up — one entry per change that a
+                  Decisions to be written up - one entry per change that a
                   reader could disagree with.
                 </p>
               ) : (
@@ -281,7 +468,7 @@ export default async function ServicePage({
               <h2>The handoff</h2>
               <p className="lead">
                 {service.handoff ||
-                  "How this service passes the student on to the next step — to be written."}
+                  "How this service passes the student on to the next step - to be written."}
               </p>
             </section>
           </>
@@ -289,12 +476,12 @@ export default async function ServicePage({
 
         <nav className="service-nav" aria-label="Other services">
           <Link href={`/prototype/${previous.slug}`}>
-            <span aria-hidden="true">←</span>
+            <span aria-hidden="true">&larr;</span>
             <span>{previous.name}</span>
           </Link>
           <Link href={`/prototype/${next.slug}`}>
             <span>{next.name}</span>
-            <span aria-hidden="true">→</span>
+            <span aria-hidden="true">&rarr;</span>
           </Link>
         </nav>
       </article>
